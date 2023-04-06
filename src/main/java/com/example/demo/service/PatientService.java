@@ -14,6 +14,7 @@ public class PatientService {
 	@Autowired
 	PatientRepo repo;
 	
+	
 	public void addPatientDetails(Patient patient)
 	{
 		repo.save(patient); 

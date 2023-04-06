@@ -13,7 +13,6 @@ public class Doctor {
 	private Long docId;
 	private String docFname;
 	private String docLname;
-
 	@Column(unique=true)
 	private String docEmail;
 	@Column(unique=true)

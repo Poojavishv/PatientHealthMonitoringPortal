@@ -64,7 +64,6 @@ public class MyController {
 			mv.setViewName("index");
 			return mv;
 		} else {
-			
 			mv.setViewName("doctorlogin");
 			mv.addObject("smsg", "");
 			mv.addObject("emsg", "Invalid Username or Password");

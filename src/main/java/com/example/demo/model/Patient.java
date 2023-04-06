@@ -13,6 +13,7 @@ public class Patient {
 	private Long patientId;
 	private String patientFname;
 	private String patientLname;
+	
 	@Column(unique=true)
 	private String patientEmail;
 	@Column(unique=true)
