@@ -31,6 +31,7 @@ public class MyController {
 		ModelAndView mv = new ModelAndView("index");
 		return mv;
 	}
+	
 
 	@RequestMapping("/about")
 	public ModelAndView aboutView() {

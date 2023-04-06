@@ -100,19 +100,16 @@
                     <h5 class="d-inline-block text-primary text-uppercase border-bottom border-5" style="border-color: rgba(256, 256, 256, .3) !important;">Welcome To Health Monitoring Portal</h5>
                     <h1 class="display-1 text-white mb-md-4">Best Health Monitoring Solution In Your City</h1>
                     <div class="pt-2">
-                    <div class="nav-item dropdown">
-                            <a href="#" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2" data-bs-toggle="dropdown">Admin Registration/Login</a>
-                            <div class="dropdown-menu m-0">
-                                <a href="/hospitalAdminRegister" class="dropdown-item">Registration</a>
-                                <a href="/hospitaladminlogin" class="dropdown-item">Login</a>
-                                </div>
+                    <div>
+                            <a href="/hospitaladminlogin" class="btn btn-light rounded-pill py-md-3 px-md-5 mx-2" >Admin Login</a>
+                            
                                 </div>
                               <br>
                                  <div class="nav-item dropdown">
                             <a href="#" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2" data-bs-toggle="dropdown">Doctor Registration/Login</a>
                             <div class="dropdown-menu m-0">
                                 <a href="/doctorregistration" class="dropdown-item">Registration</a>
-                                <a href="/doctorlogin" class="dropdown-item">Login</a>
+                                <a href=doctorHome.jsp class="dropdown-item">Login</a>
                                 </div>
                                 </div>
                                 <br>

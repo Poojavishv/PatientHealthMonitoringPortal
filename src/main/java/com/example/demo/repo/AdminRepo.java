@@ -7,4 +7,4 @@ import com.example.demo.model.Admin;
 public interface AdminRepo extends JpaRepository<Admin, Integer> {
 	Admin findByUserid(String userid);
 
-	}
+}

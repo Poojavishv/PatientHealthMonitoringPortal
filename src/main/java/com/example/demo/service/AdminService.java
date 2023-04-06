@@ -12,7 +12,7 @@ public class AdminService {
 	@Autowired
  AdminRepo repo;
 
-
+	
 	public boolean adminLoginCheck(String userid,String password) {
 		Admin ad=repo.findByUserid(userid);
 		if(ad==null) {

@@ -50,6 +50,7 @@ height: 100%;
 </head>
 
 <body>
+
     <!-- Topbar Start -->
     <div class="container-fluid py-2 border-bottom d-none d-lg-block">
         <div class="container">
@@ -116,8 +117,12 @@ height: 100%;
           class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form>
+       <form action="/loginCheck" method="post">
+          <h3 class="text-center" style="color: green">${smsg }</h3>
+          <h3 class="text-center" style="color: red">${emsg }</h3>
+         
           <div class="text-center" align="center">
+           
             <h1 class="text-center" >Hospital Admin Login Page</h1>
             
           </div>
@@ -127,7 +132,7 @@ height: 100%;
           <!-- Email input -->
           <div class="form-outline mb-4">
            <label class="form-label" for="form3Example3">USER ID</label>
-            <input type="text" id="form3Example3" class="form-control form-control-lg"
+            <input type="text" id="form3Example3" name="userid"  class="form-control form-control-lg"
               placeholder="User ID" />
            
           </div>
@@ -135,7 +140,7 @@ height: 100%;
           <!-- Password input -->
           <div class="form-outline mb-3">
            <label class="form-label" for="form3Example4">Password</label>
-            <input type="password" id="form3Example4" class="form-control form-control-lg"
+            <input type="password" id="form3Example4" name="password"  class="form-control form-control-lg"
               placeholder="Enter password" />
            
           </div>
@@ -147,17 +152,12 @@ height: 100%;
               <label class="form-check-label" for="form2Example3">
                 Remember me
               </label>
-            </div>
-            <a href="#!" class="text-body">Forgot password?</a>
+            </div> 
+            <div class="text-center text-lg-start mt-4 pt-2">
+            <input type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;" value=Login>
           </div>
-
-          <div class="text-center text-lg-start mt-4 pt-2">
-            <button type="button" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-            <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="hospitalAdminRegister"
-                class="link-danger">Register</a></p>
-          </div>
-
+</div>
         </form>
       </div>
     </div>
