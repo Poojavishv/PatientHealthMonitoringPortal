@@ -1,11 +1,16 @@
 package com.example.demo.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.service.AdminService;
+
 @Controller
 public class MyController {
+	@Autowired
+	AdminService adService;
 	@RequestMapping("/")
 	public ModelAndView indexView() {
 		ModelAndView mv=new ModelAndView("index");
@@ -29,8 +34,29 @@ public class MyController {
 		@RequestMapping("/hospitaladminlogin")
 		public ModelAndView hospitalloginView() {
 			ModelAndView mv=new ModelAndView("hospitaladminlogin");
+			mv.addObject("smsg","");
+			mv.addObject("emsg","");
+			mv.addObject("name", mv);		
 			return mv;
 		}
+	@RequestMapping("/loginCheck")
+	public ModelAndView loginCheckView(String userid,String password) {
+		ModelAndView mv=new ModelAndView();
+		if(adService.adminLoginCheck(userid, password)) {
+			
+			mv.setViewName("adminHome");
+			
+			return mv;
+		}
+		
+		else {
+			mv.setViewName("hospitaladminlogin");
+			mv.addObject("smsg","");
+			mv.addObject("emsg","Invalid userid or password");
+			return mv;
+		}
+		
+	}
 		@RequestMapping("/doctorlogin")
 		public ModelAndView doctorloginView() {
 			ModelAndView mv=new ModelAndView("doctorlogin");
