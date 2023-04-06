@@ -8,7 +8,7 @@ import com.example.demo.model.Patient;
 import com.example.demo.repo.DoctorRepo;
 import com.example.demo.repo.PatientRepo;
 
-@Service
+@Service  
 public class PatientService {
 	
 	@Autowired
@@ -16,7 +16,7 @@ public class PatientService {
 	
 	public void addPatientDetails(Patient patient)
 	{
-		repo.save(patient);
+		repo.save(patient); 
 	}
 	
 	public boolean patientLoginCheck(String patientEmail, String patientPassword) {

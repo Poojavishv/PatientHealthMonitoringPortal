@@ -16,7 +16,7 @@ public class DoctorService {
 	
 	public void addDoctorDetails(Doctor doc)
 	{
-		repo.save(doc);
+		repo.save(doc); 
 	}
 	
 	public boolean doctorLoginCheck(String docEmail,String docPassword)

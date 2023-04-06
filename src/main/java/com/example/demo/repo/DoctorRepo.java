@@ -8,4 +8,4 @@ public interface DoctorRepo extends JpaRepository<Doctor, Long> {
 	
 	public Doctor findBydocEmail(String docEmail);
 
-}
+} 
