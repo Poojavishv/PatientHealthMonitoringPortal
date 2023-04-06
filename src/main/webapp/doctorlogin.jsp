@@ -116,8 +116,10 @@ height: 100%;
           class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form>
+        <form action="/loginCheckDoctor" method="post">
           <div class="text-center" align="center">
+          <h3 class="text-center" style="color: green">${smsg }</h3>
+          <h3 class="text-center" style="color: red">${emsg }</h3>
             <h1 class="text-center" >Doctor Login Page</h1>
             
           </div>
@@ -128,7 +130,7 @@ height: 100%;
           <div class="form-outline mb-4">
           <label class="form-label" for="form3Example3">USER ID</label>
             <input type="text" id="form3Example3" class="form-control form-control-lg"
-              placeholder="User ID" />
+              placeholder="User ID" name="docEmail" />
             
           </div>
 
@@ -136,7 +138,7 @@ height: 100%;
           <div class="form-outline mb-3">
            <label class="form-label" for="form3Example4">Password</label>
             <input type="password" id="form3Example4" class="form-control form-control-lg"
-              placeholder="Enter password" />
+              placeholder="Enter password" name="docPassword" />
            
           </div>
 
@@ -152,7 +154,7 @@ height: 100%;
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">
-            <button type="button" class="btn btn-primary btn-lg"
+            <button type="submit" class="btn btn-primary btn-lg"
               style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
             <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/doctorregistration"
                 class="link-danger">Register</a></p>

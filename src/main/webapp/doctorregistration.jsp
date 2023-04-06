@@ -111,7 +111,7 @@ top: 13px;
       </div>
      
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form>
+        <form action="/doctorReg" method="post">
          <br>
           <div class="text-center" align="center">
             <h1 class="text-center" >Doctor Registration Page</h1>
@@ -124,14 +124,14 @@ top: 13px;
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
                     <label class="form-label" for="form3Example1m">First name</label>
-                      <input type="text" id="form3Example1m" class="form-control form-control-lg" placeholder="First Name" />
+                      <input type="text" id="form3Example1m" class="form-control form-control-lg" placeholder="First Name"  name="docFname"/>
                       
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
                     <label class="form-label" for="form3Example1n">Last name</label>
-                      <input type="text" id="form3Example1n" class="form-control form-control-lg" placeholder="Last Name" />
+                      <input type="text" id="form3Example1n" class="form-control form-control-lg" placeholder="Last Name" name="docLname" />
                       
                     </div>
                   </div>
@@ -140,18 +140,18 @@ top: 13px;
                
                 <div class="form-outline mb-4">
                 <label class="form-label" for="typeEmailX-2">Email</label>
-              <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
+              <input type="email" id="typeEmailX-2" class="form-control form-control-lg" name="docEmail" />
               
             </div>
             
                 <div class="form-outline mb-4">
                 <label class="form-label" for="form3Example99">Phone Number</label>
-                  <input type="number" id="form3Example99" class="form-control form-control-lg" placeholder="Contact Number"/>
+                  <input type="number" id="form3Example99" class="form-control form-control-lg" placeholder="Contact Number" name="docPhNo" />
                   
                 </div>
                 <div class="form-outline mb-4">
                  <label class="form-label" for="form3Example99">Age</label>
-                  <input type="number" id="form3Example99" class="form-control form-control-lg" placeholder="Age"/>
+                  <input type="number" id="form3Example99" class="form-control form-control-lg" placeholder="Age" name="docAge" />
                  
                 </div>
                 
@@ -161,22 +161,22 @@ top: 13px;
 
                   <div class="form-check form-check-inline mb-0 me-4">
                   <label class="form-check-label" for="femaleGender">Female</label>
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                      value="option1" />
+                    <input class="form-check-input" type="radio" name="docGender" id="femaleGender"
+                      value="Female" />
                     
                   </div>
 
                   <div class="form-check form-check-inline mb-0 me-4">
                    <label class="form-check-label" for="maleGender">Male</label>
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                      value="option2" />
+                    <input class="form-check-input" type="radio" name="docGender" id="maleGender"
+                      value="Male" />
                    
                   </div>
 
                   <div class="form-check form-check-inline mb-0">
                    <label class="form-check-label" for="otherGender">Other</label>
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                      value="option3" />
+                    <input class="form-check-input" type="radio" name="docGender" id="otherGender"
+                      value="Other" />
                    
                   </div>
 
@@ -184,7 +184,7 @@ top: 13px;
 
                <div class="form-outline mb-4">
                 <label class="form-label" for="form3Example3">USER ID</label>
-            <input type="text" id="form3Example3" class="form-control form-control-lg"
+            <input type="text" id="form3Example3" class="form-control form-control-lg" name="docUserId"
               placeholder="User ID" />
            
           </div>
@@ -192,17 +192,18 @@ top: 13px;
           <!-- Password input -->
           <div class="form-outline mb-3">
           <label class="form-label" for="form3Example4">Password</label>
-            <input type="password" id="form3Example4" class="form-control form-control-lg"
+            <input type="password" id="form3Example4" class="form-control form-control-lg" name="docPassword"
               placeholder="Enter password" />
-            
           </div>
+          
                 
  <div class="text-center text-lg-start mt-4 pt-2">
-            <button type="button" class="btn btn-primary btn-lg"
+            <button type="submit" class="btn btn-primary btn-lg"
               style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
            <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="/doctorlogin"
                 class="link-danger">Login</a></p>
           </div>
+          </form>
  <br>
               </div>
             </div>
