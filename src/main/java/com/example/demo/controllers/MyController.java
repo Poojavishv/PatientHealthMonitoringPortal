@@ -140,12 +140,7 @@ public class MyController {
 
 	}
 
-	@RequestMapping("/doctorlogin")
-	public ModelAndView doctorloginView1() {
-		ModelAndView mv = new ModelAndView("doctorlogin");
-		return mv;
-	}
-
+	
 	@RequestMapping("/doctorlogin")
 	public ModelAndView doctorloginView() {
 		ModelAndView mv = new ModelAndView("doctorlogin");

@@ -8,12 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "admindb", schema = "trainingbykarthiksir")
 public class Admin {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String userid;	
-	@Column(name="name", nullable = false, length=20,unique = true)
+	@Column(nullable = false, length=20)
 	private String name;
 	@Column(nullable = false, length=64)
 	private String password;
