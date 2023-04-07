@@ -174,6 +174,7 @@ public class MyController {
 		 mv.addObject("patientId",patientEmail);
 	        return mv;
 	    }
+	 
 
 	    @RequestMapping(value = "/calculateBMI")
 	    public ModelAndView calculateBMI(@RequestParam("height") double height, @RequestParam("weight") double weight,@RequestParam("patientEmail") String patientEmail) {

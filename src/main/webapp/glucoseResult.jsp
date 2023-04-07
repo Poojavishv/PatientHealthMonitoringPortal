@@ -141,6 +141,7 @@ height: 100%;
     </div>
           
 <p>
+
             <label for="patientId" >Patient Id: </label>
             <input path="patientId" value="${patientId }" type="text" readonly/>
         </p>

@@ -11,10 +11,11 @@ import com.example.demo.repo.BMIRepo;
 public class BMIService {
 	@Autowired
 	BMIRepo repo;
-	public void addBMItDetails(BMI bmi)
+	public void addBMIDetails(BMI bmi)
 	{
 		repo.save(bmi); 
 	}
+	
 	
     public double calculateBMI(double height, double weight) {
         double bmi = weight / (height * height);
