@@ -3,6 +3,7 @@ package com.example.demo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
@@ -12,6 +13,7 @@ import com.example.demo.service.DoctorService;
 import com.example.demo.service.PatientService;
 
 import com.example.demo.service.AdminService;
+import com.example.demo.service.BMIService;
 
 @Controller
 public class MyController {
@@ -24,6 +26,8 @@ public class MyController {
 
 	@Autowired
 	AdminService adService;
+	@Autowired
+	BMIService bmiService;
 
 
 	@RequestMapping("/")
@@ -55,7 +59,7 @@ public class MyController {
 	public ModelAndView doctorLoginCheck(String docEmail, String docPassword) {
 		ModelAndView mv = new ModelAndView();
 		if (docService.doctorLoginCheck(docEmail, docPassword)) {
-			mv.setViewName("index");
+			mv.setViewName("doctorHome");
 			return mv;
 		} else {
 			mv.setViewName("doctorlogin");
@@ -70,7 +74,8 @@ public class MyController {
 	public ModelAndView patientLoginCheck(String patientEmail, String patientPassword) {
 		ModelAndView mv = new ModelAndView();
 		if (patientService.patientLoginCheck(patientEmail, patientPassword)) {
-			mv.setViewName("index");
+			mv.addObject("patientId",patientEmail);
+			mv.setViewName("patientHome");
 			return mv;
 		} else {
 			mv.setViewName("userlogin");
@@ -140,12 +145,7 @@ public class MyController {
 
 	}
 
-	@RequestMapping("/doctorlogin")
-	public ModelAndView doctorloginView1() {
-		ModelAndView mv = new ModelAndView("doctorlogin");
-		return mv;
-	}
-
+	
 	@RequestMapping("/doctorlogin")
 	public ModelAndView doctorloginView() {
 		ModelAndView mv = new ModelAndView("doctorlogin");
@@ -165,6 +165,46 @@ public class MyController {
 	@RequestMapping("/forgotPassword1")
 	public ModelAndView forgotPassword1View() {
 		ModelAndView mv = new ModelAndView("forgotPassword1");
+		return mv;
+	}
+	 @RequestMapping(value = "/BMI")
+	    
+	 public ModelAndView showLoginForm(String patientEmail) {
+		 ModelAndView mv=new ModelAndView("BMI");
+		 mv.addObject("patientId",patientEmail);
+	        return mv;
+	    }
+
+	    @RequestMapping(value = "/calculateBMI")
+	    public ModelAndView calculateBMI(@RequestParam("height") double height, @RequestParam("weight") double weight,@RequestParam("patientEmail") String patientEmail) {
+	        double bmi = bmiService.calculateBMI(height, weight);
+	        
+	        ModelAndView mav = new ModelAndView("bmiResult");
+	        mav.addObject("bmi", bmi);
+	        mav.addObject("patientId",patientEmail);
+	        return mav;
+	    }
+	    @RequestMapping(value = "/calculateGlucose")
+	    public ModelAndView calculateGlucose(@RequestParam("height") double height, @RequestParam("weight") double weight,@RequestParam("patientEmail") String patientEmail) {
+	 	   
+	        double glucoseLevel=bmiService.calculateGlucose(height, weight);
+	        
+	        ModelAndView mav = new ModelAndView("glucoseResult");
+	        
+	        mav.addObject("glucoseLevel",glucoseLevel);
+	        mav.addObject("patientId",patientEmail);
+	        return mav;
+	    }
+	
+	@RequestMapping("/Glucose")
+	public ModelAndView glucoseView(String patientEmail) {
+		ModelAndView mv = new ModelAndView("Glucose");
+		mv.addObject("patientId",patientEmail);
+		return mv;
+	}
+	@RequestMapping("/BloodCount")
+	public ModelAndView BloodCountView() {
+		ModelAndView mv = new ModelAndView("BloodCount");
 		return mv;
 	}
 
