@@ -128,6 +128,29 @@ height: 100%;
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <h1>Add Calorie Intake</h1>
+    <form:form method="post" action="/calorie/save">
+        <form:hidden path="patientId" value="${patientId}"/>
+        <table>
+            <tr>
+                <td>Date:</td>
+                <td><form:input path="date" type="date"/></td>
+            </tr>
+            <tr>
+                <td>Calories:</td>
+                <td><form:input path="calories" type="number"/></td>
+            </tr>
+            <tr>
+                <td>Time of Intake:</td>
+                <td><form:input path="timeOfIntake" type="time"/></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Save"/></td>
+            </tr>
+        </table>
+    </form:form>
+</body>
+</html>s
       <form action="/BloodCountsave" method="post">
       <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">

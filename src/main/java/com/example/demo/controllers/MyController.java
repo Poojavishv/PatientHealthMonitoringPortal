@@ -2,11 +2,13 @@ package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.example.demo.model.BloodCount;
+import com.example.demo.model.CalorieIntake;
 import com.example.demo.model.Doctor;
 import com.example.demo.model.Patient;
 import com.example.demo.service.DoctorService;
@@ -14,6 +16,8 @@ import com.example.demo.service.PatientService;
 
 import com.example.demo.service.AdminService;
 import com.example.demo.service.BMIService;
+import com.example.demo.service.BloodCountService;
+import com.example.demo.service.CalorieIntakeService;
 
 @Controller
 public class MyController {
@@ -28,7 +32,10 @@ public class MyController {
 	AdminService adService;
 	@Autowired
 	BMIService bmiService;
-
+	@Autowired
+    private BloodCountService bloodCountService;
+	@Autowired
+    private CalorieIntakeService calorieIntakeService;
 
 	@RequestMapping("/")
 	public ModelAndView indexView() {
@@ -203,10 +210,43 @@ public class MyController {
 		mv.addObject("patientId",patientEmail);
 		return mv;
 	}
-	@RequestMapping("/BloodCount")
-	public ModelAndView BloodCountView() {
-		ModelAndView mv = new ModelAndView("BloodCount");
-		return mv;
-	}
+	
+	 @RequestMapping("/BloodCount")
+	    public ModelAndView showAddBloodCountForm(String patientEmail) {
+	        ModelAndView modelAndView = new ModelAndView("BloodCount");
+	        modelAndView.addObject("bloodCount", new BloodCount());
+	        modelAndView.addObject("patientId",patientEmail);
+	        return modelAndView;
+	    }
+	    
+	 @RequestMapping("/BloodCountsave")
+	    public ModelAndView addBloodCount(@ModelAttribute("bloodCount") BloodCount bloodCount,@RequestParam("patientEmail") String patientEmail) {
+	        bloodCountService.saveBloodCount(bloodCount);
+	        ModelAndView modelAndView = new ModelAndView("bloodCountResult");
+	        modelAndView.addObject("bloodCount", new BloodCount());
+	        modelAndView.addObject("successMessage", "Blood Count details recorded successfully.");
+	        modelAndView.addObject("patientId",patientEmail);
+	        return modelAndView;
+	    }
+	 @RequestMapping("/CalorieIntakeadd")
+	 public ModelAndView showAddCalorieIntakeForm(String patientEmail) {
+		 ModelAndView modelAndView = new ModelAndView("CalorieAdd");
+	        modelAndView.addObject("calorieIntake", new CalorieIntake());
+	        modelAndView.addObject("patientId",patientEmail);
+	        return modelAndView;
+	       
+	    }
+
+	 @RequestMapping("/CalorieIntakesave")
+	 public ModelAndView saveCalorieIntake(@ModelAttribute("calorieIntake") CalorieIntake calorieIntake,@RequestParam("patientEmail") String patientEmail) {
+	        calorieIntakeService.saveCalorieCount(calorieIntake);
+	        ModelAndView modelAndView = new ModelAndView("calorieIntakeResult");
+	        modelAndView.addObject("calorieIntake", new CalorieIntake());
+	        modelAndView.addObject("successMessage", "Calorie details details recorded successfully.");
+	        modelAndView.addObject("patientId",patientEmail);
+			return modelAndView;
+			
+	        
+	    }
 
 }
