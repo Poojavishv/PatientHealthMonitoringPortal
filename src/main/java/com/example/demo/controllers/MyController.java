@@ -2,15 +2,22 @@ package com.example.demo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.model.Activity;
 import com.example.demo.model.BloodCount;
 import com.example.demo.model.CalorieIntake;
 import com.example.demo.model.Doctor;
 import com.example.demo.model.Patient;
+import com.example.demo.model.Pressure;
+import com.example.demo.repo.ActivityRepository;
+import com.example.demo.repo.PressureRepository;
 import com.example.demo.service.DoctorService;
 import com.example.demo.service.PatientService;
 
@@ -27,22 +34,20 @@ public class MyController {
 	@Autowired
 	PatientService patientService;
 
-
 	@Autowired
 	AdminService adService;
 	@Autowired
 	BMIService bmiService;
 	@Autowired
-    private BloodCountService bloodCountService;
+	private BloodCountService bloodCountService;
 	@Autowired
-    private CalorieIntakeService calorieIntakeService;
+	private CalorieIntakeService calorieIntakeService;
 
 	@RequestMapping("/")
 	public ModelAndView indexView() {
 		ModelAndView mv = new ModelAndView("index");
 		return mv;
 	}
-	
 
 	@RequestMapping("/about")
 	public ModelAndView aboutView() {
@@ -91,7 +96,7 @@ public class MyController {
 			return mv;
 		}
 	}
-		
+
 	@RequestMapping("/hospitaladminlogin")
 	public ModelAndView hospitalloginView() {
 		ModelAndView mv = new ModelAndView("hospitaladminlogin");
@@ -100,7 +105,6 @@ public class MyController {
 		mv.addObject("name", mv);
 		return mv;
 	}
-
 
 	@RequestMapping("/doctorReg")
 	public ModelAndView doctorRegistration(Doctor doc) {
@@ -132,7 +136,6 @@ public class MyController {
 		return mv;
 	}
 
-
 	@RequestMapping("/loginCheck")
 	public ModelAndView loginCheckView(String userid, String password) {
 		ModelAndView mv = new ModelAndView();
@@ -152,7 +155,6 @@ public class MyController {
 
 	}
 
-	
 	@RequestMapping("/doctorlogin")
 	public ModelAndView doctorloginView() {
 		ModelAndView mv = new ModelAndView("doctorlogin");
@@ -168,85 +170,144 @@ public class MyController {
 		return mv;
 	}
 
-
 	@RequestMapping("/forgotPassword1")
 	public ModelAndView forgotPassword1View() {
 		ModelAndView mv = new ModelAndView("forgotPassword1");
 		return mv;
 	}
-	 @RequestMapping(value = "/BMI")
-	    
-	 public ModelAndView showLoginForm(String patientEmail) {
-		 ModelAndView mv=new ModelAndView("BMI");
-		 mv.addObject("patientId",patientEmail);
-	        return mv;
-	    }
-	 
 
-	    @RequestMapping(value = "/calculateBMI")
-	    public ModelAndView calculateBMI(@RequestParam("height") double height, @RequestParam("weight") double weight,@RequestParam("patientEmail") String patientEmail) {
-	        double bmi = bmiService.calculateBMI(height, weight);
-	        
-	        ModelAndView mav = new ModelAndView("bmiResult");
-	        mav.addObject("bmi", bmi);
-	        mav.addObject("patientId",patientEmail);
-	        return mav;
-	    }
-	    @RequestMapping(value = "/calculateGlucose")
-	    public ModelAndView calculateGlucose(@RequestParam("height") double height, @RequestParam("weight") double weight,@RequestParam("patientEmail") String patientEmail) {
-	 	   
-	        double glucoseLevel=bmiService.calculateGlucose(height, weight);
-	        
-	        ModelAndView mav = new ModelAndView("glucoseResult");
-	        
-	        mav.addObject("glucoseLevel",glucoseLevel);
-	        mav.addObject("patientId",patientEmail);
-	        return mav;
-	    }
-	
+	@RequestMapping(value = "/BMI")
+
+	public ModelAndView showLoginForm(String patientEmail) {
+		ModelAndView mv = new ModelAndView("BMI");
+		mv.addObject("patientId", patientEmail);
+		return mv;
+	}
+
+	@RequestMapping(value = "/calculateBMI")
+	public ModelAndView calculateBMI(@RequestParam("height") double height, @RequestParam("weight") double weight,
+			@RequestParam("patientEmail") String patientEmail) {
+		double bmi = bmiService.calculateBMI(height, weight);
+
+		ModelAndView mav = new ModelAndView("bmiResult");
+		mav.addObject("bmi", bmi);
+		mav.addObject("patientId", patientEmail);
+		return mav;
+	}
+
+	@RequestMapping(value = "/calculateGlucose")
+	public ModelAndView calculateGlucose(@RequestParam("height") double height, @RequestParam("weight") double weight,
+			@RequestParam("patientEmail") String patientEmail) {
+
+		double glucoseLevel = bmiService.calculateGlucose(height, weight);
+
+		ModelAndView mav = new ModelAndView("glucoseResult");
+
+		mav.addObject("glucoseLevel", glucoseLevel);
+		mav.addObject("patientId", patientEmail);
+		return mav;
+	}
+
 	@RequestMapping("/Glucose")
 	public ModelAndView glucoseView(String patientEmail) {
 		ModelAndView mv = new ModelAndView("Glucose");
-		mv.addObject("patientId",patientEmail);
+		mv.addObject("patientId", patientEmail);
 		return mv;
 	}
+
+	@RequestMapping("/BloodCount")
+	public ModelAndView showAddBloodCountForm(String patientEmail) {
+		ModelAndView modelAndView = new ModelAndView("BloodCount");
+		modelAndView.addObject("bloodCount", new BloodCount());
+		modelAndView.addObject("patientId", patientEmail);
+		return modelAndView;
+	}
+
+	@RequestMapping("/BloodCountsave")
+	public ModelAndView addBloodCount(@ModelAttribute("bloodCount") BloodCount bloodCount,
+			@RequestParam("patientEmail") String patientEmail) {
+		bloodCountService.saveBloodCount(bloodCount);
+		ModelAndView modelAndView = new ModelAndView("bloodCountResult");
+		modelAndView.addObject("bloodCount", new BloodCount());
+		modelAndView.addObject("successMessage", "Blood Count details recorded successfully.");
+		modelAndView.addObject("patientId", patientEmail);
+		return modelAndView;
+	}
+
+	@RequestMapping("/CalorieAdd")
+	public ModelAndView showAddCalorieIntakeForm(String patientEmail) {
+		ModelAndView modelAndView = new ModelAndView("CalorieAdd");
+		modelAndView.addObject("calorieIntake", new CalorieIntake());
+		modelAndView.addObject("patientId", patientEmail);
+		return modelAndView;
+
+	}
+
+	@RequestMapping("/calorieIntakeResult")
+	public ModelAndView saveCalorieIntake(@ModelAttribute("calorieIntake") CalorieIntake calorieIntake,
+			@RequestParam("patientEmail") String patientEmail) {
+		calorieIntakeService.saveCalorieCount(calorieIntake);
+		ModelAndView modelAndView = new ModelAndView("calorieIntakeResult");
+		modelAndView.addObject("calorieIntake", new CalorieIntake());
+		modelAndView.addObject("successMessage", "Calorie details details recorded successfully.");
+		modelAndView.addObject("patientId", patientEmail);
+		return modelAndView;
+
+	}
+
+	@Autowired
+    private PressureRepository pressureRepository;
+
+    @GetMapping("/pressure")
+    public ModelAndView pressure(@RequestParam("patientEmail") String patientId) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("pressures", pressureRepository.findByPatientId(patientId));
+        modelAndView.addObject("pressure", new Pressure());
+        modelAndView.addObject("patientId", patientId);
+        modelAndView.setViewName("pressure");
+        return modelAndView;
+    }
+
+    @PostMapping("/savePressure")
+    public ModelAndView savePressure(Pressure pressure) {
+        pressureRepository.save(pressure);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("message", "Pressure reading recorded successfully");
+        modelAndView.setViewName("pressureResult");
+        return modelAndView;
+    }
+
 	
-	 @RequestMapping("/BloodCount")
-	    public ModelAndView showAddBloodCountForm(String patientEmail) {
-	        ModelAndView modelAndView = new ModelAndView("BloodCount");
-	        modelAndView.addObject("bloodCount", new BloodCount());
-	        modelAndView.addObject("patientId",patientEmail);
-	        return modelAndView;
-	    }
+
+	@Autowired
+	private ActivityRepository activityRepository;
+
+	@GetMapping("/activities")
+	public ModelAndView activities(@RequestParam("patientEmail") String patientId) {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("activities", activityRepository.findByPatientId(patientId));
+		modelAndView.addObject("activity", new Activity());
+		modelAndView.addObject("patientId", patientId);
+		modelAndView.setViewName("activities");
+		return modelAndView;
+	}
+
+	@PostMapping("/saveActivity")
+	public ModelAndView saveActivity(Activity activity) {
+		activityRepository.save(activity);
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("message", "Activity details recorded successfully");
+		modelAndView.setViewName("activityResult");
+		return modelAndView;
+	}
+	
+	
 	    
-	 @RequestMapping("/BloodCountsave")
-	    public ModelAndView addBloodCount(@ModelAttribute("bloodCount") BloodCount bloodCount,@RequestParam("patientEmail") String patientEmail) {
-	        bloodCountService.saveBloodCount(bloodCount);
-	        ModelAndView modelAndView = new ModelAndView("bloodCountResult");
-	        modelAndView.addObject("bloodCount", new BloodCount());
-	        modelAndView.addObject("successMessage", "Blood Count details recorded successfully.");
-	        modelAndView.addObject("patientId",patientEmail);
+	    @RequestMapping(value = "/self-service", method = RequestMethod.GET)
+	    public ModelAndView showSelfServiceScreen() {
+	        ModelAndView modelAndView = new ModelAndView("self-service");
 	        return modelAndView;
 	    }
-	 @RequestMapping("/CalorieAdd")
-	 public ModelAndView showAddCalorieIntakeForm(String patientEmail) {
-		 ModelAndView modelAndView = new ModelAndView("CalorieAdd");
-	        modelAndView.addObject("calorieIntake", new CalorieIntake());
-	        modelAndView.addObject("patientId",patientEmail);
-	        return modelAndView;
-	       
-	    }
-
-	 @RequestMapping("/calorieIntakeResult")
-	 public ModelAndView saveCalorieIntake(@ModelAttribute("calorieIntake") CalorieIntake calorieIntake,@RequestParam("patientEmail") String patientEmail) {
-	        calorieIntakeService.saveCalorieCount(calorieIntake);
-	        ModelAndView modelAndView = new ModelAndView("calorieIntakeResult");
-	        modelAndView.addObject("calorieIntake", new CalorieIntake());
-	        modelAndView.addObject("successMessage", "Calorie details details recorded successfully.");
-	        modelAndView.addObject("patientId",patientEmail);
-			return modelAndView;
-			
-	        
-	    }
-
-}
+	
+}	
+	    
