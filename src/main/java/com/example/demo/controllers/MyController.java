@@ -228,7 +228,7 @@ public class MyController {
 	        modelAndView.addObject("patientId",patientEmail);
 	        return modelAndView;
 	    }
-	 @RequestMapping("/CalorieIntakeadd")
+	 @RequestMapping("/CalorieAdd")
 	 public ModelAndView showAddCalorieIntakeForm(String patientEmail) {
 		 ModelAndView modelAndView = new ModelAndView("CalorieAdd");
 	        modelAndView.addObject("calorieIntake", new CalorieIntake());
@@ -237,7 +237,7 @@ public class MyController {
 	       
 	    }
 
-	 @RequestMapping("/CalorieIntakesave")
+	 @RequestMapping("/calorieIntakeResult")
 	 public ModelAndView saveCalorieIntake(@ModelAttribute("calorieIntake") CalorieIntake calorieIntake,@RequestParam("patientEmail") String patientEmail) {
 	        calorieIntakeService.saveCalorieCount(calorieIntake);
 	        ModelAndView modelAndView = new ModelAndView("calorieIntakeResult");

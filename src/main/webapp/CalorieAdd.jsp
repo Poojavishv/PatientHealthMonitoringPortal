@@ -128,60 +128,30 @@ height: 100%;
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-      <h1>Add Calorie Intake</h1>
-    <form:form method="post" action="/calorie/save">
-        <form:hidden path="patientId" value="${patientId}"/>
-        <table>
-            <tr>
-                <td>Date:</td>
-                <td><form:input path="date" type="date"/></td>
-            </tr>
-            <tr>
-                <td>Calories:</td>
-                <td><form:input path="calories" type="number"/></td>
-            </tr>
-            <tr>
-                <td>Time of Intake:</td>
-                <td><form:input path="timeOfIntake" type="time"/></td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="Save"/></td>
-            </tr>
-        </table>
-    </form:form>
-</body>
-</html>s
-      <form action="/BloodCountsave" method="post">
+      <form action="/calorieIntakeResult" method="post">
       <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
-             <h3 class="mb-5">BLOOD COUNT DETAILS</h3>
-             
-           <div class="form-outline mb-4">
+             <h3 class="mb-5">Add Calorie Intake</h3>
+      
+      <div class="form-outline mb-4">
             <label class="form-label" for="height">Patient ID:</label>
                <input  type="text" id="height" name="patientEmail" value="${patientId }" readonly><br>
               
             </div>
-      <div class="form-outline mb-4">
-    <label for="timeOfDay">Time of the day:</label>
-    <select id="timeOfDay" name="timeOfDay">
-        <option value="morning">Morning</option>
-        <option value="afternoon">Afternoon</option>
-        <option value="evening">Evening</option>
-    </select>
+    <div class="form-outline mb-4">
+    <label for="rbcCount">Date:</label>
+    <input path="date" type="date" id="date" name="date" />
     </div>
       <div class="form-outline mb-4">
-    <label for="rbcCount">RBC Count:</label>
-    <input type="text" id="rbcCount" name="rbcCount" />
+    <label for="wbcCount">Calories:</label>
+    <input path="calories" type="number" id="calories" name="calories" />
     </div>
       <div class="form-outline mb-4">
-    <label for="wbcCount">WBC Count:</label>
-    <input type="text" id="wbcCount" name="wbcCount" />
-    </div>
-      <div class="form-outline mb-4">
-    <label for="plateletCount">Platelet Count:</label>
-    <input type="text" id="plateletCount" name="plateletCount" />
+    <label for="plateletCount">Time Of Intake :</label>
+    <input path="timeOfIntake" type="time" id="timeOfIntake" name="timeOfIntake" />
     </div>
       
+             
     <input type="submit" value="Save" />
    
     </div>

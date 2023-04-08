@@ -12,7 +12,6 @@ import jakarta.persistence.Id;
 public class CalorieIntake {
 
 
-
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Long id;

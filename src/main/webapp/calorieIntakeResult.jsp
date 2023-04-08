@@ -135,7 +135,7 @@ height: 100%;
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
         
           <div class="card-body p-5 text-center">
-           <h3 class="mb-5">BMI Result</h3>
+          <h3 class="mb-5">Add Calorie Intake</h3>
              
     <div style="color: green">
     <h1 th:text="${message}"></h1>
@@ -154,7 +154,7 @@ height: 100%;
             <input path="timeOfDay" type="datetime-local" />
         </p>
         
-       <a href="/BloodCount">Add another blood count</a>
+       <a href="/CalorieAdd">Add another Calories </a>
         
         <p>
             <button type="submit">Save</button>

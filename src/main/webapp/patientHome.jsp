@@ -161,6 +161,7 @@ height: 100%;
               <p>  Generate your BMI Report  </p>
             </div>
           </div>
+          
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
@@ -205,7 +206,7 @@ height: 100%;
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-dna"></i></div>
-              <h4><a href="">Calories Tracker</a></h4>
+              <h4><a href="/CalorieAdd?patientEmail=${patientId }">Calories Tracker</a></h4>
               <p>Monitor your Calories Level</p>
             </div>
           </div>

@@ -7,3 +7,4 @@ import com.example.demo.model.BloodCount;
 public interface BloodCountRepo extends JpaRepository<BloodCount, Long> {
 
 }
+
