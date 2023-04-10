@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,13 @@ public class DoctorService {
 	{
 		repo.save(doc); 
 		
+	}
+	
+	public ArrayList<Doctor> getDoctorList()
+	{
+		ArrayList<Doctor> doctorList = new ArrayList<>();
+		doctorList.addAll(repo.findAll());
+		return doctorList;
 	}
 	
 	public boolean doctorLoginCheck(String docEmail,String docPassword)

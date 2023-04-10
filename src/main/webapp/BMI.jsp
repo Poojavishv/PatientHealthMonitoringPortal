@@ -130,6 +130,7 @@ height: 100%;
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <h4 style="color: green" align="center">${successMessage}</h4>
       <form name="form"  action="/calculateBMI" method="post" >
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
         
@@ -140,7 +141,7 @@ height: 100%;
             <h3 class="mb-5">BMI Calculation</h3>
             <div class="form-outline mb-4">
             <label class="form-label" for="height">Patient ID:</label>
-               <input  type="text" id="height" name="patientEmail" value="${patientId }" readonly><br>
+               <input  type="text" id="height" name="patientId" value="${patientId }" readonly><br>
               
             </div>
 

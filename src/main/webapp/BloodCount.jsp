@@ -129,6 +129,7 @@ height: 100%;
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <h4 style="color: green" align="center">${successMessage}</h4>
       <form action="/BloodCountsave" method="post">
       <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
@@ -136,7 +137,7 @@ height: 100%;
              
            <div class="form-outline mb-4">
             <label class="form-label" for="height">Patient ID:</label>
-               <input  type="text" id="height" name="patientEmail" value="${patientId }" readonly><br>
+               <input  type="text" id="height" name="patientId" value="${patientId }" readonly><br>
               
             </div>
       <div class="form-outline mb-4">

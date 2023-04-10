@@ -138,7 +138,7 @@ height: 100%;
           <h3 class="mb-5">Add Calorie Intake</h3>
              
     <div style="color: green">
-    <h1 th:text="${message}"></h1>
+    <h1 th:text="${successMessage}"></h1>
     </div>
           
 <p>

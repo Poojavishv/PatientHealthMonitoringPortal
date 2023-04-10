@@ -16,16 +16,29 @@ public class BloodCount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @ManyToOne
-    
-    private Patient patient; 
+    private String patientId;
+   
     private String timeOfDay;
     private Double rbcCount;
     
   
     private Double wbcCount;
     
-    private Double plateletCount;
+    @Override
+	public String toString() {
+		return "BloodCount [id=" + id + ", patientId=" + patientId + ", timeOfDay=" + timeOfDay + ", rbcCount="
+				+ rbcCount + ", wbcCount=" + wbcCount + ", plateletCount=" + plateletCount + "]";
+	}
+
+	private Double plateletCount;
+
+	public String getPatientId() {
+		return patientId;
+	}
+
+	public void setPatientId(String patientId) {
+		this.patientId = patientId;
+	}
 
 	public Long getId() {
 		return id;
@@ -35,13 +48,7 @@ public class BloodCount {
 		this.id = id;
 	}
 
-	public Patient getPatient() {
-		return patient;
-	}
-
-	public void setPatient(Patient patient) {
-		this.patient = patient;
-	}
+	
 
 	public String getTimeOfDay() {
 		return timeOfDay;
@@ -75,16 +82,7 @@ public class BloodCount {
 		this.plateletCount = plateletCount;
 	}
 
-	public BloodCount() {
-		super();
-		this.id = id;
-		this.patient = patient;
-		this.timeOfDay = timeOfDay;
-		this.rbcCount = rbcCount;
-		this.wbcCount = wbcCount;
-		this.plateletCount = plateletCount;
-	}
-    
+	
     
     
 }

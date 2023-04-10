@@ -1,3 +1,6 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="com.example.demo.model.Doctor"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -135,25 +138,26 @@ height: 100%;
         <div class="section-title">
           <h2>Make an Appointment</h2>
           </div>
+          <h4 style="color: green" align="center">${successMessage}</h4>
 
-        <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
+        <form action="/saveappointment" method="post" role="form" class="php-email-form">
           <div class="row">
             <div class="col-md-4 form-group">
-              <input type="number" name="patientid" class="form-control" id="patientId" placeholder="Patient ID" data-rule="minlen:3" data-msg="Please enter at least 3 numbers">
+              <input type="text" name="patientId"  class="form-control" id="patientId" placeholder="Patient ID" value="${patientId }">
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-               <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+               <input type="text" name="patientName" class="form-control" id="patientName" placeholder="patient Name" >
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Contact Number" data-rule="minlen:10" data-msg="Please enter at least 10 numbers">
+              <input type="tel" class="form-control" name="patientPhNo" id="patientPhNo" placeholder="Contact Number" data-rule="minlen:10" data-msg="Please enter at least 10 numbers">
               <div class="validate"></div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4 form-group mt-3">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+              <input type="datetime-local" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3">
@@ -161,11 +165,22 @@ height: 100%;
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3">
-              <select name="doctor" id="doctor" class="form-select">
+              <select name="doctor" id="doctor" class="form-select" value="${doctor }">
+              <% ArrayList<Doctor> doctorList = (ArrayList) request.getAttribute("doctorList");
+              		if(request.getAttribute("doctorList") !=null)
+              		{
+              			Iterator<Doctor> doctorIterator =  doctorList.iterator();
+              			while(doctorIterator.hasNext())
+              			{
+              				Doctor doctorDetails = doctorIterator.next();
+              			
+              %>
                 <option value="">Select Doctor</option>
-                <option value="Doctor 1">Doctor 1</option>
-                <option value="Doctor 2">Doctor 2</option>
-                <option value="Doctor 3">Doctor 3</option>
+                <option value="<%= doctorDetails.getDocId() %>"><%= doctorDetails.getDocFname()+" "+doctorDetails.getDocLname()  %></option>
+                <% 
+              			}
+              		}
+                %>
               </select>
               <div class="validate"></div>
             </div>

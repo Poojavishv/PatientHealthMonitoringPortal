@@ -10,7 +10,6 @@
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
     
-    
  <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
     
@@ -114,6 +113,7 @@ height: 100%;
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
+      
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
@@ -131,30 +131,30 @@ height: 100%;
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-      <h4 style="color: green" align="center">${successMessage}</h4>
-      <form name="form"  action="/calculateGlucosesave" method="post" >
+      <form name="form"  action="/patientReg" method="post" >
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
         
           <div class="card-body p-5 text-center">
-           <h3 class="mb-5">Glucose Result</h3>
+          <h3 class="mb-5">Thyroid levels </h3>
              
-    
+    <div style="color: green">
+    <h1 th:text="${successMessage}"></h1>
+    </div>
           
 <p>
-
             <label for="patientId" >Patient Id: </label>
-            <input path="patientId" name="patientId" value="${patientId }" type="text" readonly/>
+           <div class="form-outline mb-4">
+            <label class="form-label" for="height">Patient ID:</label>
+               <input  type="text" id="height" name="patientEmail" value="${patientId }" readonly><br>
+              
+            </div>
         </p>
-               
-
-         <div class="form-outline mb-4">
-    <label for="date">Date of day:</label>
-    <input type="date"  id="date" name="date"  required/>
-    </div>
         <p>
-            <label for="glucoseLevel"> Glucose Calculation is: </label>
-            <input path="glucoseLevel" name="glucoseLevel" value=<%= request.getAttribute("glucoseLevel") %> type="number" readonly/>
+            <label for="timeOfDay">Time of the Day:</label>
+            <input path="timeOfDay" type="datetime-local" />
         </p>
+        
+       <a href="/Thyroid">Add another Thyroid level </a>
         
         <p>
             <button type="submit">Save</button>
@@ -165,12 +165,6 @@ height: 100%;
         
     </form>
     
-       
-
-    
-
-           
-                                  
           </div>
         </div>
         </form>

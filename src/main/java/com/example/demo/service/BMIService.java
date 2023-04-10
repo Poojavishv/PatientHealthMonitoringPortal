@@ -9,15 +9,15 @@ import com.example.demo.repo.BMIRepo;
 
 @Service
 public class BMIService {
+	 
 	@Autowired
 	BMIRepo repo;
-	public void addBMIDetails(BMI bmi)
+	public void addBMIDetails(BMI bmi1)
 	{
-		repo.save(bmi); 
+		repo.save(bmi1); 
 	}
 	
-	
-    public double calculateBMI(double height, double weight) {
+	public double calculateBMI(double height, double weight) {
         double bmi = weight / (height * height);
         return bmi;
     }
@@ -26,5 +26,6 @@ public class BMIService {
         double glucoseLevel = 2.0*bmi;
         return glucoseLevel;
     }
+   
 
 }

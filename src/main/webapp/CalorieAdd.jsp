@@ -127,6 +127,8 @@ height: 100%;
 <section class="vh-100" style="background-color: #508bfc;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
+    <br>
+    <p style="color: green" align="center">${successMessage}</p>
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
       <form action="/calorieIntakeResult" method="post">
       <div class="card shadow-2-strong" style="border-radius: 1rem;">
@@ -135,7 +137,7 @@ height: 100%;
       
       <div class="form-outline mb-4">
             <label class="form-label" for="height">Patient ID:</label>
-               <input  type="text" id="height" name="patientEmail" value="${patientId }" readonly><br>
+               <input  type="text" id="height" name="patientId" value="${patientId }" readonly><br>
               
             </div>
     <div class="form-outline mb-4">

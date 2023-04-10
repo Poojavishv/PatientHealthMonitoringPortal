@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-    
     
  <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -64,9 +63,7 @@ height: 100%;
 }
 }
 </style>
-<link href="File.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-</style>
+
 
 </head>
 <body> <!-- Topbar Start -->
@@ -109,7 +106,7 @@ height: 100%;
     <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-                <a href="index.html" class="navbar-brand">
+                <a href="index.jspl" class="navbar-brand">
                     <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>PATIENT HEALTH MONITORING</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -130,55 +127,46 @@ height: 100%;
 <section class="vh-100" style="background-color: #508bfc;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
+     <br>
+    
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+      <form action=/ThyroidResult method="post">
       <h4 style="color: green" align="center">${successMessage}</h4>
-      <form name="form"  action="/calculateGlucosesave" method="post" >
-        <div class="card shadow-2-strong" style="border-radius: 1rem;">
-        
+      <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
-           <h3 class="mb-5">Glucose Result</h3>
-             
-    
-          
-<p>
-
-            <label for="patientId" >Patient Id: </label>
-            <input path="patientId" name="patientId" value="${patientId }" type="text" readonly/>
-        </p>
-               
-
-         <div class="form-outline mb-4">
-    <label for="date">Date of day:</label>
-    <input type="date"  id="date" name="date"  required/>
-    </div>
-        <p>
-            <label for="glucoseLevel"> Glucose Calculation is: </label>
-            <input path="glucoseLevel" name="glucoseLevel" value=<%= request.getAttribute("glucoseLevel") %> type="number" readonly/>
-        </p>
-        
-        <p>
-            <button type="submit">Save</button>
-        </p>
-   
+             <h3 class="mb-5">Add Thyroid Levels</h3>
+      
+      <div class="form-outline mb-4">
+            <label class="form-label" for="height">Patient ID:</label>
+               <input  type="text" id="height" name="patientId" value="${patientId }" readonly><br>
               
-       
-        
-    </form>
-    
-       
-
-    
-
-           
-                                  
-          </div>
+            </div>
+    <div class="form-outline mb-4">
+    <label for="rbcCount">Date:</label>
+    <input path="date" type="date" id="date" name="date" />
+    </div>
+      <div class="form-outline mb-4">
+    <label for="wbcCount">Thyroid Level:</label>
+    <<input type="number" step="0.01" id="thyroidLevel" name="thyroidLevel"  required/>
+    </div>
+      <div class="form-outline mb-4">
+    <label for="plateletCount">Time Of Day :</label>
+    <input path="timeOfIntake" type="time" id="timeOfDay" name="timeOfDay" />
+    </div>
+      
+             
+    <input type="submit" value="Save" />
+   
+    </div>
         </div>
-        </form>
+</form>
+       
       </div>
     </div>
   </div>
 </section>
 
+    <class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
     <!-- Copyright -->
     <div class="text-white mb-3 mb-md-0">
       Copyright © 2020. All rights reserved.
