@@ -378,8 +378,6 @@ public class MyController {
 	        modelAndView.addObject("successMessage", "Diet details  recorded successfully.");
 	        modelAndView.addObject("patientId",diet.getPatientId());
 			return modelAndView;
-			
-			
 	        
 	    }
 	 
