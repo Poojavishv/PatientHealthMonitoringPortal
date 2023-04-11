@@ -4,20 +4,27 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.demo.model.Activity;
 import com.example.demo.model.Appointment;
 import com.example.demo.model.BMI;
 import com.example.demo.model.BloodCount;
 import com.example.demo.model.CalorieIntake;
 import com.example.demo.model.CholestrolMonitor;
+import com.example.demo.model.Diabetes;
 import com.example.demo.model.Diet;
 import com.example.demo.model.Doctor;
 import com.example.demo.model.Patient;
+import com.example.demo.model.Pressure;
 import com.example.demo.model.Thyroid;
+import com.example.demo.repo.ActivityRepository;
+import com.example.demo.repo.PressureRepository;
 import com.example.demo.service.DoctorService;
 import com.example.demo.service.PatientService;
 import com.example.demo.service.ThyroidService;
@@ -30,6 +37,7 @@ import com.example.demo.service.BMIService;
 import com.example.demo.service.BloodCountService;
 import com.example.demo.service.CalorieIntakeService;
 import com.example.demo.service.CholestrolService;
+import com.example.demo.service.DiabetesService;
 import com.example.demo.service.DietService;
 
 @Controller
@@ -45,6 +53,7 @@ public class MyController {
 	AdminService adService;
 	@Autowired
 	BMIService bmiService;
+	 DiabetesService diabService;
 	@Autowired
     private BloodCountService bloodCountService;
 	@Autowired
@@ -250,22 +259,12 @@ public class MyController {
 	    }
 	    @RequestMapping("/Glucose")
 		public ModelAndView glucoseView(String patientEmail) {
-			ModelAndView mv = new ModelAndView("Glucose");
+			ModelAndView mv = new ModelAndView("glucoseResult");
 			mv.addObject("patientId",patientEmail);
 			mv.addObject("successMessage", "");
 			return mv;
 		}
-	    @RequestMapping(value = "/calculateGlucose")
-	    public ModelAndView calculateGlucose(@RequestParam("height") double height, @RequestParam("weight") double weight,BMI bmi1) {
-	    	double glucoseLevel= bmiService.calculateGlucose(height, weight);
-	    	ModelAndView mav = new ModelAndView("glucoseResult");
-	                
-	        mav.addObject("glucoseLevel",glucoseLevel);
-	        mav.addObject("successMessage", "Generated glucose levels successfully.");
-	        mav.addObject("patientId",bmi1.getPatientId());
-	        return mav;
-	    }
-	
+	   	
 	    @RequestMapping("/calculateGlucosesave")
 	    public ModelAndView saveGlucose(BMI bmi1) {
 		 ModelAndView modelAndView = new ModelAndView("glucoseResult");
@@ -294,6 +293,23 @@ public class MyController {
 	        modelAndView.addObject("successMessage", "Blood Count details recorded successfully.");
 	        modelAndView.addObject("patientId",bloodCount.getPatientId());
 	        return modelAndView;
+	    }
+	 @RequestMapping("/DiabetesCal")
+	    
+	 public ModelAndView showDiabetesForm(String patientEmail) {
+		 ModelAndView mv=new ModelAndView("diabetesCal");
+		 mv.addObject("patientId",patientEmail);
+		 
+	        return mv;
+	    }
+	
+
+	    @RequestMapping("/saveDiabetes")
+	    public ModelAndView SaveDiabetes(Diabetes diabetes) {		    
+	          ModelAndView mav = new ModelAndView("diabetesCal");
+            mav.addObject("successMessage", "Generated diabetes levels successfully.");
+	        mav.addObject("patientId",diabetes.getPatientId());
+	        return mav;
 	    }
 	 @RequestMapping("/CalorieAdd")
 	 public ModelAndView showAddCalorieIntakeForm(String patientEmail) {
@@ -380,7 +396,47 @@ public class MyController {
 			return modelAndView;
 	        
 	    }
-	 
+	 @Autowired
+		private ActivityRepository activityRepository;
+
+		@GetMapping("/activities")
+		public ModelAndView activities(String patientEmail) {
+			ModelAndView modelAndView = new ModelAndView("activities");
+			 modelAndView.addObject("patientId",patientEmail);
+		        modelAndView.addObject("successMessage", "");
+		        return modelAndView;
+		}
+
+		@PostMapping("/saveActivity")
+		public ModelAndView saveActivity(Activity activity) {
+			ModelAndView modelAndView = new ModelAndView("activityResult");
+			activityRepository.save(activity);
+			
+			modelAndView.addObject("message", "Activity details recorded successfully");
+			 modelAndView.addObject("patientId",activity.getPatientId());
+			return modelAndView;
+		}
+		@Autowired
+	    private PressureRepository pressureRepository;
+
+	    @GetMapping("/pressure")
+	    public ModelAndView pressure(@RequestParam("patientEmail") String patientId) {
+	        ModelAndView modelAndView = new ModelAndView("pressure");
+	        modelAndView.addObject("pressures", pressureRepository.findByPatientId(patientId));
+	        modelAndView.addObject("pressure", new Pressure());
+	        modelAndView.addObject("patientId", patientId);
+	        modelAndView.setViewName("pressure");
+	        return modelAndView;
+	    }
+
+	    @PostMapping("/savePressure")
+	    public ModelAndView savePressure(Pressure pressure) {
+	        pressureRepository.save(pressure);
+	        ModelAndView modelAndView = new ModelAndView("pressure");
+	        modelAndView.addObject("message", "Pressure reading recorded successfully");
+	        modelAndView.setViewName("pressureResult");
+	        return modelAndView;
+	    }
 
 
 }

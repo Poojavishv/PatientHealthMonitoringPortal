@@ -152,8 +152,8 @@ height: 100%;
     <input type="date"  id="date" name="date"  required/>
     </div>
         <p>
-            <label for="glucoseLevel"> Glucose Level is: </label>
-            <input path="glucoseLevel" name="glucoseLevel"  type="number" />
+            <label for="diabetesCal"> Diabetes Calculation is: </label>
+            <input path="diabetesCal" name="diabetesCal"  type="number" readonly />
         </p>
         
         <p>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,6 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-    
     
  <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -64,9 +63,7 @@ height: 100%;
 }
 }
 </style>
-<link href="File.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-</style>
+
 
 </head>
 <body> <!-- Topbar Start -->
@@ -130,55 +127,44 @@ height: 100%;
 <section class="vh-100" style="background-color: #508bfc;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
+     <br>
+    
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-      <h4 style="color: green" align="center">${successMessage}</h4>
-      <form name="form"  action="/calculateGlucosesave" method="post" >
-        <div class="card shadow-2-strong" style="border-radius: 1rem;">
-        
+     
+      <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
-           <h3 class="mb-5">Glucose Result</h3>
-             
-    
-          
-<p>
-
-            <label for="patientId" >Patient Id: </label>
-            <input path="patientId" name="patientId" value="${patientId }" type="text" readonly/>
-        </p>
-               
-
-         <div class="form-outline mb-4">
-    <label for="date">Date of day:</label>
-    <input type="date"  id="date" name="date"  required/>
-    </div>
-        <p>
-            <label for="glucoseLevel"> Glucose Level is: </label>
-            <input path="glucoseLevel" name="glucoseLevel"  type="number" />
-        </p>
-        
-        <p>
-            <button type="submit">Save</button>
-        </p>
-   
+          <h4 style="color: green" align="center">${successMessage}</h4>
+             <h3 class="mb-5">My Pressure Readings</h3>
+       <form action="/savePressure" method="post">
+      <div class="form-outline mb-4">
+            <label class="form-label" for="height">Patient ID:</label>
+               <input  type="text" id="height" name="patientId" value="${patientId }" readonly><br>
               
-       
+            </div>
+                     
         
-    </form>
     
-       
-
-    
-
-           
-                                  
-          </div>
+      <div class="form-outline mb-4">
+    <label for="timeOfDay">Time of day:</label>
+    <input type="time"  id="timeOfDay" name="timeOfDay"  required/>
+    </div>
+         <div class="form-outline mb-4">
+    <label for="pressureLevel">pressure Level:</label>
+    <input  type="number" id="pressureLevel" name="pressureLevel" />
+    </div>
+             
+    <input type="submit" value="Save" />
+   </form>
+    </div>
         </div>
-        </form>
+
+       
       </div>
     </div>
   </div>
 </section>
 
+    <class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
     <!-- Copyright -->
     <div class="text-white mb-3 mb-md-0">
       Copyright © 2020. All rights reserved.
@@ -214,3 +200,4 @@ height: 100%;
 </body>
 
 </html>
+
