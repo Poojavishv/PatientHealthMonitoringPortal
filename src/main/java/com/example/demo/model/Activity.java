@@ -19,6 +19,7 @@ public class Activity {
 
     private LocalDate date;
 
+
     private String activity1;
 
     private LocalTime timeOfWorkout;
@@ -73,5 +74,4 @@ public class Activity {
 
 	
 
-   
 }

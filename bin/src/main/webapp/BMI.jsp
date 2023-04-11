@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -64,7 +63,9 @@ height: 100%;
 }
 }
 </style>
-
+<link href="File.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+</style>
 
 </head>
 <body> <!-- Topbar Start -->
@@ -128,44 +129,46 @@ height: 100%;
 <section class="vh-100" style="background-color: #508bfc;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-     <br>
-    
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-     
-      <div class="card shadow-2-strong" style="border-radius: 1rem;">
+      <form name="form"  action="/calculateBMI" method="post" >
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+        
           <div class="card-body p-5 text-center">
-          <h4 style="color: green" align="center">${successMessage}</h4>
-             <h3 class="mb-5">My Pressure Readings</h3>
-       <form action="/savePressure" method="post">
-      <div class="form-outline mb-4">
+ 
+    
+       
+            <h3 class="mb-5">BMI Calculation</h3>
+            <div class="form-outline mb-4">
             <label class="form-label" for="height">Patient ID:</label>
-               <input  type="text" id="height" name="patientId" value="${patientId }" readonly><br>
+               <input  type="text" id="height" name="patientEmail" value="${patientId }" readonly><br>
               
             </div>
-                     
-        
-    
-      <div class="form-outline mb-4">
-    <label for="timeOfDay">Time of day:</label>
-    <input type="time"  id="timeOfDay" name="timeOfDay"  required/>
-    </div>
-         <div class="form-outline mb-4">
-    <label for="pressureLevel">pressure Level:</label>
-    <input  type="number" id="pressureLevel" name="pressureLevel" />
-    </div>
-             
-    <input type="submit" value="Save" />
-   </form>
-    </div>
-        </div>
 
-       
+            <div class="form-outline mb-4">
+            <label class="form-label" for="height">Height</label>
+               <input type="text" id="height" name="height"><br>
+               
+              
+            </div>
+
+            <div class="form-outline mb-4">
+             <label class="form-label" for="weight">Weight</label>
+             <input type="text" id="weight" name="weight"><br>
+             
+            </div>
+
+            <button type="submit"  value="Calculate">Generate</button>
+</form>
+                      
+          </div>
+         
+        </div>
+        
       </div>
     </div>
-  </div>
+  
 </section>
 
-    <class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
     <!-- Copyright -->
     <div class="text-white mb-3 mb-md-0">
       Copyright © 2020. All rights reserved.
@@ -201,54 +204,3 @@ height: 100%;
 </body>
 
 </html>
-
-=======
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>My Pressure Readings</title>
-</head>
-<body>
-<h1>My Pressure Readings</h1>
-
-<form action="savePressure" method="post">
-    <table>
-        <tr>
-            <td><label for="patientId">Patient ID:</label></td>
-            <td><input type="text" name="patientId" id="patientId" value="${patientId}" readonly></td>
-        </tr>
-        <tr>
-            <td><label for="timeOfDay">Time of the Day:</label></td>
-            <td><input type="time" name="timeOfDay" id="timeOfDay"></td>
-        </tr>
-        <tr>
-            <td><label for="pressureLevel">Pressure Level:</label></td>
-            <td><input type="number" name="pressureLevel" id="pressureLevel"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><button type="submit">Save</button></td>
-        </tr>
-    </table>
-</form>
-
-<table>
-    <thead>
-        <tr>
-            <th>Time of the Day</th>
-            <th>Pressure Level</th>
-        </tr>
-    </thead>
-    <tbody>
-        <c:forEach var="pressure" items="${pressures}">
-            <tr>
-                <td>${pressure.timeOfDay}</td>
-                <td>${pressure.pressureLevel}</td>
-            </tr>
-        </c:forEach>
-    </tbody>
-</table>
-
-</body>
-</html>
->>>>>>> branch 'master' of https://github.com/Poojavishv/PatientHealthMonitoringPortal.git

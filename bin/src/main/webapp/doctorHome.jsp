@@ -9,30 +9,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">  
-
- 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
     
- 
+ <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
     
  
   <!-- Vendor CSS Files -->
@@ -50,8 +29,23 @@
 
    
 
-   
-   
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
     <style>
     .divider:after,
 .divider:before {
@@ -123,6 +117,7 @@ height: 100%;
                         <a href="/" class="nav-item nav-link active">Home</a>
                         <a href="/about" class="nav-item nav-link">About</a>
                         <a href="/contact" class="nav-item nav-link">Contact</a>
+                        <a href="/contact" class="nav-item nav-link">Logout</a>
                     </div>
                 </div>
             </nav>
@@ -135,110 +130,35 @@ height: 100%;
       <div class="container" align="center">
 
         <div class="section-title">
-          <h2>Welcome ${patientEmail }</h2>
-          <p>Health is Wealth .Here you can check your health condition,Activities and prescription given to you are from most famous surgents, kindly follow it.</p>
+          <h2>Welcome ${doctorName }</h2>
+          <p>Hello. Wishing you the best day. Kindly check your appointment list to cure more and more patients.</p>
              </div>
 
-        </div>
-
-    
-    </section><!-- End Services Section -->
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Services</h2>
-          <p></p>
-        </div>
-
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+        <div class="row" align="center">
+           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
-              <div class="icon"><i class="fas fa-heartbeat"></i></div>
-              <h4><a href="/BMI?patientEmail=${patientId }">Calculate BMI Report</a></h4>
-              <p>  Generate your BMI Report  </p>
+              <div class="icon"><i class="fas fa-notes-medical"></i></div>
+              <h4><a href="">Appointments</a></h4>
+              <p>Check all Available appointments</p>
             </div>
-          </div>
-          
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-pills"></i></div>
-              <h4><a href="/Glucose?patientEmail=${patientId }">Blood Glucose Level</a></h4>
-              <p>Blood Glucose level Generate   </p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+         
+           </div>
+           
+           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-hospital-user"></i></div>
-              <h4><a href="/BloodCount?patientEmail=${patientId }">Blood Count</a></h4>
-              <p>Generate your Blood Count Report</p>
+              <h4><a href="">Records</a></h4>
+              <p>Check all the active patient Records</p>
             </div>
+       </div>
           </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-dna"></i></div>
-              <h4><a href="/diabetes"> Diabetes Report</a></h4>
-              <p>Generate your Diabetes Report  </p>
-            </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-wheelchair"></i></div>
-              <h4><a href="/activities?patientEmail=${patientId }">Activity Tracker</a></h4>
-              <p>Monitor your all Activities   </p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="/cholestrol?patientEmail=${patientId }">Cholesterol Monitor</a></h4>
-              <p>Track your Cholesterol Level  </p>
-            </div>
-          </div>
-          
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-dna"></i></div>
-              <h4><a href="/CalorieAdd?patientEmail=${patientId }">Calories Tracker</a></h4>
-              <p>Monitor your Calories Level</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-wheelchair"></i></div>
-              <h4><a href="/diet?patientEmail=${patientId }">DIET Tracker</a></h4>
-              <p>--  Monitor your Diet  --</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="/pressure?patientEmail=${patientId }">Pressure Monitor</a></h4>
-              <p>Track your Pressure </p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="/Thyroid?patientEmail=${patientId }">Thyroid Monitor</a></h4>
-              <p>Track your Thyroid</p>
-            </div>
-          </div>
-
+         
         </div>
 
-      </div>
-    </section><!-- End Services Section -->
     
+    </section><!-- End Services Section -->
 
  <div
     class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">

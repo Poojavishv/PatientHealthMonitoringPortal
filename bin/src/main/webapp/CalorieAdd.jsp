@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -128,37 +127,36 @@ height: 100%;
 <section class="vh-100" style="background-color: #508bfc;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-     <br>
-    
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-     
+      <form action="/calorieIntakeResult" method="post">
       <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
-          <h4 style="color: green" align="center">${successMessage}</h4>
-             <h3 class="mb-5">My Pressure Readings</h3>
-       <form action="/savePressure" method="post">
+             <h3 class="mb-5">Add Calorie Intake</h3>
+      
       <div class="form-outline mb-4">
             <label class="form-label" for="height">Patient ID:</label>
-               <input  type="text" id="height" name="patientId" value="${patientId }" readonly><br>
+               <input  type="text" id="height" name="patientEmail" value="${patientId }" readonly><br>
               
             </div>
-                     
-        
-    
+    <div class="form-outline mb-4">
+    <label for="rbcCount">Date:</label>
+    <input path="date" type="date" id="date" name="date" />
+    </div>
       <div class="form-outline mb-4">
-    <label for="timeOfDay">Time of day:</label>
-    <input type="time"  id="timeOfDay" name="timeOfDay"  required/>
+    <label for="wbcCount">Calories:</label>
+    <input path="calories" type="number" id="calories" name="calories" />
     </div>
-         <div class="form-outline mb-4">
-    <label for="pressureLevel">pressure Level:</label>
-    <input  type="number" id="pressureLevel" name="pressureLevel" />
+      <div class="form-outline mb-4">
+    <label for="plateletCount">Time Of Intake :</label>
+    <input path="timeOfIntake" type="time" id="timeOfIntake" name="timeOfIntake" />
     </div>
+      
              
     <input type="submit" value="Save" />
-   </form>
+   
     </div>
         </div>
-
+</form>
        
       </div>
     </div>
@@ -201,54 +199,3 @@ height: 100%;
 </body>
 
 </html>
-
-=======
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>My Pressure Readings</title>
-</head>
-<body>
-<h1>My Pressure Readings</h1>
-
-<form action="savePressure" method="post">
-    <table>
-        <tr>
-            <td><label for="patientId">Patient ID:</label></td>
-            <td><input type="text" name="patientId" id="patientId" value="${patientId}" readonly></td>
-        </tr>
-        <tr>
-            <td><label for="timeOfDay">Time of the Day:</label></td>
-            <td><input type="time" name="timeOfDay" id="timeOfDay"></td>
-        </tr>
-        <tr>
-            <td><label for="pressureLevel">Pressure Level:</label></td>
-            <td><input type="number" name="pressureLevel" id="pressureLevel"></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td><button type="submit">Save</button></td>
-        </tr>
-    </table>
-</form>
-
-<table>
-    <thead>
-        <tr>
-            <th>Time of the Day</th>
-            <th>Pressure Level</th>
-        </tr>
-    </thead>
-    <tbody>
-        <c:forEach var="pressure" items="${pressures}">
-            <tr>
-                <td>${pressure.timeOfDay}</td>
-                <td>${pressure.pressureLevel}</td>
-            </tr>
-        </c:forEach>
-    </tbody>
-</table>
-
-</body>
-</html>
->>>>>>> branch 'master' of https://github.com/Poojavishv/PatientHealthMonitoringPortal.git

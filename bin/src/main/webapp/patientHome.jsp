@@ -182,7 +182,7 @@ height: 100%;
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-dna"></i></div>
-              <h4><a href="/diabetes"> Diabetes Report</a></h4>
+              <h4><a href=""> Diabetes Report</a></h4>
               <p>Generate your Diabetes Report  </p>
             </div>
           </div>
@@ -190,7 +190,7 @@ height: 100%;
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-wheelchair"></i></div>
-              <h4><a href="/activities?patientEmail=${patientId }">Activity Tracker</a></h4>
+              <h4><a href="">Activity Tracker</a></h4>
               <p>Monitor your all Activities   </p>
             </div>
           </div>
@@ -198,7 +198,7 @@ height: 100%;
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="/cholestrol?patientEmail=${patientId }">Cholesterol Monitor</a></h4>
+              <h4><a href="">Cholesterol Monitor</a></h4>
               <p>Track your Cholesterol Level  </p>
             </div>
           </div>
@@ -214,7 +214,7 @@ height: 100%;
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-wheelchair"></i></div>
-              <h4><a href="/diet?patientEmail=${patientId }">DIET Tracker</a></h4>
+              <h4><a href="">DIET Tracker</a></h4>
               <p>--  Monitor your Diet  --</p>
             </div>
           </div>
@@ -222,15 +222,15 @@ height: 100%;
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="/pressure?patientEmail=${patientId }">Pressure Monitor</a></h4>
+              <h4><a href="">Pressure Monitor</a></h4>
               <p>Track your Pressure </p>
             </div>
           </div>
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="/Thyroid?patientEmail=${patientId }">Thyroid Monitor</a></h4>
-              <p>Track your Thyroid</p>
+              <h4><a href="">Thyroid Monitor</a></h4>
+              <p>Track your Thyroid </p>
             </div>
           </div>
 
