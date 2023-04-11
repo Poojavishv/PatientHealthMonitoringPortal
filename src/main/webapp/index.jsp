@@ -109,7 +109,7 @@
                             <a href="#" class="btn btn-outline-light rounded-pill py-md-3 px-md-5 mx-2" data-bs-toggle="dropdown">Doctor Registration/Login</a>
                             <div class="dropdown-menu m-0">
                                 <a href="/doctorregistration" class="dropdown-item">Registration</a>
-                                <a href=doctorHome.jsp class="dropdown-item">Login</a>
+                                <a href="/doctorlogin" class="dropdown-item">Login</a>
                                 </div>
                                 </div>
                                 <br>

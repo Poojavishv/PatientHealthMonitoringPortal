@@ -147,7 +147,7 @@ height: 100%;
            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-hospital-user"></i></div>
-              <h4><a href="">Records</a></h4>
+              <h4><a href="/update">Records</a></h4>
               <p>Check all the active patient Records</p>
             </div>
        </div>

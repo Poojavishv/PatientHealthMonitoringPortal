@@ -14,6 +14,9 @@ import com.example.demo.model.Patient;
 import com.example.demo.service.DoctorService;
 import com.example.demo.service.PatientService;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 import com.example.demo.service.AdminService;
 import com.example.demo.service.BMIService;
 import com.example.demo.service.BloodCountService;
@@ -161,12 +164,30 @@ public class MyController {
 		return mv;
 
 	}
+	
+	@RequestMapping("/logout")
+	public ModelAndView doctorLogout(HttpServletRequest req)
+	{
+		HttpSession session = req.getSession();
+		session.invalidate();
+		
+		ModelAndView mv = new ModelAndView("doctorlogin");
+		return mv;
+		
+	}
 
 	@RequestMapping("/doctorregistration")
 	public ModelAndView doctorregView() {
 		ModelAndView mv = new ModelAndView("doctorregistration");
 		return mv;
 	}
+	
+	@RequestMapping("/update")
+	public ModelAndView updateView() {
+		ModelAndView mv = new ModelAndView("update");
+		return mv;
+	}
+
 
 
 	@RequestMapping("/forgotPassword1")
