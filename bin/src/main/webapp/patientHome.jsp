@@ -182,7 +182,7 @@ height: 100%;
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-dna"></i></div>
-              <h4><a href=""> Diabetes Report</a></h4>
+              <h4><a href="/calculateDiabetesRisk?patientEmail=${patientId }"> Diabetes Report</a></h4>
               <p>Generate your Diabetes Report  </p>
             </div>
           </div>

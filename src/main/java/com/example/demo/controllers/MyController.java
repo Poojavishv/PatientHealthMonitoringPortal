@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.example.demo.model.Activity;
 import com.example.demo.model.BloodCount;
 import com.example.demo.model.CalorieIntake;
+import com.example.demo.model.DiabetesRisk;
 import com.example.demo.model.Doctor;
 import com.example.demo.model.Patient;
 import com.example.demo.model.Pressure;
@@ -25,6 +26,7 @@ import com.example.demo.service.AdminService;
 import com.example.demo.service.BMIService;
 import com.example.demo.service.BloodCountService;
 import com.example.demo.service.CalorieIntakeService;
+import com.example.demo.service.DiabetesRiskService;
 
 @Controller
 public class MyController {
@@ -306,6 +308,18 @@ public class MyController {
 	    @RequestMapping(value = "/self-service", method = RequestMethod.GET)
 	    public ModelAndView showSelfServiceScreen() {
 	        ModelAndView modelAndView = new ModelAndView("self-service");
+	        return modelAndView;
+	    }
+	    
+	    @Autowired
+	    private DiabetesRiskService diabetesRiskService;
+	    
+	    @RequestMapping(value = "/calculateDiabetesRisk", method = RequestMethod.POST)
+	    public ModelAndView calculateDiabetesRisk(@ModelAttribute("diabetesRisk") DiabetesRisk diabetesRisk) {
+	        double diabetesRiskValue = diabetesRiskService.calculateRisk(diabetesRisk);
+	        ModelAndView modelAndView = new ModelAndView();
+	        modelAndView.setViewName("diabetesRiskResult");
+	        modelAndView.addObject("diabetesRiskValue", diabetesRiskValue);
 	        return modelAndView;
 	    }
 	
