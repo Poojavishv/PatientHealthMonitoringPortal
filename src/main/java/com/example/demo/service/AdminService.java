@@ -11,7 +11,6 @@ import com.example.demo.repo.AdminRepo;
 public class AdminService {
 	@Autowired
  AdminRepo repo;
-
 	
 	public boolean adminLoginCheck(String userid,String password) {
 		Admin ad=repo.findByUserid(userid);

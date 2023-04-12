@@ -9,7 +9,6 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Pressure {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

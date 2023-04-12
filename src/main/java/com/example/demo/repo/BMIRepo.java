@@ -7,7 +7,7 @@ import com.example.demo.model.BMI;
 
 public interface BMIRepo extends JpaRepository<BMI, Long> {
 	
-	public BMI findByAll(String patientId);
+	
 	
 }
 

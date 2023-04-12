@@ -3,6 +3,7 @@ package com.example.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Appointment;
 import com.example.demo.model.Doctor;
 import com.example.demo.model.Patient;
 import com.example.demo.repo.DoctorRepo;
@@ -37,5 +38,10 @@ public class PatientService {
 			return false;
 		}
 	}
+	 public Patient getById(String patientEmail)
+	 {
+		 Patient patientDetails = repo.findBypatientEmail(patientEmail);
+		 return patientDetails;
+	 }
 
 }

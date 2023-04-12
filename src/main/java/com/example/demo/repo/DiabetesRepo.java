@@ -7,5 +7,5 @@ import com.example.demo.model.Patient;
 
 public interface DiabetesRepo extends JpaRepository<Diabetes, Long> {
 
-	public Patient findBypatientEmail(String patientEmail);
+	
 }

@@ -11,7 +11,8 @@ import jakarta.persistence.Table;
 @Table
 
 public class BloodCount {
-    
+   
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

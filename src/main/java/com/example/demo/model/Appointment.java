@@ -8,20 +8,22 @@ import jakarta.persistence.Id;
 public class Appointment {
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Long appointmentId;
 	
-	
-	private String patientId;
+		private String patientId;
 	private String patientName;
 	private Long patientPhNo;
 	private String date;
 	private String symptoms;
 	private String doctor;
-	public Long getId() {
-		return id;
+	private String prescription;
+	
+	
+	public Long getAppointmentId() {
+		return appointmentId;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setAppointmentId(Long appointmentId) {
+		this.appointmentId = appointmentId;
 	}
 	public String getPatientId() {
 		return patientId;
@@ -59,11 +61,20 @@ public class Appointment {
 	public void setDoctor(String doctor) {
 		this.doctor = doctor;
 	}
+	
+	public String getPrescription() {
+		return prescription;
+	}
+	public void setPrescription(String prescription) {
+		this.prescription = prescription;
+	}
 	@Override
 	public String toString() {
-		return "Appointment [id=" + id + ", patientId=" + patientId + ", patientName=" + patientName + ", patientPhNo="
-				+ patientPhNo + ", date=" + date + ", symptoms=" + symptoms + ", doctor=" + doctor + "]";
+		return "Appointment [appointmentId=" + appointmentId + ", patientId=" + patientId + ", patientName="
+				+ patientName + ", patientPhNo=" + patientPhNo + ", date=" + date + ", symptoms=" + symptoms
+				+ ", doctor=" + doctor + ", prescription=" + prescription + "]";
 	}
+	
 	
 
 }

@@ -116,10 +116,11 @@ height: 100%;
           class="img-fluid" alt="Sample image">
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+    
         <form action="/loginCheckDoctor" method="post">
           <div class="text-center" align="center">
           <h3 class="text-center" style="color: green">${smsg }</h3>
-          <h3 class="text-center" style="color: red">${emsg }</h3>
+            <h3 class="text-center" style="color: red">${emsg }</h3>
             <h1 class="text-center" >Doctor Login Page</h1>
             
           </div>

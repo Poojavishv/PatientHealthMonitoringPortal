@@ -8,6 +8,7 @@ import com.example.demo.repo.CalorieRepo;
 
 import jakarta.transaction.Transactional;
 
+
 @Service
 public class CalorieIntakeService {
 	@Autowired

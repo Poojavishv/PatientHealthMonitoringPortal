@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 
 @Entity 
 public class Patient {
-	
+
 	@Id
 	@GeneratedValue
 	private Long patientId;

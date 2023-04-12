@@ -1,5 +1,8 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="com.example.demo.model.Diet"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,32 +12,13 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
+    <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">  
-
- 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
-    
- 
-    
- 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -48,10 +32,26 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-   
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
-   
-   
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
     <style>
     .divider:after,
 .divider:before {
@@ -68,7 +68,33 @@ height: calc(100% - 73px);
 height: 100%;
 }
 }
+html,
+body,
+.intro {
+  height: 100%;
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card {
+  border-radius: .5rem;
+}
+
+.mask-custom {
+  background: rgba(24, 24, 16, .2);
+  border-radius: 2em;
+  backdrop-filter: blur(25px);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  background-clip: padding-box;
+  box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+}
 </style>
+
 </head>
 
 <body>
@@ -107,7 +133,7 @@ height: 100%;
     </div>
     <!-- Topbar End -->
 
-
+<%! int i=0; %>
     <!-- Navbar Start -->
     <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
@@ -123,6 +149,7 @@ height: 100%;
                         <a href="/" class="nav-item nav-link active">Home</a>
                         <a href="/about" class="nav-item nav-link">About</a>
                         <a href="/contact" class="nav-item nav-link">Contact</a>
+                        <a href="/contact" class="nav-item nav-link">Logout</a>
                     </div>
                 </div>
             </nav>
@@ -130,121 +157,84 @@ height: 100%;
     </div>
     <!-- Navbar End -->
 
- <!-- ======= Services Section ======= -->
-    <section id="services" class="services" >
-      <div class="container" align="center">
-
-        <div class="section-title">
-          <h2>Welcome ${patientEmail }</h2>
-          <p>Health is Wealth .Here you can check your health condition,Activities and prescription given to you are from most famous surgents, kindly follow it.</p>
-             </div>
-
-        </div>
-
-    
-    </section><!-- End Services Section -->
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
+<!-- ======= Appointment Section ======= -->
+    <section id="appointment" class="appointment section-bg">
       <div class="container">
 
         <div class="section-title">
-          <h2>Services</h2>
-          <p></p>
+          <h2>Update Diet</h2>
+          </div>
+          <h4 style="color: green" align="center">${successMessage}</h4>
+
+        <form action="/saveappointment" method="post" role="form" class="php-email-form">
+          <section class="intro">
+  <div class="bg-image h-100" style="background-color: #6095F0;">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-borderless mb-0">
+                    <thead>
+                      <tr>
+                       
+                        <th scope="col">S.No</th>
+                        <th scope="col">Patient ID</th>
+                        <th scope="col">Diet Date</th>
+                        <th scope="col">Diet Food</th>
+                        <th scope="col">timeOfIntake</th>
+                        <th scope="col">update Diet</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                  
+          
+                     <% ArrayList<Diet> dietList = (ArrayList) request.getAttribute("dietList");
+              		if(request.getAttribute("dietList") !=null)
+              		{
+              			Iterator<Diet> dietIterator =  dietList.iterator();
+              			while(dietIterator.hasNext())
+              			{
+              				Diet dietDetails = dietIterator.next();
+              			
+                
+                 %>
+                      <tr>
+                       
+                        <td><%= i=i+1 %></td>
+                        <td> <%= dietDetails.getPatientId()  %></td>
+                        <td><%= dietDetails.getDietdate() %></td>
+                        <td><%= dietDetails.getDietFood() %></td>
+                        <td><%= dietDetails.getTimeOfIntake() %></td>
+                       <td> <a href="http://localhost:8080/UpdateDiet?id=<%= dietDetails.getId() %>" id="link-1">Action</a></td>
+                        <td>
+                          <button type="button" class="btn btn-danger btn-sm px-3">
+                            <i class="fas fa-times"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <% 
+              			}
+              		}
+                %>
+                                                   
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-heartbeat"></i></div>
-              <h4><a href="/BMI?patientEmail=${patientId }">Calculate BMI Report</a></h4>
-              <p>  Generate your BMI Report  </p>
-            </div>
-          </div>
-          
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-pills"></i></div>
-              <h4><a href="/Glucose?patientEmail=${patientId }">Blood Glucose Level</a></h4>
-              <p>Blood Glucose level Generate   </p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-hospital-user"></i></div>
-              <h4><a href="/BloodCount?patientEmail=${patientId }">Blood Count</a></h4>
-              <p>Generate your Blood Count Report</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-dna"></i></div>
-              <h4><a href="/diabetes"> Diabetes Report</a></h4>
-              <p>Generate your Diabetes Report  </p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-wheelchair"></i></div>
-              <h4><a href="/activities?patientEmail=${patientId }">Activity Tracker</a></h4>
-              <p>Monitor your all Activities   </p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="/cholestrol?patientEmail=${patientId }">Cholesterol Monitor</a></h4>
-              <p>Track your Cholesterol Level  </p>
-            </div>
-          </div>
-          
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-dna"></i></div>
-              <h4><a href="/CalorieAdd?patientEmail=${patientId }">Calories Tracker</a></h4>
-              <p>Monitor your Calories Level</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-wheelchair"></i></div>
-              <h4><a href="/diet?patientEmail=${patientId }">DIET Tracker</a></h4>
-              <p>--  Monitor your Diet  --</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="/pressure?patientEmail=${patientId }">Pressure Monitor</a></h4>
-              <p>Track your Pressure </p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="/Thyroid?patientEmail=${patientId }">Thyroid Monitor</a></h4>
-              <p>Track your Thyroid</p>
-            </div>
-          </div>
-                    <div class="text-center" ><a href="/viewPrescription?patientEmail=${patientId}">View Prescription</a></div>
-          
-                    
-                    <br>
-                    <div class="text-center"><button type="submit">View Health Records</button></div>
-          
-
-        </div>
+      </div>
+    </div>
+  </div>
+</section>
+        </form>
 
       </div>
-    </section><!-- End Services Section -->
-    
+    </section><!-- End Appointment Section -->
 
  <div
     class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">

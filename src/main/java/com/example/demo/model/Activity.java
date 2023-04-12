@@ -53,6 +53,7 @@ public class Activity {
 	public String getActivity1() {
 		return activity1;
 	}
+	
 
 	public void setActivity1(String activity1) {
 		this.activity1 = activity1;

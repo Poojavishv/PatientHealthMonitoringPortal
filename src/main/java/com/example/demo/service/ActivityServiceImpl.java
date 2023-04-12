@@ -12,6 +12,7 @@ public class ActivityServiceImpl implements ActivityService {
     @Autowired
     private ActivityRepository activityRepository;
     
+    
     @Override
     public void saveActivity(Activity activity) {
         activityRepository.save(activity);
