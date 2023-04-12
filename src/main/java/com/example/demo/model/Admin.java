@@ -10,6 +10,7 @@ import jakarta.persistence.Table;
 
 @Table
 
+
 public class Admin {
 	@Id
 	@GeneratedValue

@@ -8,8 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table
-public class Thyroid {
-    
+public class Thyroid {    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -1,5 +1,8 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="com.example.demo.model.Diet"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,11 +12,13 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-    
- <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-    
- 
+    <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -27,7 +32,8 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-   
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -62,7 +68,33 @@ height: calc(100% - 73px);
 height: 100%;
 }
 }
+html,
+body,
+.intro {
+  height: 100%;
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card {
+  border-radius: .5rem;
+}
+
+.mask-custom {
+  background: rgba(24, 24, 16, .2);
+  border-radius: 2em;
+  backdrop-filter: blur(25px);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  background-clip: padding-box;
+  box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+}
 </style>
+
 </head>
 
 <body>
@@ -101,7 +133,7 @@ height: 100%;
     </div>
     <!-- Topbar End -->
 
-
+<%! int i=0; %>
     <!-- Navbar Start -->
     <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
@@ -125,41 +157,84 @@ height: 100%;
     </div>
     <!-- Navbar End -->
 
- <!-- ======= Services Section ======= -->
-    <section id="services" class="services" >
-      <div class="container" align="center">
+<!-- ======= Appointment Section ======= -->
+    <section id="appointment" class="appointment section-bg">
+      <div class="container">
 
         <div class="section-title">
-          <h2>Welcome ${doctorName }</h2>
-          <p>Hello. Wishing you the best day. Kindly check your appointment list to cure more and more patients.</p>
-             </div>
-
-        <div class="row" align="center">
-           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="/viewappointment">Appointments</a></h4>
-              <p>Check all Available appointments</p>
-            </div>
-         
-           </div>
-           
-           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="icon-box">
-              <div class="icon"><i class="fas fa-hospital-user"></i></div>
-              <h4><a href="/viewDiet">Update Diet</a></h4>
-              <h4><a href="">Update Activities</a></h4>
-              <p>Check all the active patient Records</p>
-            </div>
-       </div>
+          <h2>Update Diet</h2>
           </div>
+          <h4 style="color: green" align="center">${successMessage}</h4>
 
-
-         
+        <form action="/saveappointment" method="post" role="form" class="php-email-form">
+          <section class="intro">
+  <div class="bg-image h-100" style="background-color: #6095F0;">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-borderless mb-0">
+                    <thead>
+                      <tr>
+                       
+                        <th scope="col">S.No</th>
+                        <th scope="col">Patient ID</th>
+                        <th scope="col">Diet Date</th>
+                        <th scope="col">Diet Food</th>
+                        <th scope="col">timeOfIntake</th>
+                        <th scope="col">update Diet</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                  
+          
+                     <% ArrayList<Diet> dietList = (ArrayList) request.getAttribute("dietList");
+              		if(request.getAttribute("dietList") !=null)
+              		{
+              			Iterator<Diet> dietIterator =  dietList.iterator();
+              			while(dietIterator.hasNext())
+              			{
+              				Diet dietDetails = dietIterator.next();
+              			
+                
+                 %>
+                      <tr>
+                       
+                        <td><%= i=i+1 %></td>
+                        <td> <%= dietDetails.getPatientId()  %></td>
+                        <td><%= dietDetails.getDietdate() %></td>
+                        <td><%= dietDetails.getDietFood() %></td>
+                        <td><%= dietDetails.getTimeOfIntake() %></td>
+                       <td> <a href="http://localhost:8080/UpdateDiet?id=<%= dietDetails.getId() %>" id="link-1">Action</a></td>
+                        <td>
+                          <button type="button" class="btn btn-danger btn-sm px-3">
+                            <i class="fas fa-times"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <% 
+              			}
+              		}
+                %>
+                                                   
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+        </form>
 
-    
-    </section><!-- End Services Section -->
+      </div>
+    </section><!-- End Appointment Section -->
 
  <div
     class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">

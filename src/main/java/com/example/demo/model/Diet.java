@@ -8,7 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
 @Entity
 @Table
 public class Diet {
@@ -27,6 +26,17 @@ public class Diet {
 
     
     private LocalTime timeOfIntake;
+    private String updateDiet1;
+
+
+	public String getUpdateDiet1() {
+		return updateDiet1;
+	}
+
+
+	public void setUpdateDiet1(String updateDiet1) {
+		this.updateDiet1 = updateDiet1;
+	}
 
 
 	public Long getId() {
@@ -82,12 +92,9 @@ public class Diet {
 
 	@Override
 	public String toString() {
-		return "Diet [id=" + id + ", patientId=" + patientId + ", dietdate=" + dietdate + ", diet=" + dietFood
-				+ ", timeOfIntake=" + timeOfIntake + "]";
+		return "Diet [id=" + id + ", patientId=" + patientId + ", dietdate=" + dietdate + ", dietFood=" + dietFood
+				+ ", timeOfIntake=" + timeOfIntake + ", updateDiet1=" + updateDiet1 + "]";
 	}
-
-
-	
 
 
 	

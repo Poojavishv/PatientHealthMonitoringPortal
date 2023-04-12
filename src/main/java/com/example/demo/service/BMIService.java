@@ -9,7 +9,7 @@ import com.example.demo.repo.BMIRepo;
 
 @Service
 public class BMIService {
-	 
+
 	@Autowired
 	BMIRepo repo;
 	public void addBMIDetails(BMI bmi1)

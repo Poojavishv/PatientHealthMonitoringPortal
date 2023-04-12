@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 @Table
 public class CholestrolMonitor {
 
-    @Id
+   @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     

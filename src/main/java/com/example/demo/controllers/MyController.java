@@ -66,6 +66,8 @@ public class MyController {
 	DietService dietService;
 	@Autowired	
 	AppointmentService appointmentService;
+	
+	
 	@RequestMapping("/")
 	public ModelAndView indexView() {
 		ModelAndView mv = new ModelAndView("index");
@@ -112,8 +114,55 @@ public class MyController {
 			
 	        
 	    }
+	 @RequestMapping("/viewappointment")
+		public ModelAndView appviewloginView(HttpServletRequest req) {
+			ArrayList<Appointment> appointmentList = appointmentService.getAppointmentList();
+			System.out.println(appointmentList);
+			req.setAttribute("appointmentList", appointmentList);
+			ModelAndView mv = new ModelAndView("updateAppoint");
+			mv.addObject("successMessage", "");
+			return mv;
+		}
 	 
-	
+	 @RequestMapping("/UpdateAppointment")
+	    
+	 public ModelAndView showUpdateForm(Long appointmentId) {
+		 Appointment appointmentDetails = appointmentService.getById(appointmentId);
+		 ModelAndView mv=new ModelAndView("updatePrescription");
+		 mv.addObject("appointmentDetails",appointmentDetails);
+	        return mv;
+	    }
+	 
+
+	    @RequestMapping("/Saveprescription")
+	    public ModelAndView Saveprescription(Appointment appointment) {
+	        
+	        
+	        ModelAndView mav = new ModelAndView("updatePrescription");
+	        appointmentService.saveAppointment(appointment);
+	        mav.addObject("successMessage", "Updated prescription successfully.");
+	        mav.addObject("appointmentId",appointment.getAppointmentId());
+	        
+	        return mav;
+	    }
+	    @RequestMapping("/viewPrescription")
+		public ModelAndView appPrescriptionView(HttpServletRequest req,String patientEmail) {
+	    	System.out.println(patientEmail);
+	    	ArrayList<Appointment> appointmentList = appointmentService.getAppointmentList();
+			System.out.println(appointmentList);
+			req.setAttribute("appointmentList", appointmentList);
+			 
+			ArrayList<Appointment> appointmentDetails = appointmentService.findBypatientId(patientEmail);
+			req.setAttribute("appointmentDetails", appointmentDetails);
+			ModelAndView mv = new ModelAndView("prescription");
+	        mv.addObject("patientId",patientEmail);
+	        System.out.println(appointmentDetails);
+
+			mv.addObject("appointmentDetails1",appointmentDetails);
+			mv.addObject("successMessage", "");
+	        
+	        return mv;
+	    }
 	
 
 	@RequestMapping("/loginCheckDoctor")
@@ -321,6 +370,16 @@ public class MyController {
 	        modelAndView.addObject("patientId",bloodCount.getPatientId());
 	        return modelAndView;
 	    }
+
+	 @RequestMapping("/DiabetesCal")
+	    
+	 public ModelAndView showDiabetesForm(String patientEmail) {
+		 ModelAndView mv=new ModelAndView("diabetesCal");
+		 mv.addObject("patientId",patientEmail);
+		 
+	        return mv;
+	    }
+	
 	 
 	 @RequestMapping("/CalorieAdd")
 	 public ModelAndView showAddCalorieIntakeForm(String patientEmail) {
@@ -407,6 +466,24 @@ public class MyController {
 			return modelAndView;
 	        
 	    }
+	 @RequestMapping("/viewDiet")
+		public ModelAndView appviewDietView(HttpServletRequest req) {
+			ArrayList<Diet> dietList = dietService.getDietList();
+			System.out.println(dietList);
+			req.setAttribute("dietList", dietList);
+			ModelAndView mv = new ModelAndView("updateDiet");
+			mv.addObject("successMessage", "");
+			return mv;
+		}
+	 @RequestMapping("/UpdateDiet")
+	    
+	 public ModelAndView showUpdateDietForm(Long id) {
+		 Diet DietDetails = dietService.getById(id);
+		 ModelAndView mv=new ModelAndView("updateDietDetails");
+		 mv.addObject("DietDetails",DietDetails);
+	        return mv;
+	    }
+	 
 	 @Autowired
 		private ActivityRepository activityRepository;
 

@@ -9,7 +9,7 @@ import com.example.demo.repo.CholestrolRepo;
 
 import jakarta.transaction.Transactional;
 
-@Service
+@Service 
 public class CholestrolService {
 	@Autowired
 private CholestrolRepo chlolestrolRepository;

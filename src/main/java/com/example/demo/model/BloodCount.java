@@ -6,7 +6,8 @@ import jakarta.persistence.Id;
 
 @Entity
 public class BloodCount {
-    
+   
+	
     @Id
     @GeneratedValue
     private Long bloodCountId;

@@ -8,8 +8,6 @@ import jakarta.persistence.Id;
 
 @Entity
 public class BMI {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
