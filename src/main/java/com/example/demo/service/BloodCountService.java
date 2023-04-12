@@ -13,15 +13,10 @@ public class BloodCountService {
     
     @Autowired
     private BloodCountRepo bloodCountRepository;
-    
-    @Transactional
+        @Transactional
     public void saveBloodCount(BloodCount bloodCount) {
         bloodCountRepository.save(bloodCount);
     }
-    
-    public BloodCount getByPatientId(String patientEmail)
-    {
-    	BloodCount bc = bloodCountRepository.findBypatientId(patientEmail);
-    	return bc;
-    }
 }
+
+

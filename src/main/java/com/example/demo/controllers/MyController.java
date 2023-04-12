@@ -17,7 +17,7 @@ import com.example.demo.model.BMI;
 import com.example.demo.model.BloodCount;
 import com.example.demo.model.CalorieIntake;
 import com.example.demo.model.CholestrolMonitor;
-import com.example.demo.model.DiabetesRisk;
+//import com.example.demo.model.DiabetesRisk;
 import com.example.demo.model.Diet;
 import com.example.demo.model.Doctor;
 import com.example.demo.model.Patient;
@@ -38,7 +38,7 @@ import com.example.demo.service.BMIService;
 import com.example.demo.service.BloodCountService;
 import com.example.demo.service.CalorieIntakeService;
 import com.example.demo.service.CholestrolService;
-import com.example.demo.service.DiabetesRiskService;
+//import com.example.demo.service.DiabetesRiskService;
 import com.example.demo.service.DietService;
 
 @Controller
@@ -324,33 +324,7 @@ public class MyController {
 	        modelAndView.addObject("patientId",bmi1.getPatientId());
 	        return modelAndView;
 	    }
-	    @Autowired
-	    private DiabetesRiskService diabetesRiskService;
-	    
-	    @RequestMapping(value = "/calculateDiabetesRisk")
-	    public ModelAndView calculateDiabetesRisk(String patientEmail) {
-	    	BloodCount bloodCount =  bloodCountService.getByPatientId(patientEmail);
-//	    	System.out.println(bloodCount);
-//	    	double diabetesRisk1 = diabetesRiskService.calculateRisk(bloodCount);
-	        ModelAndView modelAndView = new ModelAndView();
-	        modelAndView.setViewName("diabetesRiskForm");
-//	        modelAndView.addObject("diabetesRisk1", diabetesRisk1);
-//	        System.out.println(diabetesRisk1);
-	        modelAndView.addObject("diabetesRisk", new DiabetesRisk(patientEmail, bloodCount));
-	        return modelAndView;
-	        
-	        
-	    }
-	    @RequestMapping("/generateDiabetesRisk")
-	    public ModelAndView generateDiabetesRisk(String pid)
-	    {
-	    	BloodCount bloodCount =  bloodCountService.getByPatientId(pid);
-	    	System.out.println(bloodCount);
-	    	double diabetesRisk1 = diabetesRiskService.calculateRisk(bloodCount);
-	    	ModelAndView modelAndView = new ModelAndView("diabetesResult");
-	    	 modelAndView.addObject("diabetesRisk1", diabetesRisk1);
-	    	 return modelAndView;
-	    }
+	   
 
 	 
 
