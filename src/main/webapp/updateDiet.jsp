@@ -166,7 +166,7 @@ table th {
           </div>
           <h4 style="color: green" align="center">${successMessage}</h4>
 
-        <form action="/saveappointment" method="post" role="form" class="php-email-form">
+        <form action="/" method="post" role="form" class="php-email-form">
           <section class="intro">
   <div class="bg-image h-100" style="background-color: #6095F0;">
     <div class="mask d-flex align-items-center h-100">

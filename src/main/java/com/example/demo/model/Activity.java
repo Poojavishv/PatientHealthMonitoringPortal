@@ -23,6 +23,16 @@ public class Activity {
     private String activity1;
 
     private LocalTime timeOfWorkout;
+    
+    private String activityPrescription;
+
+	public String getActivityPrescription() {
+		return activityPrescription;
+	}
+
+	public void setActivityPrescription(String activityPrescription) {
+		this.activityPrescription = activityPrescription;
+	}
 
 	public Long getId() {
 		return id;
@@ -70,8 +80,10 @@ public class Activity {
 	@Override
 	public String toString() {
 		return "Activity [id=" + id + ", patientId=" + patientId + ", date=" + date + ", activity1=" + activity1
-				+ ", timeOfWorkout=" + timeOfWorkout + "]";
+				+ ", timeOfWorkout=" + timeOfWorkout + ", activityPrescription=" + activityPrescription + "]";
 	}
+
+	
 
 	
 

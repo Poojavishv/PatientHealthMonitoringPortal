@@ -182,7 +182,7 @@ height: 100%;
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-dna"></i></div>
-              <h4><a href="/diabetes"> Diabetes Report</a></h4>
+              <h4><a href="/calculateDiabetesRisk?patientEmail=${patientId }"> Diabetes Report</a></h4>
               <p>Generate your Diabetes Report  </p>
             </div>
           </div>
@@ -215,6 +215,7 @@ height: 100%;
             <div class="icon-box">
               <div class="icon"><i class="fas fa-wheelchair"></i></div>
               <h4><a href="/diet?patientEmail=${patientId }">DIET Tracker</a></h4>
+              <h4><a href="/viewpatientUpdateDiet?patientEmail=${patientId }">DIET Prescription</a></h4>
               <p>--  Monitor your Diet  --</p>
             </div>
           </div>

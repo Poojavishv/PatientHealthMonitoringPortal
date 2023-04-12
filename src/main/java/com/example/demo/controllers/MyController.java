@@ -17,7 +17,7 @@ import com.example.demo.model.BMI;
 import com.example.demo.model.BloodCount;
 import com.example.demo.model.CalorieIntake;
 import com.example.demo.model.CholestrolMonitor;
-import com.example.demo.model.Diabetes;
+import com.example.demo.model.DiabetesRisk;
 import com.example.demo.model.Diet;
 import com.example.demo.model.Doctor;
 import com.example.demo.model.Patient;
@@ -31,13 +31,14 @@ import com.example.demo.service.ThyroidService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
+import com.example.demo.service.ActivityService;
 import com.example.demo.service.AdminService;
 import com.example.demo.service.AppointmentService;
 import com.example.demo.service.BMIService;
 import com.example.demo.service.BloodCountService;
 import com.example.demo.service.CalorieIntakeService;
 import com.example.demo.service.CholestrolService;
-import com.example.demo.service.DiabetesService;
+import com.example.demo.service.DiabetesRiskService;
 import com.example.demo.service.DietService;
 
 @Controller
@@ -51,9 +52,9 @@ public class MyController {
 
 	@Autowired
 	AdminService adService;
+	ActivityService activityService;
 	@Autowired
 	BMIService bmiService;
-	 DiabetesService diabService;
 	@Autowired
     private BloodCountService bloodCountService;
 	@Autowired
@@ -323,6 +324,34 @@ public class MyController {
 	        modelAndView.addObject("patientId",bmi1.getPatientId());
 	        return modelAndView;
 	    }
+	    @Autowired
+	    private DiabetesRiskService diabetesRiskService;
+	    
+	    @RequestMapping(value = "/calculateDiabetesRisk")
+	    public ModelAndView calculateDiabetesRisk(String patientEmail) {
+	    	BloodCount bloodCount =  bloodCountService.getByPatientId(patientEmail);
+//	    	System.out.println(bloodCount);
+//	    	double diabetesRisk1 = diabetesRiskService.calculateRisk(bloodCount);
+	        ModelAndView modelAndView = new ModelAndView();
+	        modelAndView.setViewName("diabetesRiskForm");
+//	        modelAndView.addObject("diabetesRisk1", diabetesRisk1);
+//	        System.out.println(diabetesRisk1);
+	        modelAndView.addObject("diabetesRisk", new DiabetesRisk(patientEmail, bloodCount));
+	        return modelAndView;
+	        
+	        
+	    }
+	    @RequestMapping("/generateDiabetesRisk")
+	    public ModelAndView generateDiabetesRisk(String pid)
+	    {
+	    	BloodCount bloodCount =  bloodCountService.getByPatientId(pid);
+	    	System.out.println(bloodCount);
+	    	double diabetesRisk1 = diabetesRiskService.calculateRisk(bloodCount);
+	    	ModelAndView modelAndView = new ModelAndView("diabetesResult");
+	    	 modelAndView.addObject("diabetesRisk1", diabetesRisk1);
+	    	 return modelAndView;
+	    }
+
 	 
 
 	 @RequestMapping("/BloodCount")
@@ -343,14 +372,7 @@ public class MyController {
 	        modelAndView.addObject("patientId",bloodCount.getPatientId());
 	        return modelAndView;
 	    }
-	 @RequestMapping("/DiabetesCal")
-	    
-	 public ModelAndView showDiabetesForm(String patientEmail) {
-		 ModelAndView mv=new ModelAndView("diabetesCal");
-		 mv.addObject("patientId",patientEmail);
-		 
-	        return mv;
-	    }
+	 
 	
 	 
 	 @RequestMapping("/CalorieAdd")
@@ -455,9 +477,37 @@ public class MyController {
 		 mv.addObject("DietDetails",DietDetails);
 	        return mv;
 	    }
+	 @RequestMapping("/SaveUpdateDiet")
+	    public ModelAndView SaveupdateDiet(Diet diet) {
+	        
+	        
+	        ModelAndView mav = new ModelAndView("updateDietDetails");
+	        dietService.saveDietDetails(diet);
+	        mav.addObject("successMessage", "Updated prescription successfully.");
+	        mav.addObject("id",diet.getId());
+	        
+	        return mav;
+	    }
+	 @RequestMapping("/viewpatientUpdateDiet")
+		public ModelAndView patientUpdateDietView(HttpServletRequest req,String patientEmail) {
+	    	System.out.println(patientEmail);
+	    	ArrayList<Diet> dietList = dietService.getDietList();
+			System.out.println(dietList);
+			req.setAttribute("appointmentList", dietList);
+			 
+			ArrayList<Diet> DietDetails = dietService.findBypatientId(patientEmail);
+			req.setAttribute("DietDetails", DietDetails);
+			ModelAndView mv = new ModelAndView("viewUpdateDiet");
+	        mv.addObject("patientId",patientEmail);
+	        System.out.println(DietDetails);
+
+			mv.addObject("dietDetails1",DietDetails);
+			mv.addObject("successMessage", "");
+	        
+	        return mv;
+	    }
 	 
-	 @Autowired
-		private ActivityRepository activityRepository;
+	 
 
 		@GetMapping("/activities")
 		public ModelAndView activities(String patientEmail) {
@@ -469,32 +519,50 @@ public class MyController {
 
 		@PostMapping("/saveActivity")
 		public ModelAndView saveActivity(Activity activity) {
-			ModelAndView modelAndView = new ModelAndView("activityResult");
-			activityRepository.save(activity);
+			ModelAndView modelAndView = new ModelAndView("activities");
+			activityService.saveActivityDetails(activity);
 			
-			modelAndView.addObject("message", "Activity details recorded successfully");
+			modelAndView.addObject("successMessage", "Activity details recorded successfully");
 			 modelAndView.addObject("patientId",activity.getPatientId());
 			return modelAndView;
 		}
+		
+		 @RequestMapping("/viewActivity")
+			public ModelAndView appviewActivityView(HttpServletRequest req) {
+				ArrayList<Activity> activityList = activityService.getActivityList();
+				System.out.println(activityList);
+				req.setAttribute("activityList", activityList);
+				ModelAndView mv = new ModelAndView("updateActivity");
+				mv.addObject("successMessage", "");
+				return mv;
+			}
+		 @RequestMapping("/UpdateActivity")
+		    
+		 public ModelAndView showUpdateActivityForm(Long id) {
+			 Activity activityDetails = activityService.getById(id);
+			 ModelAndView mv=new ModelAndView("updateDietDetails");
+			 mv.addObject("activityDetails",activityDetails);
+		        return mv;
+		    }
 		@Autowired
 	    private PressureRepository pressureRepository;
 
 	    @GetMapping("/pressure")
-	    public ModelAndView pressure(@RequestParam("patientEmail") String patientId) {
+	    public ModelAndView pressure( String patientEmail) {
 	        ModelAndView modelAndView = new ModelAndView("pressure");
-	        modelAndView.addObject("pressures", pressureRepository.findByPatientId(patientId));
-	        modelAndView.addObject("pressure", new Pressure());
-	        modelAndView.addObject("patientId", patientId);
-	        modelAndView.setViewName("pressure");
+	       
+	        modelAndView.addObject("patientId", patientEmail);
+	        modelAndView.addObject("successMessage", "");
 	        return modelAndView;
 	    }
 
 	    @PostMapping("/savePressure")
 	    public ModelAndView savePressure(Pressure pressure) {
+	    	ModelAndView modelAndView = new ModelAndView("pressure");
 	        pressureRepository.save(pressure);
-	        ModelAndView modelAndView = new ModelAndView("pressure");
-	        modelAndView.addObject("message", "Pressure reading recorded successfully");
-	        modelAndView.setViewName("pressureResult");
+	        
+	        modelAndView.addObject("successMessage", "Pressure reading recorded successfully");
+	        modelAndView.addObject("patientId",pressure.getPatientId());
 	        return modelAndView;
 	    }
 
