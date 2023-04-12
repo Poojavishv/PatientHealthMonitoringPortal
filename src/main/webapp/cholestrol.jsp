@@ -127,13 +127,13 @@ height: 100%;
 <section class="vh-100" style="background-color: #508bfc;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-    <br>
-    <p style="color: green" align="center">${successMessage}</p>
+     
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-      <form action="/calorieIntakeResult" method="post">
+       <h4 style="color: green" align="center">${successMessage}</h4>
+      <form action=/cholestrolResult method="post">
       <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
-             <h3 class="mb-5">Add Calorie Intake</h3>
+             <h3 class="mb-5">Add Cholestrol Levels</h3>
       
       <div class="form-outline mb-4">
             <label class="form-label" for="height">Patient ID:</label>
@@ -141,16 +141,16 @@ height: 100%;
               
             </div>
     <div class="form-outline mb-4">
-    <label for="rbcCount">Date:</label>
+    <label for="date">Date:</label>
     <input path="date" type="date" id="date" name="date" />
     </div>
       <div class="form-outline mb-4">
-    <label for="wbcCount">Calories:</label>
-    <input path="calories" type="number" id="calories" name="calories" />
+    <label for="cholestrolLevel">cholestrol Level:</label>
+    <<input type="number" step="0.01" id="cholestrolLevel" name="cholestrolLevel"  required/>
     </div>
       <div class="form-outline mb-4">
-    <label for="plateletCount">Time Of Intake :</label>
-    <input path="timeOfIntake" type="time" id="timeOfIntake" name="timeOfIntake" />
+    <label for="plateletCount">Time Of Day :</label>
+    <input path="timeOfIntake" type="time" id="timeOfDay" name="timeOfDay" />
     </div>
       
              
@@ -159,8 +159,9 @@ height: 100%;
     </div>
         </div>
 </form>
-       
+
       </div>
+     
     </div>
   </div>
 </section>

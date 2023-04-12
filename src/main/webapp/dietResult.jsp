@@ -127,38 +127,41 @@ height: 100%;
 <section class="vh-100" style="background-color: #508bfc;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-    <br>
-    <p style="color: green" align="center">${successMessage}</p>
+     <br>
+    
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-      <form action="/calorieIntakeResult" method="post">
+     
       <div class="card shadow-2-strong" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
-             <h3 class="mb-5">Add Calorie Intake</h3>
-      
+          <h4 style="color: green" align="center">${successMessage}</h4>
+             <h3 class="mb-5">Add Diet Details</h3>
+       <form action="/dietResult1" method="post">
       <div class="form-outline mb-4">
             <label class="form-label" for="height">Patient ID:</label>
                <input  type="text" id="height" name="patientId" value="${patientId }" readonly><br>
               
             </div>
-    <div class="form-outline mb-4">
+             <div class="form-outline mb-4">
     <label for="rbcCount">Date:</label>
-    <input path="date" type="date" id="date" name="date" />
+    <input  type="date" id="dietdate" name="dietdate" />
+    </div>        
+        
+        
+    <div class="form-outline mb-4">
+    <label for="diet">Diet:</label>
+    <input  type="text" id="diet" name="dietFood" />
     </div>
       <div class="form-outline mb-4">
-    <label for="wbcCount">Calories:</label>
-    <input path="calories" type="number" id="calories" name="calories" />
+    <label for="timeOfIntake">Time of Intake:</label>
+    <input type="time"  id="timeOfIntake" name="timeOfIntake"  required/>
     </div>
-      <div class="form-outline mb-4">
-    <label for="plateletCount">Time Of Intake :</label>
-    <input path="timeOfIntake" type="time" id="timeOfIntake" name="timeOfIntake" />
-    </div>
-      
+         
              
     <input type="submit" value="Save" />
-   
+   </form>
     </div>
         </div>
-</form>
+
        
       </div>
     </div>

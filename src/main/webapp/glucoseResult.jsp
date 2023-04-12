@@ -131,29 +131,29 @@ height: 100%;
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-      <form name="form"  action="/patientReg" method="post" >
+      <h4 style="color: green" align="center">${successMessage}</h4>
+      <form name="form"  action="/calculateGlucosesave" method="post" >
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
         
           <div class="card-body p-5 text-center">
            <h3 class="mb-5">Glucose Result</h3>
              
-    <div style="color: green">
-    <p>Glucose details recorded successfully</p>
-    </div>
+    
           
 <p>
 
             <label for="patientId" >Patient Id: </label>
-            <input path="patientId" value="${patientId }" type="text" readonly/>
+            <input path="patientId" name="patientId" value="${patientId }" type="text" readonly/>
         </p>
+               
+
+         <div class="form-outline mb-4">
+    <label for="date">Date of day:</label>
+    <input type="date"  id="date" name="date"  required/>
+    </div>
         <p>
-            <label for="timeOfDay">Time of the Day:</label>
-            <input path="timeOfDay" type="datetime-local" />
-        </p>
-        
-        <p>
-            <label for="BMI"> Glucose Calculation is: <%= request.getAttribute("glucoseLevel") %></label>
-           
+            <label for="glucoseLevel"> Glucose Level is: </label>
+            <input path="glucoseLevel" name="glucoseLevel"  type="number" />
         </p>
         
         <p>

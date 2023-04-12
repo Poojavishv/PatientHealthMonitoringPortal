@@ -19,7 +19,8 @@ public class Activity {
 
     private LocalDate date;
 
-    private String activity;
+
+    private String activity1;
 
     private LocalTime timeOfWorkout;
 
@@ -47,12 +48,14 @@ public class Activity {
 		this.date = date;
 	}
 
-	public String getActivity() {
-		return activity;
+	
+
+	public String getActivity1() {
+		return activity1;
 	}
 
-	public void setActivity(String activity) {
-		this.activity = activity;
+	public void setActivity1(String activity1) {
+		this.activity1 = activity1;
 	}
 
 	public LocalTime getTimeOfWorkout() {
@@ -63,5 +66,12 @@ public class Activity {
 		this.timeOfWorkout = timeOfWorkout;
 	}
 
-    // getters and setters
+	@Override
+	public String toString() {
+		return "Activity [id=" + id + ", patientId=" + patientId + ", date=" + date + ", activity1=" + activity1
+				+ ", timeOfWorkout=" + timeOfWorkout + "]";
+	}
+
+	
+
 }

@@ -15,8 +15,6 @@ public class Admin {
 	@GeneratedValue
 	private String userid;	
 
-	
-
 	@Column(nullable = false, length=20)
 
 	private String name;

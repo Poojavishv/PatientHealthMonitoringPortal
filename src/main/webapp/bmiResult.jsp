@@ -131,30 +131,33 @@ height: 100%;
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-      <form name="form"  action="/patientReg" method="post" >
+      <h4 style="color: green" align="center">${successMessage}</h4>
+      <form name="form"  action="/calculateBMIsave" method="post" >
         <div class="card shadow-2-strong" style="border-radius: 1rem;">
         
           <div class="card-body p-5 text-center">
            <h3 class="mb-5">BMI Result</h3>
              
-    <div style="color: green">
-    <p>BMI Calculation recorded successfully</p>
-    </div>
+   
           
 <p>
+
             <label for="patientId" >Patient Id: </label>
-            <input path="patientId" value="${patientId }" type="text" readonly/>
+            <input path="patientId" name="patientId" value="${patientId }" type="text" readonly/>
         </p>
+               
+
+         <div class="form-outline mb-4">
+    <label for="date">Date of day:</label>
+    <input type="date"  id="date" name="date"  required/>
+    </div>
         <p>
-            <label for="timeOfDay">Time of the Day:</label>
-            <input path="timeOfDay" type="datetime-local" />
+            <label for="bmi"> BMI Calculation is: </label>
+            <input path="bmi" name="bmi" value=<%= request.getAttribute("bmi") %> type="number" readonly/>
         </p>
         
-        <p>
-            <label for="BMI"> BMI Calculation is: <%= request.getAttribute("bmi") %></label>
-           
-        </p>
         
+            
         <p>
             <button type="submit">Save</button>
         </p>

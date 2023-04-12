@@ -18,6 +18,9 @@
 				<td><input path="date" type="date" id="date" name="datetime" ></td>
 			</tr>
 			<tr>
+				<td><label for="activity1">Activity:</label></td>
+				<td><input type="text" name="activity1" id="activity1"></td>
+
 				<td><label for="activity">Activity:</label></td>
 				<td><input type="text" name="activity" id="activity"></td>
 			</tr>

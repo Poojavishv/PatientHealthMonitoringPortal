@@ -15,7 +15,7 @@ public class CalorieIntake {
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
 	    private Long id;
-	    private Long patientId;
+	    private String patientId;
 	    private LocalDate date;
 	    private Integer calories;
 	    private LocalTime timeOfIntake;
@@ -25,10 +25,10 @@ public class CalorieIntake {
 		public void setId(Long id) {
 			this.id = id;
 		}
-		public Long getPatientId() {
+		public String getPatientId() {
 			return patientId;
 		}
-		public void setPatientId(Long patientId) {
+		public void setPatientId(String patientId) {
 			this.patientId = patientId;
 		}
 		public LocalDate getDate() {
@@ -49,14 +49,12 @@ public class CalorieIntake {
 		public void setTimeOfIntake(LocalTime timeOfIntake) {
 			this.timeOfIntake = timeOfIntake;
 		}
-		public CalorieIntake() {
-			super();
-			this.id = id;
-			this.patientId = patientId;
-			this.date = date;
-			this.calories = calories;
-			this.timeOfIntake = timeOfIntake;
+		@Override
+		public String toString() {
+			return "CalorieIntake [id=" + id + ", patientId=" + patientId + ", date=" + date + ", calories=" + calories
+					+ ", timeOfIntake=" + timeOfIntake + "]";
 		}
+		
 
 	    
 	}
