@@ -6,8 +6,6 @@ import com.example.demo.model.BMI;
 
 
 public interface BMIRepo extends JpaRepository<BMI, Long> {
-	
-	
-	
+		
 }
 
