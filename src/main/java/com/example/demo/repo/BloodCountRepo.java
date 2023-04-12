@@ -9,4 +9,3 @@ public interface BloodCountRepo extends JpaRepository<BloodCount, Long> {
 	public BloodCount findBypatientId(String patientId);
 
 }
-

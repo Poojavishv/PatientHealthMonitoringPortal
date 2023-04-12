@@ -13,7 +13,8 @@ public class BloodCountService {
     
     @Autowired
     private BloodCountRepo bloodCountRepository;
-        @Transactional
+    
+    @Transactional
     public void saveBloodCount(BloodCount bloodCount) {
         bloodCountRepository.save(bloodCount);
     }
@@ -24,5 +25,3 @@ public class BloodCountService {
     	return bc;
     }
 }
-
-

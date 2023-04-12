@@ -1,6 +1,6 @@
 package com.example.demo.model;
 
-import java.time.LocalDate;
+
 import java.time.LocalTime;
 
 import jakarta.persistence.Entity;
@@ -26,6 +26,7 @@ public class Diet {
 
     
     private LocalTime timeOfIntake;
+    
     private String updateDiet1;
 
 

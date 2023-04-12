@@ -215,6 +215,7 @@ height: 100%;
             <div class="icon-box">
               <div class="icon"><i class="fas fa-wheelchair"></i></div>
               <h4><a href="/diet?patientEmail=${patientId }">DIET Tracker</a></h4>
+              <h4><a href="/viewpatientUpdateDiet?patientEmail=${patientId }">DIET Prescription</a></h4>
               <p>--  Monitor your Diet  --</p>
             </div>
           </div>

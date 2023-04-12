@@ -31,5 +31,9 @@ public class DietService {
 		 Diet DietDetails = dietRepository.findById(id).orElse(new Diet());
 		 return DietDetails;
 	 }
+	public ArrayList<Diet> findBypatientId(String patientId) {
+		ArrayList<Diet> dietDetails1 = dietRepository.findBypatientId(patientId);
+		 return dietDetails1;
+	}
 
 }

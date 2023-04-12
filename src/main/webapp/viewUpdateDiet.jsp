@@ -68,7 +68,33 @@ height: calc(100% - 73px);
 height: 100%;
 }
 }
+html,
+body,
+.intro {
+  height: 100%;
+}
+
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card {
+  border-radius: .5rem;
+}
+
+.mask-custom {
+  background: rgba(24, 24, 16, .2);
+  border-radius: 2em;
+  backdrop-filter: blur(25px);
+  border: 2px solid rgba(255, 255, 255, 0.05);
+  background-clip: padding-box;
+  box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
+}
 </style>
+
 </head>
 
 <body>
@@ -107,7 +133,7 @@ height: 100%;
     </div>
     <!-- Topbar End -->
 
-
+<%! int i=0; %>
     <!-- Navbar Start -->
     <div class="container-fluid sticky-top bg-white shadow-sm">
         <div class="container">
@@ -136,45 +162,75 @@ height: 100%;
       <div class="container">
 
         <div class="section-title">
-          <h2>Update Diet</h2>
+          <h2>View Update Diet  Details</h2>
           </div>
           <h4 style="color: green" align="center">${successMessage}</h4>
 
-        <form action="/SaveUpdateDiet" method="post" role="form" class="php-email-form">
-          <div class="row">
-            <div class="col-md-4 form-group">
-              <input type="text" name="patientId"  class="form-control" id="patientId" placeholder="Patient ID" value="${DietDetails.getPatientId() }" readonly>
-              <div class="validate"></div>
-            </div>
-            <div class="col-md-4 form-group mt-3 mt-md-0">
-               <input type="text" name="dietdate" class="form-control" id="dietdate" placeholder="diet date" value="${DietDetails.getDietdate() }" readonly>
-              <div class="validate"></div>
-            </div>
-            <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="text" class="form-control" name="dietFood" id="dietFood" value="${DietDetails.getDietFood() }" placeholder="Diet Food" readonly >
-              <div class="validate"></div>
+        <form action="/saveappointment" method="post" role="form" class="php-email-form">
+          <section class="intro">
+  <div class="bg-image h-100" style="background-color: #6095F0;">
+    <div class="mask d-flex align-items-center h-100">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <div class="card shadow-2-strong" style="background-color: #f5f7fa;">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-borderless mb-0">
+                    <thead>
+                      <tr>
+                       
+                        <th scope="col">S.No</th>
+                        <th scope="col">Patient ID</th>
+                        <th scope="col">Diet Date</th>
+                        <th scope="col">Diet Food</th>
+                        <th scope="col">Time of Intake</th>
+                        <th scope="col">Diet Prescription</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                  
+          
+                     <% ArrayList<Diet> DietList = (ArrayList) request.getAttribute("DietDetails");
+              		if(request.getAttribute("DietDetails") !=null)
+              		{
+              			Iterator<Diet> dietIterator =  DietList.iterator();
+              			while(dietIterator.hasNext())
+              			{
+              				Diet dietDetails1 = dietIterator.next();
+              			
+                
+                 %>
+                      <tr>
+                       
+                        <td><%= i=i+1 %></td>
+                        <td> <%= dietDetails1.getPatientId()  %></td>
+                        <td><%= dietDetails1.getDietdate() %></td>
+                        <td><%= dietDetails1.getDietFood() %></td>
+                        <td><%= dietDetails1.getTimeOfIntake() %></td>
+                       <td> <%= dietDetails1.getUpdateDiet1() %>" </a></td>
+                        <td>
+                          <button type="button" class="btn btn-danger btn-sm px-3">
+                            <i class="fas fa-times"></i>
+                          </button>
+                        </td>
+                      </tr>
+                      <% 
+              			}
+              		}
+                %>
+                                                   
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-4 form-group mt-3">
-              <input type="time" name="timeOfIntake" class="form-control datepicker" id="timeOfIntake" value="${DietDetails.getTimeOfIntake() }" placeholder="Appointment Date" readonly>
-              <div class="validate"></div>
-            </div>
-            
-          </div>
-          <div class="form-group mt-3">
-            <textarea class="form-control" name="updateDiet1" id="updateDiet1" rows="5" placeholder="update Diet"></textarea>
-            <div class="validate"></div>
-          </div>
-
-              <div class="mb-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
-          </div>
-          <div class="text-center"><button type="submit">Update Diet</button></div>
-          <br>
-          <div class="text-center" ><a href="updateAppoint.jsp">Back to Home</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
         </form>
 
       </div>

@@ -148,7 +148,7 @@ height: 100%;
             <div class="icon-box">
               <div class="icon"><i class="fas fa-hospital-user"></i></div>
               <h4><a href="/viewDiet">Update Diet</a></h4>
-              <h4><a href="">Update Activities</a></h4>
+              <h4><a href="/viewActivity">Update Activities</a></h4>
               <p>Check all the active patient Records</p>
             </div>
        </div>
