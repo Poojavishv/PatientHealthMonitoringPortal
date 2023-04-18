@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,7 +63,9 @@ height: 100%;
 }
 }
 </style>
-
+<link href="File.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+</style>
 
 </head>
 <body>
@@ -121,6 +123,7 @@ height: 100%;
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
+      
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
@@ -138,45 +141,41 @@ height: 100%;
 <section class="vh-100" style="background-color: #508bfc;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
-    <br>
-    <p style="color: green" align="center">${successMessage}</p>
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-      <form action="/calorieIntakeResult" method="post">
-      <div class="card shadow-2-strong" style="border-radius: 1rem;">
+      <h4 style="color: green" align="center">${successMessage}</h4>
+      <form name="form"  action="DiabetesRisksave" method="post" >
+        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+        
           <div class="card-body p-5 text-center">
-             <h3 class="mb-5">Add Calorie Intake</h3>
-      
-      <div class="form-outline mb-4">
-            <label class="form-label" for="height">Patient ID:</label>
-               <input  type="text" id="height" name="patientId" value="${patientId }" readonly><br>
-              
-            </div>
-    <div class="form-outline mb-4">
-    <label for="rbcCount">Date:</label>
-    <input path="dateCalorieIntake" type="date" id="dateCalorieIntake" name="dateCalorieIntake" />
-    </div>
-      <div class="form-outline mb-4">
-    <label for="wbcCount">Calories:</label>
-    <input path="calories" type="number" id="calories" name="calories" />
-    </div>
-      <div class="form-outline mb-4">
-    <label for="plateletCount">Time Of Intake :</label>
-    <input path="timeOfIntake" type="time" id="timeOfIntake" name="timeOfIntake" />
-    </div>
-      
+           <h3 class="mb-5">Diabetes Risk Result</h3>
              
-    <input type="submit" value="Save" />
    
-    </div>
-        </div>
-</form>
+                 
+        <p>
+            <label> Diabetes Risk value is:${diabetesRisk1 } </label>
+        </p>
+        
+        
+            
+              
        
+        
+    </form>
+    
+       
+
+    
+
+           
+                                  
+          </div>
+        </div>
+        </form>
       </div>
     </div>
   </div>
 </section>
 
-    <class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
     <!-- Copyright -->
     <div class="text-white mb-3 mb-md-0">
       Copyright © 2020. All rights reserved.
@@ -212,3 +211,4 @@ height: 100%;
 </body>
 
 </html>
+

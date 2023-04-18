@@ -1,11 +1,15 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Appointment;
+import com.example.demo.model.BMI;
 import com.example.demo.model.Doctor;
 import com.example.demo.model.Patient;
+import com.example.demo.model.Pressure;
 import com.example.demo.repo.DoctorRepo;
 import com.example.demo.repo.PatientRepo;
 
@@ -43,5 +47,10 @@ public class PatientService {
 		 Patient patientDetails = repo.findBypatientEmail(patientEmail);
 		 return patientDetails;
 	 }
+
+	public ArrayList<Pressure> getByPatientId(String patientEmail) {
+		ArrayList<Pressure> p = repo.findBypatientId(patientEmail);
+    	return p;
+	}
 
 }

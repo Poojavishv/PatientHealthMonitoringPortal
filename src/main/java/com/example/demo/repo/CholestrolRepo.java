@@ -6,4 +6,6 @@ import com.example.demo.model.CholestrolMonitor;
 
 public interface CholestrolRepo extends JpaRepository<CholestrolMonitor, Long> {
 
+	public CholestrolMonitor findBypatientId(String patientId);
+
 }

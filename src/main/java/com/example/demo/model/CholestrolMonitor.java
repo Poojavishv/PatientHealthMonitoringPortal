@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,29 +11,27 @@ import jakarta.persistence.Table;
 @Table
 public class CholestrolMonitor {
 
-   @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long cholestrolMonitorId;
     
-   
+//    @Column(insertable=false, updatable=false)
     private String patientId;
     
 
-    private String timeOfDay;
+    private String timeOfDayCholestrolMonitor;
     
     
     private Double cholestrolLevel;
 
 
-	
-
-	public Long getId() {
-		return id;
+	public Long getCholestrolMonitorId() {
+		return cholestrolMonitorId;
 	}
 
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setCholestrolMonitorId(Long cholestrolMonitorId) {
+		this.cholestrolMonitorId = cholestrolMonitorId;
 	}
 
 
@@ -45,13 +45,16 @@ public class CholestrolMonitor {
 	}
 
 
-	public String getTimeOfDay() {
-		return timeOfDay;
+	
+
+
+	public String getTimeOfDayCholestrolMonitor() {
+		return timeOfDayCholestrolMonitor;
 	}
 
 
-	public void setTimeOfDay(String timeOfDay) {
-		this.timeOfDay = timeOfDay;
+	public void setTimeOfDayCholestrolMonitor(String timeOfDayCholestrolMonitor) {
+		this.timeOfDayCholestrolMonitor = timeOfDayCholestrolMonitor;
 	}
 
 
@@ -67,7 +70,7 @@ public class CholestrolMonitor {
 
 	@Override
 	public String toString() {
-		return "CholestrolMonitor [id=" + id + ", patientId=" + patientId + ", timeOfDay=" + timeOfDay
+		return "CholestrolMonitor [id=" + cholestrolMonitorId + ", patientId=" + patientId + ", timeOfDay=" + timeOfDayCholestrolMonitor
 				+ ", cholestrolLevel=" + cholestrolLevel + "]";
 	}
 

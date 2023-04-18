@@ -72,6 +72,15 @@ height: 100%;
 </head>
 
 <body>
+<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	response.setHeader("Pragma", "no-cache");
+	
+	if(session.getAttribute("user")==null)
+	{
+		response.sendRedirect("/logoutDoctor");
+	}
+%>
     <!-- Topbar Start -->
     <div class="container-fluid py-2 border-bottom d-none d-lg-block">
         <div class="container">
@@ -120,10 +129,10 @@ height: 100%;
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="/" class="nav-item nav-link active">Home</a>
+                       <a href="/dHome" class="nav-item nav-link active">Home</a>
                         <a href="/about" class="nav-item nav-link">About</a>
                         <a href="/contact" class="nav-item nav-link">Contact</a>
-                        <a href="/contact" class="nav-item nav-link">Logout</a>
+                        <a href="/logoutDoctor" class="nav-item nav-link">Logout</a>
                     </div>
                 </div>
             </nav>

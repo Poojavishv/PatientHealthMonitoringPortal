@@ -10,4 +10,6 @@ public interface AppointmentRepo extends JpaRepository<Appointment,Long> {
 
 	public ArrayList<Appointment> findBypatientId(String patientId);
 
+
+
 }

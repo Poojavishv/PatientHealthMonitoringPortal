@@ -6,5 +6,7 @@ import com.example.demo.model.CalorieIntake;
 
 public interface CalorieRepo extends JpaRepository<CalorieIntake, Long> {
 
+	public CalorieIntake findBypatientId(String patientEmail);
+
 }
 

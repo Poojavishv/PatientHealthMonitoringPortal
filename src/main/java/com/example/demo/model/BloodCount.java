@@ -1,18 +1,21 @@
 package com.example.demo.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+
 @Entity
 public class BloodCount {
    
-	
-    @Id
+	@Id
     @GeneratedValue
     private Long bloodCountId;
+//    @Column(insertable=false, updatable=false)
     private String patientId;
-    private String timeOfDay;
+    private String timeOfDayBloodCount;
     private Double rbcCount;
     private Double wbcCount;
     private Double plateletCount;
@@ -29,11 +32,12 @@ public class BloodCount {
 	public void setPatientId(String patientId) {
 		this.patientId = patientId;
 	}
-	public String getTimeOfDay() {
-		return timeOfDay;
+	
+	public String getTimeOfDayBloodCount() {
+		return timeOfDayBloodCount;
 	}
-	public void setTimeOfDay(String timeOfDay) {
-		this.timeOfDay = timeOfDay;
+	public void setTimeOfDayBloodCount(String timeOfDayBloodCount) {
+		this.timeOfDayBloodCount = timeOfDayBloodCount;
 	}
 	public Double getRbcCount() {
 		return rbcCount;
@@ -55,7 +59,7 @@ public class BloodCount {
 	}
 	@Override
 	public String toString() {
-		return "BloodCount [bloodCountId=" + bloodCountId + ", patientId=" + patientId + ", timeOfDay=" + timeOfDay + ", rbcCount="
+		return "BloodCount [bloodCountId=" + bloodCountId + ", patientId=" + patientId + ", timeOfDay=" + timeOfDayBloodCount + ", rbcCount="
 				+ rbcCount + ", wbcCount=" + wbcCount + ", plateletCount=" + plateletCount + "]";
 	}
 	

@@ -98,6 +98,15 @@ table th {
 </head>
 
 <body>
+<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	response.setHeader("Pragma", "no-cache");
+	
+	if(session.getAttribute("user")==null)
+	{
+		response.sendRedirect("/logoutDoctor");
+	}
+%>
     <!-- Topbar Start -->
     <div class="container-fluid py-2 border-bottom d-none d-lg-block">
         <div class="container">
@@ -146,10 +155,10 @@ table th {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="/" class="nav-item nav-link active">Home</a>
+                        <a href="/dHome" class="nav-item nav-link active">Home</a>
                         <a href="/about" class="nav-item nav-link">About</a>
                         <a href="/contact" class="nav-item nav-link">Contact</a>
-                        <a href="/contact" class="nav-item nav-link">Logout</a>
+                        <a href="/logoutDoctor" class="nav-item nav-link">Logout</a>
                     </div>
                 </div>
             </nav>
@@ -208,7 +217,7 @@ table th {
                         <td><%= activityDetails.getDate() %></td>
                         <td><%= activityDetails.getActivity1() %></td>
                         <td><%= activityDetails.getTimeOfWorkout() %></td>
-                       <td> <a href="http://localhost:8080/UpdateDiet?id=<%= activityDetails.getId() %>" id="link-1">Action</a></td>
+                       <td> <a href="http://localhost:8080/UpdateActivity?id=<%= activityDetails.getId() %>" id="link-1">Action</a></td>
                         <td>
                           <button type="button" class="btn btn-danger btn-sm px-3">
                             <i class="fas fa-times"></i>

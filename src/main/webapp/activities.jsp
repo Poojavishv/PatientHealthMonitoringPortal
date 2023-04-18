@@ -66,7 +66,17 @@ height: 100%;
 
 
 </head>
-<body> <!-- Topbar Start -->
+<body>
+<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	response.setHeader("Pragma", "no-cache");
+	
+	if(session.getAttribute("user")==null)
+	{
+		response.sendRedirect("/logoutPatient");
+	}
+%>
+ <!-- Topbar Start -->
     <div class="container-fluid py-2 border-bottom d-none d-lg-block">
         <div class="container">
             <div class="row">
@@ -102,25 +112,7 @@ height: 100%;
     <!-- Topbar End -->
 
 
-	<form action="saveActivity" method="post">
-		<table>
-			<tr>
-				<td><label for="patientId">Patient ID:</label></td>
-				<td><input type="text" name="patientId" id="patientId"
-					value="${patientId}" readonly></td>
-			</tr>
-			<tr>
-				<td><label for="date">Date:</label></td>
-				<td><input path="date" type="date" id="date" name="datetime" ></td>
-			</tr>
-			<tr>
-				<td><label for="activity1">Activity:</label></td>
-				<td><input type="text" name="activity1" id="activity1"></td>
-
-				<td><label for="activity">Activity:</label></td>
-				<td><input type="text" name="activity" id="activity"></td>
-			</tr>
-
+	
 
     <!-- Navbar Start -->
     <div class="container-fluid sticky-top bg-white shadow-sm">
@@ -134,9 +126,10 @@ height: 100%;
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="/" class="nav-item nav-link active">Home</a>
+                       <a href="/pHome?patientEmail=${patientId }" class="nav-item nav-link active">Home</a>
                         <a href="/about" class="nav-item nav-link">About</a>
                         <a href="/contact" class="nav-item nav-link">Contact</a>
+                        <a href="/logoutPatient" class="nav-item nav-link">Logout</a>
                     </div>
                 </div>
             </nav>

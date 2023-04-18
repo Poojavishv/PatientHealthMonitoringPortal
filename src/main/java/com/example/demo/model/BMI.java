@@ -1,6 +1,8 @@
 package com.example.demo.model;
 
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,11 +12,11 @@ import jakarta.persistence.Id;
 public class BMI {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long idBMI;
+//    @Column(insertable=false, updatable=false)
     private String patientId;
-    private double glucoseLevel;
     private double height;
-    private String date;
+    private String dateBMI;
 
     private double weight;
 
@@ -29,25 +31,17 @@ public class BMI {
 		this.patientId = patientId;
 	}
 
-	public double getGlucoseLevel() {
-		return glucoseLevel;
-	}
-
-	public void setGlucoseLevel(double glucoseLevel) {
-		this.glucoseLevel = glucoseLevel;
-	}
-
-    
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 
 	
+	public Long getIdBMI() {
+		return idBMI;
+	}
+
+	public void setIdBMI(Long idBMI) {
+		this.idBMI = idBMI;
+	}
+
 	public double getHeight() {
 		return height;
 	}
@@ -73,20 +67,23 @@ public class BMI {
 	}
 	
 
-	public String getDate() {
-		return date;
+	
+
+	public String getDateBMI() {
+		return dateBMI;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDateBMI(String dateBMI) {
+		this.dateBMI = dateBMI;
 	}
 
 	@Override
 	public String toString() {
-		return "BMI [id=" + id + ", patientId=" + patientId + ", glucoseLevel=" + glucoseLevel + ", height=" + height
-				+ ", date=" + date + ", weight=" + weight + ", bmi=" + bmi + "]";
+		return "BMI [idBMI=" + idBMI + ", patientId=" + patientId + ", height=" + height + ", dateBMI=" + dateBMI
+				+ ", weight=" + weight + ", bmi=" + bmi + "]";
 	}
 
+	
 	
 
 	

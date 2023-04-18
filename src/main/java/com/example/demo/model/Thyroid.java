@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,27 +11,30 @@ import jakarta.persistence.Table;
 @Entity
 @Table
 public class Thyroid {    
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long thyroidId;
     
-   
+//    @Column(insertable=false, updatable=false)
     private String patientId;
     
 
-    private String timeOfDay;
+    private String timeOfDayThyroid;
     
     
     private Double thyroidLevel;
 
 
-	public Long getId() {
-		return id;
+	
+
+
+	public Long getThyroidId() {
+		return thyroidId;
 	}
 
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setThyroidId(Long thyroidId) {
+		this.thyroidId = thyroidId;
 	}
 
 
@@ -43,13 +48,16 @@ public class Thyroid {
 	}
 
 
-	public String getTimeOfDay() {
-		return timeOfDay;
+	
+
+
+	public String getTimeOfDayThyroid() {
+		return timeOfDayThyroid;
 	}
 
 
-	public void setTimeOfDay(String timeOfDay) {
-		this.timeOfDay = timeOfDay;
+	public void setTimeOfDayThyroid(String timeOfDayThyroid) {
+		this.timeOfDayThyroid = timeOfDayThyroid;
 	}
 
 
@@ -65,7 +73,7 @@ public class Thyroid {
 
 	@Override
 	public String toString() {
-		return "Thyroid [id=" + id + ", patientId=" + patientId + ", timeOfDay=" + timeOfDay + ", thyroidLevel="
+		return "Thyroid [id=" + thyroidId + ", patientId=" + patientId + ", timeOfDay=" + timeOfDayThyroid + ", thyroidLevel="
 				+ thyroidLevel + "]";
 	}
 

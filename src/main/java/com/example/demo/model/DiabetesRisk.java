@@ -17,12 +17,20 @@ public class DiabetesRisk {
     public Long diabetesId;
 	
     private String patientId;
+    private String diabetesRisk1;
+    
     @Autowired
     private static BloodCount bloodCount;
     // getters and setters
     
     public Long getDiabetesId() {
 		return diabetesId;
+	}
+	public String getDiabetesRisk1() {
+		return diabetesRisk1;
+	}
+	public void setDiabetesRisk1(String diabetesRisk1) {
+		this.diabetesRisk1 = diabetesRisk1;
 	}
 	public void setDiabetesId(Long diabetesId) {
 		this.diabetesId = diabetesId;
@@ -41,9 +49,11 @@ public class DiabetesRisk {
 		DiabetesRisk.bloodCount = bloodCount;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "DiabetesRisk [diabetesId=" + diabetesId + ", patientId=" + patientId + "]";
+		return "DiabetesRisk [diabetesId=" + diabetesId + ", patientId=" + patientId + ", diabetesRisk1="
+				+ diabetesRisk1 + "]";
 	}
 	public DiabetesRisk(String patientId, BloodCount bloodCount) {
 		super();

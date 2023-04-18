@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,6 +67,15 @@ height: 100%;
 </head>
 
 <body>
+<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	response.setHeader("Pragma", "no-cache");
+	
+	if(session.getAttribute("user")==null)
+	{
+		response.sendRedirect("/logoutDoctor");
+	}
+%>
     <!-- Topbar Start -->
     <div class="container-fluid py-2 border-bottom d-none d-lg-block">
         <div class="container">
@@ -77,6 +87,7 @@ height: 100%;
                         <a class="text-decoration-none text-body px-3" href=""><i class="bi bi-envelope me-2"></i>info@example.com</a>
                     </div>
                 </div>
+                
                 <div class="col-md-6 text-center text-lg-end">
                     <div class="d-inline-flex align-items-center">
                         <a class="text-body px-2" href="">
@@ -117,7 +128,7 @@ height: 100%;
                         <a href="/" class="nav-item nav-link active">Home</a>
                         <a href="/about" class="nav-item nav-link">About</a>
                         <a href="/contact" class="nav-item nav-link">Contact</a>
-                        <a href="/contact" class="nav-item nav-link">Logout</a>
+                        <a href="/logoutDoctor" class="nav-item nav-link">Logout</a>
                     </div>
                 </div>
             </nav>
@@ -130,7 +141,7 @@ height: 100%;
       <div class="container" align="center">
 
         <div class="section-title">
-          <h2>Welcome ${doctorName }</h2>
+          <h2>Welcome ${docEmail }</h2>
           <p>Hello. Wishing you the best day. Kindly check your appointment list to cure more and more patients.</p>
              </div>
 
@@ -140,6 +151,14 @@ height: 100%;
               <div class="icon"><i class="fas fa-notes-medical"></i></div>
               <h4><a href="/viewappointment">Appointments</a></h4>
               <p>Check all Available appointments</p>
+            </div>
+         
+           </div>
+           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+            <div class="icon-box">
+              <div class="icon"><i class="fas fa-notes-medical"></i></div>
+              <h4><a href="/ViewPatientRecords">Patient Records</a></h4>
+              <p>Check all Patient Health Records</p>
             </div>
          
            </div>

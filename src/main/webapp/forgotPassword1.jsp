@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>MEDICAL TOURISM Website </title>
+    <title>Patient Monitoring Portal </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -85,7 +85,7 @@ top: 13px;
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
                 <a href="index.html" class="navbar-brand">
-                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>MEDICAL TOURISM</h1>
+                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>PATIENT HEALTH MONITORING</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -114,8 +114,7 @@ top: 13px;
         <form>
          <br>
           <div class="text-center" align="center">
-            <h1 class="text-center" >Forgot Password Page</h1>
-            
+            <h1 class="text-center" >Forgot Password Page</h1>            
           </div>
 
          <br>
@@ -126,65 +125,6 @@ top: 13px;
            
           </div>
 
-          <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                    <label class="form-label" for="form3Example1m">First name</label>
-                      <input type="text" id="form3Example1m" class="form-control form-control-lg" placeholder="First Name" />
-                      
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                    <label class="form-label" for="form3Example1n">Last name</label>
-                      <input type="text" id="form3Example1n" class="form-control form-control-lg" placeholder="Last Name" />
-                      
-                    </div>
-                  </div>
-                </div>
-<div class="form-outline mb-4">
-<label class="form-label" for="form3Example99">Phone Number</label>
-                  <input type="number" id="form3Example99" class="form-control form-control-lg" placeholder="Contact Number"/>
-                  
-                </div>
-
-                <div class="form-outline mb-4">
-                 <label class="form-label" for="form3Example97">Email ID</label>
-                  <input type="text" id="form3Example97" class="form-control form-control-lg" placeholder="Email-ID"/>
-                 
-                </div>
-
-                      <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
-
-                  <h6 class="mb-0 me-4">Select Role: </h6>
-
-                  <div class="form-check form-check-inline mb-0 me-4">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                      value="option1" />
-                    <label class="form-check-label" for="femaleGender">Patient</label>
-                  </div>
-
-                  <div class="form-check form-check-inline mb-0 me-4">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                      value="option2" />
-                    <label class="form-check-label" for="maleGender">Doctor</label>
-                  </div>
-
-                  </div>
-
-                       
-
-          <!-- Password input -->
-          <div class="form-outline mb-3">
-            <input type="password" id="form3Example4" class="form-control form-control-lg"
-              placeholder="Enter New password" />
-            <label class="form-label" for="form3Example4"></label>
-          </div>
-          <div class="form-outline mb-3">
-            <input type="password" id="form3Example4" class="form-control form-control-lg"
-              placeholder="Re-Enter password" />
-            <label class="form-label" for="form3Example4"></label>
-          </div>
           
  <div class="text-center text-lg-start mt-4 pt-2">
             <button type="button" class="btn btn-primary btn-lg"

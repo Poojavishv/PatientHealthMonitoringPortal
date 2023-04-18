@@ -67,7 +67,17 @@ height: 100%;
 
 
 </head>
-<body> <!-- Topbar Start -->
+<body>
+<%
+	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+	response.setHeader("Pragma", "no-cache");
+	
+	if(session.getAttribute("user")==null)
+	{
+		response.sendRedirect("/logoutPatient");
+	}
+%>
+ <!-- Topbar Start -->
     <div class="container-fluid py-2 border-bottom d-none d-lg-block">
         <div class="container">
             <div class="row">
@@ -115,9 +125,10 @@ height: 100%;
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="/" class="nav-item nav-link active">Home</a>
+                       <a href="/pHome?patientEmail=${patientId }" class="nav-item nav-link active">Home</a>
                         <a href="/about" class="nav-item nav-link">About</a>
                         <a href="/contact" class="nav-item nav-link">Contact</a>
+                        <a href="/logoutPatient" class="nav-item nav-link">Logout</a>
                     </div>
                 </div>
             </nav>
@@ -141,8 +152,8 @@ height: 100%;
               
             </div>
       <div class="form-outline mb-4">
-    <label for="timeOfDay">Time of the day:</label>
-    <select id="timeOfDay" name="timeOfDay">
+    <label for="timeOfDayBloodCount">Time of the day:</label>
+    <select id="timeOfDayBloodCount" name="timeOfDayBloodCount">
         <option value="morning">Morning</option>
         <option value="afternoon">Afternoon</option>
         <option value="evening">Evening</option>

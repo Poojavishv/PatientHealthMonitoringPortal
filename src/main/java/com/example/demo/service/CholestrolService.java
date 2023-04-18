@@ -19,4 +19,9 @@ private CholestrolRepo chlolestrolRepository;
     	chlolestrolRepository.save(cholestrolMonitor);
     }
 
+	public CholestrolMonitor getByPatientId(String patientEmail) {
+		CholestrolMonitor cholestrolMonitor=chlolestrolRepository.findBypatientId(patientEmail);
+		return cholestrolMonitor;
+	}
+
 }

@@ -14,11 +14,13 @@ import jakarta.transaction.Transactional;
 public class ActivityService {
 	@Autowired
 	private ActivityRepository activityRepository;
+	
 	@Transactional
     public void saveActivityDetails(Activity activity) {
 		activityRepository.save(activity);
  }
-	 public ArrayList<Activity> getActivityList()
+	
+	public ArrayList<Activity> getActivityList()
 		{
 			ArrayList<Activity> activityList = new ArrayList<>();
 			activityList.addAll(activityRepository.findAll());

@@ -1,3 +1,6 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="com.example.demo.model.Doctor"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html>
@@ -120,9 +123,11 @@ height: 100%;
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="/" class="nav-item nav-link active">Home</a>
+                        <a href="/pHome?patientEmail=${patientId }" class="nav-item nav-link active">Home</a>
                         <a href="/about" class="nav-item nav-link">About</a>
                         <a href="/contact" class="nav-item nav-link">Contact</a>
+                        <a href="/logoutPatient" class="nav-item nav-link">Logout</a>
+                        
                     </div>
                 </div>
             </nav>
@@ -135,13 +140,31 @@ height: 100%;
       <div class="container" align="center">
 
         <div class="section-title">
-          <h2>Welcome ${patientEmail }</h2>
+          <h2>Welcome ${patientId }</h2>
           <p>Health is Wealth .Here you can check your health condition,Activities and prescription given to you are from most famous surgents, kindly follow it.</p>
              </div>
 
         </div>
-
-    
+       <div class="container" align="center">
+              <select name="doctor" id="doctor" class="form-select" value="${doctor }">
+              <% ArrayList<Doctor> doctorList = (ArrayList) request.getAttribute("doctorList");
+              		if(request.getAttribute("doctorList") !=null)
+              		{
+              			Iterator<Doctor> doctorIterator =  doctorList.iterator();
+              			while(doctorIterator.hasNext())
+              			{
+              				Doctor doctorDetails = doctorIterator.next();
+              			
+              %>
+                <option value="">Select Doctor</option>
+                <option value="<%= doctorDetails.getDocId() %>"><%= doctorDetails.getDocFname()+" "+doctorDetails.getDocLname()  %></option>
+                <% 
+              			}
+              		}
+                %>
+              </select>
+              <div class="validate"></div>
+            </div>
     </section><!-- End Services Section -->
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
@@ -191,6 +214,7 @@ height: 100%;
             <div class="icon-box">
               <div class="icon"><i class="fas fa-wheelchair"></i></div>
               <h4><a href="/activities?patientEmail=${patientId }">Activity Tracker</a></h4>
+               <h4><a href="/viewpatientUpdateActivity?patientEmail=${patientId }">Activity Prescription </a></h4>
               <p>Monitor your all Activities   </p>
             </div>
           </div>
@@ -235,10 +259,13 @@ height: 100%;
             </div>
           </div>
                     <div class="text-center" ><a href="/viewPrescription?patientEmail=${patientId}">View Prescription</a></div>
-          
+                    <br>
+                    <div class="text-center" ><a href="/GeneratePatientReport?patientEmail=${patientId}">Generate Report</a></div>
+
                     
                     <br>
-                    <div class="text-center"><button type="submit">View Health Records</button></div>
+                   <div class="text-center" ><a href="/viewPrescPatientRecord?patientEmail=${patientId}">View Health Records</a></div>
+                   
           
 
         </div>

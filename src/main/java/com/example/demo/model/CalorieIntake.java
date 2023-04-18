@@ -3,6 +3,8 @@ package com.example.demo.model;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,16 +15,18 @@ public class CalorieIntake {
 
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.AUTO)
-	    private Long id;
+	    private Long calorieIntakeId;
+//	    @Column(insertable=false, updatable=false)
 	    private String patientId;
-	    private LocalDate date;
+	    private LocalDate dateCalorieIntake;
 	    private Integer calories;
 	    private LocalTime timeOfIntake;
-		public Long getId() {
-			return id;
+		
+		public Long getCalorieIntakeId() {
+			return calorieIntakeId;
 		}
-		public void setId(Long id) {
-			this.id = id;
+		public void setCalorieIntakeId(Long calorieIntakeId) {
+			this.calorieIntakeId = calorieIntakeId;
 		}
 		public String getPatientId() {
 			return patientId;
@@ -30,11 +34,12 @@ public class CalorieIntake {
 		public void setPatientId(String patientId) {
 			this.patientId = patientId;
 		}
-		public LocalDate getDate() {
-			return date;
+		
+		public LocalDate getDateCalorieIntake() {
+			return dateCalorieIntake;
 		}
-		public void setDate(LocalDate date) {
-			this.date = date;
+		public void setDateCalorieIntake(LocalDate dateCalorieIntake) {
+			this.dateCalorieIntake = dateCalorieIntake;
 		}
 		public Integer getCalories() {
 			return calories;
@@ -50,7 +55,7 @@ public class CalorieIntake {
 		}
 		@Override
 		public String toString() {
-			return "CalorieIntake [id=" + id + ", patientId=" + patientId + ", date=" + date + ", calories=" + calories
+			return "CalorieIntake [id=" + calorieIntakeId + ", patientId=" + patientId + ", date=" + dateCalorieIntake + ", calories=" + calories
 					+ ", timeOfIntake=" + timeOfIntake + "]";
 		}
 		

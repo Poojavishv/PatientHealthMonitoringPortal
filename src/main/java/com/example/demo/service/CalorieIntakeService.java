@@ -3,6 +3,7 @@ package com.example.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.BMI;
 import com.example.demo.model.CalorieIntake;
 import com.example.demo.repo.CalorieRepo;
 
@@ -18,6 +19,11 @@ public class CalorieIntakeService {
     public void saveCalorieCount(CalorieIntake calorieIntake) {
         calorieRepository.save(calorieIntake);
     }
+
+	public CalorieIntake getByPatientId(String patientEmail) {
+		CalorieIntake ci = calorieRepository.findBypatientId(patientEmail);
+    	return ci;
+	}
 }
 
 

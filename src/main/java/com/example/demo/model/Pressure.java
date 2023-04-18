@@ -2,6 +2,8 @@ package com.example.demo.model;
 
 import java.time.LocalTime;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,22 +11,24 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Pressure {
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Long pressureId;
+//    @Column(insertable=false, updatable=false)
     private String patientId;
 
-    private LocalTime timeOfDay;
+    private LocalTime timeOfDayPressure;
 
     private Integer pressureLevel;
 
-	public Long getId() {
-		return id;
+	
+
+	public Long getPressureId() {
+		return pressureId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setPressureId(Long pressureId) {
+		this.pressureId = pressureId;
 	}
 
 	public String getPatientId() {
@@ -35,12 +39,13 @@ public class Pressure {
 		this.patientId = patientId;
 	}
 
-	public LocalTime getTimeOfDay() {
-		return timeOfDay;
+	
+	public LocalTime getTimeOfDayPressure() {
+		return timeOfDayPressure;
 	}
 
-	public void setTimeOfDay(LocalTime timeOfDay) {
-		this.timeOfDay = timeOfDay;
+	public void setTimeOfDayPressure(LocalTime timeOfDayPressure) {
+		this.timeOfDayPressure = timeOfDayPressure;
 	}
 
 	public Integer getPressureLevel() {
