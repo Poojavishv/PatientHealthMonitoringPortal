@@ -1,3 +1,5 @@
+<%@page import="com.example.demo.model.Appointment"%>
+<%@page import="com.example.demo.model.Patient"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.example.demo.model.PatientRecords"%>
 <%@page import="java.util.ArrayList"%>
@@ -190,47 +192,28 @@ table th {
                       <tr>
                        
                         <th scope="col">S.No</th>
-                        <th scope="col">Patient ID</th>
-                        <th scope="col">BMI</th>
-                        <th scope="col">Glucose</th>
-                        <th scope="col">Calorie Intake</th>
-                        <th scope="col">Cholestrol Monitor</th>
-                         <th scope="col">RBC Count</th>
-                         <th scope="col">WBC Count</th>
-                         <th scope="col">Platlet Count</th>
-                        <th scope="col">Pressure</th>
-                        <th scope="col">Thyroid</th>
+                        <th scope="col">Patient Name</th>
 						<th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
                   
           
-                     <% ArrayList<PatientRecords> patientRecordsList = (ArrayList) request.getAttribute("patientRecordsList");
-              		if(request.getAttribute("patientRecordsList") !=null)
+                     <% ArrayList<Appointment> patientList = (ArrayList) request.getAttribute("appointmentList");
+              		if(request.getAttribute("appointmentList") !=null)
               		{
-              			Iterator<PatientRecords> patientRecordsIterator =  patientRecordsList.iterator();
-              			while(patientRecordsIterator.hasNext())
+              			Iterator<Appointment> patientIterator =  patientList.iterator();
+              			while(patientIterator.hasNext())
               			{
-              				PatientRecords patientRecordsDetails = patientRecordsIterator.next();
+              				Appointment patientDetails = patientIterator.next();
               			
                 
                  %>
                       <tr>
                        
                         <td><%= i=i+1 %></td>
-                        <td> <%= patientRecordsDetails.getPatientId()  %></td>
-                        <td><%= patientRecordsDetails.getBmi() %></td>
-                        <td><%= patientRecordsDetails.getGlucoseLevel() %></td>
-                        <td><%= patientRecordsDetails.getCalories() %></td>
-                        <td> <%= patientRecordsDetails.getCholestrolLevel()  %></td>
-                        <td><%= patientRecordsDetails.getRbcCount() %></td>
-                        <td><%= patientRecordsDetails.getWbcCount() %></td>
-                        <td><%= patientRecordsDetails.getPlateletCount() %></td>
-                        <td> <%= patientRecordsDetails.getPressureLevel()  %></td>
-                        <td><%= patientRecordsDetails.getThyroidLevel() %></td>
-                        
-                       <td> <a href="http://localhost:8080/UpdatePatientHealthRecord?patientRecId=<%= patientRecordsDetails.getPatientRecId() %>" id="link-1">Action</a></td>
+                        <td> <%= patientDetails.getPatientName()%></td>  
+                       <td> <a href="UpdatePatientRecord?patientId=<%= patientDetails.getPatientId() %>&pName=<%= patientDetails.getPatientName() %>" id="link-1">View Report</a></td>
                         <td>
                           <button type="button" class="btn btn-danger btn-sm px-3">
                             <i class="fas fa-times"></i>

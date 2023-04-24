@@ -145,26 +145,7 @@ height: 100%;
              </div>
 
         </div>
-       <div class="container" align="center">
-              <select name="doctor" id="doctor" class="form-select" value="${doctor }">
-              <% ArrayList<Doctor> doctorList = (ArrayList) request.getAttribute("doctorList");
-              		if(request.getAttribute("doctorList") !=null)
-              		{
-              			Iterator<Doctor> doctorIterator =  doctorList.iterator();
-              			while(doctorIterator.hasNext())
-              			{
-              				Doctor doctorDetails = doctorIterator.next();
-              			
-              %>
-                <option value="">Select Doctor</option>
-                <option value="<%= doctorDetails.getDocId() %>"><%= doctorDetails.getDocFname()+" "+doctorDetails.getDocLname()  %></option>
-                <% 
-              			}
-              		}
-                %>
-              </select>
-              <div class="validate"></div>
-            </div>
+       
     </section><!-- End Services Section -->
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
@@ -260,11 +241,10 @@ height: 100%;
           </div>
                     <div class="text-center" ><a href="/viewPrescription?patientEmail=${patientId}">View Prescription</a></div>
                     <br>
-                    <div class="text-center" ><a href="/GeneratePatientReport?patientEmail=${patientId}">Generate Report</a></div>
 
                     
                     <br>
-                   <div class="text-center" ><a href="/viewPrescPatientRecord?patientEmail=${patientId}">View Health Records</a></div>
+                   <div class="text-center" ><a href="/viewPrescPatientRecord?patientId=${patientId}">View Health Records</a></div>
                    
           
 

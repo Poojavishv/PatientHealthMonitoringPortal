@@ -23,6 +23,12 @@ public class Patient {
 	private Integer patientAge;
 	private String patientUserId;
 	private String patientCity;
+	private String paSq1;
+	private String paSq2;
+	private String paSq3;
+	private String paSa1;
+	private String paSa2;
+	private String paSa3;
 	
 	public String getPatientFname() {
 		return patientFname;
@@ -77,6 +83,48 @@ public class Patient {
 	}
 	public void setPatientCity(String patientCity) {
 		this.patientCity = patientCity;
+	}
+	public Long getPatientId() {
+		return patientId;
+	}
+	public void setPatientId(Long patientId) {
+		this.patientId = patientId;
+	}
+	public String getPaSq1() {
+		return paSq1;
+	}
+	public void setPaSq1(String paSq1) {
+		this.paSq1 = paSq1;
+	}
+	public String getPaSq2() {
+		return paSq2;
+	}
+	public void setPaSq2(String paSq2) {
+		this.paSq2 = paSq2;
+	}
+	public String getPaSq3() {
+		return paSq3;
+	}
+	public void setPaSq3(String paSq3) {
+		this.paSq3 = paSq3;
+	}
+	public String getPaSa1() {
+		return paSa1;
+	}
+	public void setPaSa1(String paSa1) {
+		this.paSa1 = paSa1;
+	}
+	public String getPaSa2() {
+		return paSa2;
+	}
+	public void setPaSa2(String paSa2) {
+		this.paSa2 = paSa2;
+	}
+	public String getPaSa3() {
+		return paSa3;
+	}
+	public void setPaSa3(String paSa3) {
+		this.paSa3 = paSa3;
 	}
 	
 	

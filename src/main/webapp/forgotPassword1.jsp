@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Patient Monitoring Portal </title>
+    <title>MEDICAL TOURISM WEBSITE </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -85,7 +85,7 @@ top: 13px;
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
                 <a href="index.html" class="navbar-brand">
-                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>PATIENT HEALTH MONITORING</h1>
+                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>MEDICAL TOURISM</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -111,26 +111,27 @@ top: 13px;
       </div>
      
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-        <form>
+        <form action="/sqp">
          <br>
           <div class="text-center" align="center">
-            <h1 class="text-center" >Forgot Password Page</h1>            
+            <h1 class="text-center" >Forgot Password Page</h1>
+            
           </div>
 
          <br>
-          <div class="form-outline mb-4">
-           <label class="form-label" for="form3Example3">USER ID</label>
-            <input type="text" id="form3Example3" class="form-control form-control-lg"
-              placeholder="User ID" />
-           
-          </div>
+          
 
-          
+                <div class="form-outline mb-4">
+                 <label class="form-label" for="form3Example97">Email ID</label>
+                  <input type="text" id="form3Example97" class="form-control form-control-lg" placeholder="Email-ID" name="patientEmail" value/>
+                 
+                </div>     
  <div class="text-center text-lg-start mt-4 pt-2">
-            <button type="button" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+            <button type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Check</button>
           
           </div>
+          </form>
  <br>
               </div>
             </div>
@@ -168,4 +169,4 @@ top: 13px;
     <script src="js/main.js"></script>
 </body>
 
-</html>
+</html

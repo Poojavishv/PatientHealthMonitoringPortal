@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +25,10 @@ public class BloodCountService {
     {
     	BloodCount bc = bloodCountRepository.findBypatientId(patientEmail);
     	return bc;
-    }
-}
+	    }
+	    		
+	    public List<BloodCount> getBloodCountReport(String patientEmail)
+	    {
+	    	return bloodCountRepository.getBypatientId(patientEmail);
+	    }
+	}

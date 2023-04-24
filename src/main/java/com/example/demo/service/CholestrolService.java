@@ -1,9 +1,12 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.CholestrolMonitor;
+import com.example.demo.model.GlucoseI;
 import com.example.demo.repo.CholestrolRepo;
 
 
@@ -23,5 +26,10 @@ private CholestrolRepo chlolestrolRepository;
 		CholestrolMonitor cholestrolMonitor=chlolestrolRepository.findBypatientId(patientEmail);
 		return cholestrolMonitor;
 	}
+
+	 public List<CholestrolMonitor> getcholestrolMonitorReport(String patientEmail)
+	    {
+	    	return chlolestrolRepository.getBypatientId(patientEmail);
+	    }
 
 }

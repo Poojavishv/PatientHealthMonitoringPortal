@@ -120,7 +120,8 @@ height: 100%;
         <form action="/loginCheckDoctor" method="post">
           <div class="text-center" align="center">
           <h3 class="text-center" style="color: green">${smsg }</h3>
-            <h3 class="text-center" style="color: red">${emsg }</h3>
+       <h3 class="text-center" style="color: green">${successMsg }</h3>
+           <h3 class="text-center" style="color: red">${emsg }</h3>
             <h1 class="text-center" >Doctor Login Page</h1>
             
           </div>
@@ -151,7 +152,7 @@ height: 100%;
                 Remember me
               </label>
             </div>
-            <a href="#!" class="text-body">Forgot password?</a>
+            <a href="/forgotPassword" class="text-body">Forgot password?</a>
           </div>
 
           <div class="text-center text-lg-start mt-4 pt-2">

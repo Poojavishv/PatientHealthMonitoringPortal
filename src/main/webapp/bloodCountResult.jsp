@@ -128,7 +128,7 @@ height: 100%;
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                       <a href="/pHome?patientEmail=${patientId }" class="nav-item nav-link active">Home</a>
+                       <a href="/pHome" class="nav-item nav-link active">Home</a>
                         <a href="/about" class="nav-item nav-link">About</a>
                         <a href="/contact" class="nav-item nav-link">Contact</a>
                         <a href="/logoutPatient" class="nav-item nav-link">Logout</a>

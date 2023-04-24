@@ -225,7 +225,37 @@
 								name="patientCity" />
 
 						</div>
-
+<div class="form-outline mb-3">
+          <label class="form-label" for="paSq1">Security Question 1</label>
+            <input type="text" id="paSq1" class="form-control form-control-lg" name="paSq1"
+              placeholder="Favourite Sport" />
+              
+              <label class="form-label" for="paSa1">Security Answer 1</label>
+            <input type="text" id="paSa1" class="form-control form-control-lg" name="paSa1"
+              placeholder="Favourite Sport" />
+          </div>
+          
+          <div class="form-outline mb-3">
+          <label class="form-label" for="paSq2">Security Question 2</label>
+            <input type="text" id="paSq2" class="form-control form-control-lg" name="paSq2"
+              placeholder="Name of Pet" />
+              
+              <label class="form-label" for="paSa2">Security Answer 2</label>
+            <input type="text" id="paSa2" class="form-control form-control-lg" name="paSa2"
+              placeholder="Name of Pet" />
+          </div>
+          
+          <div class="form-outline mb-3">
+          <label class="form-label" for="paSq3">Security Question 3</label>
+            <input type="text" id="paSq3" class="form-control form-control-lg" name="paSq3"
+              placeholder="Place of Birth" />
+              
+              <label class="form-label" for="paSa3">Security Answer 3</label>
+            <input type="text" id="paSa3" class="form-control form-control-lg" name="paSa3"
+              placeholder="Place of Birth" />
+              
+              
+          </div>
 
 
 						<div class="text-center text-lg-start mt-4 pt-2">

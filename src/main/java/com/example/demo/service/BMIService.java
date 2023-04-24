@@ -30,6 +30,12 @@ public class BMIService {
 	BMI b = repo.findBypatientId(patientEmail);
     	return b;
 	}
+	
+	public List<BMI> getBMIReport(String patientEmail)
+	{
+		List<BMI> bmiListValues = repo.getByPatientId(patientEmail);
+		return bmiListValues;
+	}
 //	
 	
 	/*public List<BMI> getBMIListByPatientId(String patientEmail) {

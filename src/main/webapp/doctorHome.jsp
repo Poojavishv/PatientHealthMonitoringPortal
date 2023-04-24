@@ -149,7 +149,7 @@ height: 100%;
            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
             <div class="icon-box">
               <div class="icon"><i class="fas fa-notes-medical"></i></div>
-              <h4><a href="/viewappointment">Appointments</a></h4>
+              <h4><a href="/viewappointment?docEmail=${docEmail}">Appointments</a></h4>
               <p>Check all Available appointments</p>
             </div>
          

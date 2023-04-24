@@ -113,7 +113,7 @@ table th {
 	
 	if(session.getAttribute("user")==null)
 	{
-		response.sendRedirect("/logoutPatient");
+		response.sendRedirect("/logoutDoctor");
 	}
 %>
     <!-- Topbar Start -->
@@ -164,10 +164,10 @@ table th {
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                        <a href="/pHome" class="nav-item nav-link active">Home</a>
+                        <a href="/dHome" class="nav-item nav-link active">Home</a>
                         <a href="/about" class="nav-item nav-link">About</a>
                         <a href="/contact" class="nav-item nav-link">Contact</a>
-                        <a href="/logoutPatient" class="nav-item nav-link">Logout</a>
+                        <a href="/logoutDoctor" class="nav-item nav-link">Logout</a>
                     </div>
                 </div>
             </nav>
@@ -179,7 +179,7 @@ table th {
     <section id="appointment" class="appointment section-bg">
       <div class="container"> <h4 style="color: green" align="center">${successMessage}</h4>
 
-        <form action="/SavePatientHealthRecord" method="post" role="form" class="php-email-form">
+        
 
         <div class="section-title">
           <h2>${pName } Health Records</h2>
@@ -466,42 +466,24 @@ table th {
       </div>
     </div>
   </div>
- <div class="accordion-item">
-    <h2 class="accordion-header" id="panelsStayOpen-headingEight">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">
-        View Prescription
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
-      <div class="accordion-body">
-    <table class="table">
-      <thead>
-      <tr>
-      <th scope="col">#</th>
-      <th scope="col">Doctor Name</th>
-      <th scope="col">Prescription</th>
-    
-      </tr>
-      </thead>
-      <tbody>
-      
-    
-      <tr>
-      <td scope="row"> 1 </td>
-      <td>${patientRecordsValues.getDocName() }
-      <td>${patientRecordsValues.getUpdatePatientRec() }</td>
-   
-      
-      </tr>
-     
-      </tbody>
-      </table>
-      </div>
-    </div>
-    </div>
+  
+  <form action="/SavePatientHealthRecord" method="post" role="form" class="php-email-form">
+  <input type="text" name="patientId" value="${patientDetails.getPatientEmail() }" style="display: none;">
+  <input type="text" name="patientName" value="${patientDetails.getPatientFname()}  ${patientDetails.getPatientLname() }" style="display: none;">
+  <input type="text" name="docId" value="${doctorDetails.getDocEmail() }" style="display: none;">
+  <input type="text" name="docName" value="${doctorDetails.getDocFname() } ${doctorDetails.getDocLname()}" style="display: none;">
+  <div class="form-group mt-3">
+            <textarea class="form-control" name="updatePatientRec" id="updatePatientRec" rows="5" placeholder="update Patient Records"></textarea>
+            <div class="validate"></div>
+          </div>
+          <div class="text-center"><button type="submit">Update Records</button></div>
+   </form>
+          <br>
+          <div class="text-center" ><a href="/dHome">Back to Home</a></div>
+</div>
         
           
-          </form>
+         
          
       </div>
     </section><!-- End Appointment Section -->

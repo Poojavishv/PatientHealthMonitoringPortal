@@ -196,6 +196,38 @@ top: 13px;
               placeholder="Enter password" />
           </div>
           
+          <div class="form-outline mb-3">
+          <label class="form-label" for="docSq1">Security Question 1</label>
+            <input type="text" id="docSq1" class="form-control form-control-lg" name="docSq1"
+              placeholder="Favourite Sport" />
+              
+              <label class="form-label" for="docSa1">Security Answer 1</label>
+            <input type="text" id="docSa1" class="form-control form-control-lg" name="docSa1"
+              placeholder="Favourite Sport" />
+          </div>
+          
+          <div class="form-outline mb-3">
+          <label class="form-label" for="docSq2">Security Question 2</label>
+            <input type="text" id="docSq2" class="form-control form-control-lg" name="docSq2"
+              placeholder="Name of Pet" />
+              
+              <label class="form-label" for="docSa2">Security Answer 2</label>
+            <input type="text" id="docSa2" class="form-control form-control-lg" name="docSa2"
+              placeholder="Name of Pet" />
+          </div>
+          
+          <div class="form-outline mb-3">
+          <label class="form-label" for="docSq3">Security Question 3</label>
+            <input type="text" id="docSq3" class="form-control form-control-lg" name="docSq3"
+              placeholder="Place of Birth" />
+              
+              <label class="form-label" for="docSa3">Security Answer 3</label>
+            <input type="text" id="docSa3" class="form-control form-control-lg" name="docSa3"
+              placeholder="Place of Birth" />
+              
+              
+          </div>
+          
                 
  <div class="text-center text-lg-start mt-4 pt-2">
             <button type="submit" class="btn btn-primary btn-lg"

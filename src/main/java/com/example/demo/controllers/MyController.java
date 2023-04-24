@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -136,12 +137,16 @@ public class MyController {
 	    }
 	 @RequestMapping("/viewappointment")
 		public ModelAndView appviewloginView(HttpServletRequest req,String docEmail) {
-			ArrayList<Appointment> appointmentList = appointmentService.getAppointmentList();
+			System.out.println(docEmail);
+			ArrayList<Appointment> appointmentList1 = appointmentService.getAppointmentList();
+			System.out.println(appointmentList1);
+			req.setAttribute("appointmentList1", appointmentList1);
+			ArrayList<Appointment> appointmentList = appointmentService.getAppointmentByDoctorList(req.getSession().getAttribute("user").toString());
 			System.out.println(appointmentList);
 			req.setAttribute("appointmentList", appointmentList);
-
 			
 			ModelAndView mv = new ModelAndView("updateAppoint");
+			mv.addObject("docId",docEmail );
 			mv.addObject("successMessage", "");
 			return mv;
 		}
@@ -205,9 +210,13 @@ public class MyController {
 
 	}
 	@RequestMapping("dHome")
-	public ModelAndView doctorHome()
+	public ModelAndView doctorHome(String docEmail)
 	{
+		System.out.println(docEmail);
+
 		ModelAndView mv = new ModelAndView("doctorHome");
+		mv.addObject("docId",docEmail );
+
 		return mv;
 	}
 	@RequestMapping("/logoutDoctor")
@@ -224,10 +233,10 @@ public class MyController {
 	public ModelAndView patientLoginCheck(String patientEmail, String patientPassword,HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		if (patientService.patientLoginCheck(patientEmail, patientPassword)) {
+			ArrayList<Doctor> doctorList = docService.getDoctorList();
+			System.out.println(doctorList);
+			request.setAttribute("doctorList", doctorList);
 			
-				ArrayList<Doctor> doctorList = docService.getDoctorList();
-				System.out.println(doctorList);
-				request.setAttribute("doctorList", doctorList);
 			HttpSession session = request.getSession();
 			session.setAttribute("user", patientEmail);
 			mv.addObject("patientId",patientEmail);
@@ -242,10 +251,10 @@ public class MyController {
 	}
 	
 	@RequestMapping("pHome")
-	public ModelAndView patientHome(String patientEmail)
+	public ModelAndView patientHome(String patientEmail,HttpServletRequest req)
 	{
 		ModelAndView mv = new ModelAndView("patientHome");
-		mv.addObject("patientId", patientEmail);
+		mv.addObject("patientId", req.getSession().getAttribute("user").toString());
 		return mv;
 	}
 	
@@ -359,6 +368,109 @@ public class MyController {
 		ModelAndView mv = new ModelAndView("forgotPassword1");
 		return mv;
 	}
+	@RequestMapping("/sqp")
+	public ModelAndView secirityQuestionsPatientView(String patientEmail)
+	{
+		Patient patient =  patientService.getSecurityQuestions(patientEmail);
+		ModelAndView mv = new ModelAndView("forgotPasswordSecQuesForPatient");
+		mv.addObject("patientEmail", patientEmail);
+		mv.addObject("patientDetails", patient);
+		
+		return mv;
+	}
+	@RequestMapping("/checkSQp")
+	public ModelAndView checkSQPatientView(String patientEmail,String paSa1,String paSa2,String paSa3)
+	{
+		boolean validUser = patientService.checkQuationAnswerPatient(patientEmail, paSa1, paSa2, paSa3);
+		if(validUser)
+		{
+			ModelAndView mv = new ModelAndView("resetPassword1");
+			
+			mv.addObject("patientEmail", patientEmail);
+			mv.addObject("successMsg", "password Reset Succesfully");
+			return mv;
+		}
+		else
+		{
+			ModelAndView mv = new ModelAndView("forgotPassword1");
+			mv.addObject("errorMsg", "Not a valid user");
+			return mv;
+		}
+	}
+	
+@RequestMapping("/updatePasswordp")
+	public ModelAndView updatePasswordPatientView(String patientEmail,String patientPassword,String cpatientPassword)
+	{
+		if(patientPassword.equals(cpatientPassword))
+		{
+			patientService.updatePatientPassword(patientEmail,patientPassword);
+			ModelAndView mv = new ModelAndView("userlogin");
+			mv.addObject("successMsg", "Password Reset Succesfully");
+
+			return mv;
+		}
+		else
+		{
+			ModelAndView mv = new ModelAndView("resetPassword1");
+			mv.addObject("emsg", "Password and Conform didnt match");
+			return mv;
+		}
+	}
+	
+	
+	@RequestMapping("/forgotPassword")
+	public ModelAndView forgotPasswordView() {
+		ModelAndView mv = new ModelAndView("forgotPassword");
+		return mv;
+	}
+	
+	@RequestMapping("/sq")
+	public ModelAndView secirityQuestionsView(String docEmail)
+	{
+		Doctor doctor =  docService.getSecurityQustions(docEmail);
+		ModelAndView mv = new ModelAndView("forgotPasswordsecurityquestions");
+		mv.addObject("docEmail", docEmail);
+		mv.addObject("docDetails", doctor);
+		
+		return mv;
+	}
+	
+	@RequestMapping("/checkSQ")
+	public ModelAndView checkSQView(String docEmail,String docSa1,String docSa2,String docSa3)
+	{
+		boolean validUser = docService.checkQuationAnswer(docEmail, docSa1, docSa2, docSa3);
+		if(validUser)
+		{
+			ModelAndView mv = new ModelAndView("resetPassword");
+			mv.addObject("docEmail", docEmail);
+			return mv;
+		}
+		else
+		{
+			ModelAndView mv = new ModelAndView("forgotPassword");
+			mv.addObject("errorMsg", "Not a valid user");
+			return mv;
+		}
+	}
+	
+@RequestMapping("/updatePassword")
+	public ModelAndView updatePasswordView(String docEmail,String docPassword,String cdocPassword)
+	{
+		if(docPassword.equals(cdocPassword))
+		{
+			docService.updatePassword(docEmail,docPassword);
+			ModelAndView mv = new ModelAndView("doctorlogin");
+			mv.addObject("successMsg", "Password Reset Succesfully");
+			return mv;
+		}
+		else
+		{
+			ModelAndView mv = new ModelAndView("resetPassword");
+			mv.addObject("emsg", "Password and Conform didnt match");
+			return mv;
+		}
+	}
+	
 	 @RequestMapping(value = "/BMI")
 	    
 	 public ModelAndView showLoginForm(String patientEmail) {
@@ -532,7 +644,10 @@ public class MyController {
 	    }
 	 
 	 @RequestMapping("/diet")
-	 public ModelAndView showAddDiet(String patientEmail) {
+	 public ModelAndView showAddDiet(String patientEmail,HttpServletRequest req) {
+		 ArrayList<Doctor> doctorList = docService.getDoctorList();
+			System.out.println(doctorList);
+			req.setAttribute("doctorList", doctorList);
 		 ModelAndView modelAndView = new ModelAndView("dietResult");
 	        modelAndView.addObject("patientId",patientEmail);
 	        modelAndView.addObject("successMessage", "");
@@ -553,20 +668,22 @@ public class MyController {
 	        
 	    }
 	 @RequestMapping("/viewDiet")
-		public ModelAndView appviewDietView(HttpServletRequest req) {
-			ArrayList<Diet> dietList = dietService.getDietList();
+		public ModelAndView appviewDietView(HttpServletRequest req,String docEmail) {
+			System.out.println(docEmail);
+			ArrayList<Diet> dietList = dietService.getDietByDoctorList(req.getSession().getAttribute("user").toString());
 			System.out.println(dietList);
 			req.setAttribute("dietList", dietList);
 			ModelAndView mv = new ModelAndView("updateDiet");
+			mv.addObject("docId",docEmail );
 			mv.addObject("successMessage", "");
 			return mv;
 		}
 	 @RequestMapping("/UpdateDiet")
 	    
 	 public ModelAndView showUpdateDietForm(Long id) {
-		 Diet DietDetails = dietService.getById(id);
+		 Diet dietDetails = dietService.getById(id);
 		 ModelAndView mv=new ModelAndView("updateDietDetails");
-		 mv.addObject("DietDetails",DietDetails);
+		 mv.addObject("dietDetails",dietDetails);
 	        return mv;
 	    }
 	 @RequestMapping("/SaveUpdateDiet")
@@ -602,7 +719,10 @@ public class MyController {
 	 
 
 	 @RequestMapping("/activities")
-		public ModelAndView showactivities(String patientEmail) {
+		public ModelAndView showactivities(String patientEmail,HttpServletRequest req) {
+		 ArrayList<Doctor> doctorList = docService.getDoctorList();
+			System.out.println(doctorList);
+			req.setAttribute("doctorList", doctorList);
 			ModelAndView modelAndView = new ModelAndView("activities");
 			 modelAndView.addObject("patientId",patientEmail);
 		        modelAndView.addObject("successMessage", "");
@@ -620,11 +740,15 @@ public class MyController {
 		}
 		
 	 @RequestMapping("/viewActivity")
-			public ModelAndView appviewActivityView(HttpServletRequest req) {
-				ArrayList<Activity> activityList = activityService.getActivityList();
+			public ModelAndView appviewActivityView(HttpServletRequest req,String docEmail) {
+				
+				ArrayList<Activity> activityList = activityService.getActivityByDoctorList(req.getSession().getAttribute("user").toString());
 				System.out.println(activityList);
 				req.setAttribute("activityList", activityList);
+		
+			
 				ModelAndView mv = new ModelAndView("updateActivity");
+				mv.addObject("docId",docEmail );
 				mv.addObject("successMessage", "");
 				return mv;
 			}
@@ -692,52 +816,63 @@ public class MyController {
 	    {
 	    	
 	    	ModelAndView mv = new ModelAndView("generateRecord");
-	    	patientRecordService.addPatientRecordDetails(patientEmail);
+	    	//patientRecordService.addPatientRecordDetails(patientEmail);
 
 	    	return mv;
 	    }
 	    
 	    @RequestMapping(value = "/ViewPatientRecords")
-	    public ModelAndView ViewPatientRecords(HttpServletRequest req) {
+	    public ModelAndView ViewPatientRecords(HttpServletRequest request) {
 	    	
-				ArrayList<PatientRecords> patientRecordsList = patientRecordService.getPatientRecordsList();
-				System.out.println(patientRecordsList);
-				req.setAttribute("patientRecordsList", patientRecordsList);
+	    	List<Patient> patientList = patientService.getPatientList();
+			 request.setAttribute("patientList", patientList);
+			 ArrayList<Appointment> appointmentList = appointmentService.getAppointmentByDoctorList(request.getSession().getAttribute("user").toString());
+				System.out.println(appointmentList);
+				request.setAttribute("appointmentList", appointmentList);
 				ModelAndView mv = new ModelAndView("patient_record");
 				mv.addObject("successMessage", "");
 				return mv;
 			
 	    	
-//	    	BloodCount bloodCount =  bloodCountService.getByPatientId(patientEmail);
-//	    	System.out.println(patientEmail);
-//	    	ArrayList<Activity> activity=activityService.findBypatientId(patientEmail);
-//	    	BMI bmi=bmiService.getByPatientId(patientEmail);
-//	    	CalorieIntake calorieIntake=calorieIntakeService.getByPatientId(patientEmail);
-//	    	ArrayList<Diet> diet=dietService.findBypatientId(patientEmail);
-//	    	Pressure pressure=pressureService.getByPatientId(patientEmail);
-//	    	Thyroid thyroid=thyroidService.getByPatientId(patientEmail);
-//	    	CholestrolMonitor cholestrolMonitor=cholestrolService.getByPatientId(patientEmail);
-//	    	
-//	    	PatientRecords patientRecords = patientRecordService.addPatientRecordDetails(patientEmail,bmi,calorieIntake,bloodCount,thyroid,cholestrolMonitor,pressure);
-//	    	PatientRecords patientRecords = patientRecordService.addPatientRecordDetails();
-//	    System.out.println(patientRecords);
-	    	
-//	    	double diabetesRisk1 = diabetesRiskService.calculateRisk(bloodCount);
-	     //   ModelAndView modelAndView = new ModelAndView();
-	     //   modelAndView.setViewName("patient_record");
-//	        modelAndView.addObject("diabetesRisk1", diabetesRisk1);
-//	        System.out.println(diabetesRisk1);
-//	        modelAndView.addObject("patientRecords", patientRecords);
-	     //   return modelAndView;
-	        
 	        
 	    }
+	    
+	    @RequestMapping("/UpdatePatientRecord")
+	    
+		 public ModelAndView showPatientForm(String patientId,String pName,HttpServletRequest request) {
+			List<BMI> bmiValues = bmiService.getBMIReport(patientId);
+			List<BloodCount> bloodCountValues = bloodCountService.getBloodCountReport(patientId);
+			List<GlucoseI> glucoseValues=glucoseService.getglucoseReport(patientId);
+			List<CalorieIntake> calorieIntakeValues=calorieIntakeService.getcalorieIntakeReport(patientId);
+			List<CholestrolMonitor> cholestrolMonitorValues=cholestrolService.getcholestrolMonitorReport(patientId);
+			List<Pressure> pressureValues=pressureService.getpressureReport(patientId);
+			List<Thyroid> thyroidValues=thyroidService.getthyroidReport(patientId);
+			Patient patientDetails = patientService.getById(patientId);
+			Doctor doctorDetails = docService.getSecurityQustions(request.getSession().getAttribute("user").toString());
+
+
+			 ModelAndView mv=new ModelAndView("patientReport");
+			 mv.addObject("bmiValues", bmiValues);
+			 mv.addObject("bloodCountValues", bloodCountValues);
+			 mv.addObject("glucoseValues", glucoseValues);
+			 mv.addObject("calorieIntakeValues", calorieIntakeValues);
+			 mv.addObject("cholestrolMonitorValues", cholestrolMonitorValues);
+			 mv.addObject("pressureValues",pressureValues);
+			 mv.addObject("thyroidValues", thyroidValues);
+			 mv.addObject("patientDetails", patientDetails);
+			 mv.addObject("doctorDetails", doctorDetails);
+
+			 mv.addObject("pName",pName);
+		        return mv;
+		    }
+	    
 	    @RequestMapping("/UpdatePatientHealthRecord")
 	    
-		 public ModelAndView showPatientHealthForm(Long patientRecId) {
-			 PatientRecords patientRecordsDetails = patientRecordService.getById(patientRecId);
+		 public ModelAndView showPatientHealthForm(HttpServletRequest request) {
+			 List<Patient> patientList = patientService.getPatientList();
+			 request.setAttribute("patientList", patientList);
 			 ModelAndView mv=new ModelAndView("updatePatientRecords");
-			 mv.addObject("patientRecordsDetails",patientRecordsDetails);
+//			 mv.addObject("patientRecordsDetails",patientRecordsDetails);
 		        return mv;
 		    }
 		 
@@ -746,7 +881,7 @@ public class MyController {
 		    public ModelAndView SavePatientHealthRecord(PatientRecords patientRecords) {
 		        
 		        
-		        ModelAndView mav = new ModelAndView("updatePatientRecords");
+		        ModelAndView mav = new ModelAndView("patientReport");
 		        patientRecordService.savePatientRecords(patientRecords);
 		        mav.addObject("successMessage", "Updated prescription successfully.");
 		        mav.addObject("patientRecId",patientRecords.getPatientRecId());
@@ -754,8 +889,28 @@ public class MyController {
 		        return mav;
 		    }
 		    @RequestMapping("/viewPrescPatientRecord")
-			public ModelAndView PrescPatientRecordView(HttpServletRequest req,String patientEmail) {
-		    	System.out.println(patientEmail);
+			public ModelAndView PrescPatientRecordView(HttpServletRequest req,String patientId) {
+		    	List<BMI> bmiValues = bmiService.getBMIReport(patientId);
+				List<BloodCount> bloodCountValues = bloodCountService.getBloodCountReport(patientId);
+				List<GlucoseI> glucoseValues=glucoseService.getglucoseReport(patientId);
+				List<CalorieIntake> calorieIntakeValues=calorieIntakeService.getcalorieIntakeReport(patientId);
+				List<CholestrolMonitor> cholestrolMonitorValues=cholestrolService.getcholestrolMonitorReport(patientId);
+				List<Pressure> pressureValues=pressureService.getpressureReport(patientId);
+				List<Thyroid> thyroidValues=thyroidService.getthyroidReport(patientId);
+				
+			PatientRecords patientRecordsValues=patientRecordService.findBypatientId(patientId);
+
+
+				 ModelAndView mv=new ModelAndView("viewPatientRecords");
+				 mv.addObject("bmiValues", bmiValues);
+				 mv.addObject("bloodCountValues", bloodCountValues);
+				 mv.addObject("glucoseValues", glucoseValues);
+				 mv.addObject("calorieIntakeValues", calorieIntakeValues);
+				 mv.addObject("cholestrolMonitorValues", cholestrolMonitorValues);
+				 mv.addObject("pressureValues",pressureValues);
+				 mv.addObject("thyroidValues", thyroidValues);
+				 mv.addObject("patientRecordsValues", patientRecordsValues);
+		    	/*System.out.println(patientEmail);
 		    	ArrayList<PatientRecords> patientRecordsList = patientRecordService.getPatientRecordsList();
 				System.out.println(patientRecordsList);
 				req.setAttribute("patientRecordsList", patientRecordsList);
@@ -766,7 +921,7 @@ public class MyController {
 		        mv.addObject("patientId",patientEmail);
 		        System.out.println(patientRecordsDetails);
 
-				mv.addObject("PatientRecords1",patientRecordsDetails);
+				mv.addObject("PatientRecords1",patientRecordsDetails);*/
 				mv.addObject("successMessage", "");
 		        
 		        return mv;

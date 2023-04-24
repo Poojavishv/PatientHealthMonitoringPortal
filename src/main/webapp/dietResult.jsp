@@ -1,3 +1,6 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="com.example.demo.model.Doctor"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -124,7 +127,7 @@ height: 100%;
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                       <a href="/pHome?patientEmail=${patientId }" class="nav-item nav-link active">Home</a>
+                       <a href="/pHome" class="nav-item nav-link active">Home</a>
                         <a href="/about" class="nav-item nav-link">About</a>
                         <a href="/contact" class="nav-item nav-link">Contact</a>
                         <a href="/logoutPatient" class="nav-item nav-link">Logout</a>
@@ -156,7 +159,25 @@ height: 100%;
     <label for="rbcCount">Date:</label>
     <input  type="date" id="dietdate" name="dietdate" />
     </div>        
-        
+         <div class="form-outline mb-4">
+              <select name="doctor" id="doctor" class="form-select" value="${doctor }">
+              <option value="">-Select Doctor-</option>
+              <% ArrayList<Doctor> doctorList = (ArrayList) request.getAttribute("doctorList");
+              		if(request.getAttribute("doctorList") !=null)
+              		{
+              			Iterator<Doctor> doctorIterator =  doctorList.iterator();
+              			while(doctorIterator.hasNext())
+              			{
+              				Doctor doctorDetails = doctorIterator.next();
+              			
+              %>
+                <option value="<%= doctorDetails.getDocEmail() %>"><%= doctorDetails.getDocFname()+" "+doctorDetails.getDocLname()  %></option>
+                <% 
+              			}
+              		}
+                %>
+              </select>
+                    </div>
         
     <div class="form-outline mb-4">
     <label for="diet">Diet:</label>

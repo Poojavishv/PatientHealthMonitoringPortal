@@ -1,9 +1,12 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.BMI;
+import com.example.demo.model.Pressure;
 import com.example.demo.model.Thyroid;
 import com.example.demo.repo.ThyroidRepo;
 
@@ -24,4 +27,9 @@ public class ThyroidService {
 		Thyroid T = thyroidRepository.findBypatientId(patientEmail);
     	return T;
 	}
+
+	public List<Thyroid> getthyroidReport(String patientEmail)
+	    {
+	    	return thyroidRepository.getBypatientId(patientEmail);
+	    }
 }

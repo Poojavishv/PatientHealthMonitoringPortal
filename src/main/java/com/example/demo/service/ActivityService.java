@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Activity;
+import com.example.demo.model.Diet;
 import com.example.demo.repo.ActivityRepository;
 
 import jakarta.transaction.Transactional;
@@ -35,6 +36,13 @@ public class ActivityService {
 		ArrayList<Activity> activityDetails1 = activityRepository.findBypatientId(patientId);
 		 return activityDetails1;
 	}
+	public ArrayList<Activity> getActivityByDoctorList(String docId)
+	{
+		
+				return activityRepository.findByDoctor(docId);
+		
+	}
+
 	
 
 }

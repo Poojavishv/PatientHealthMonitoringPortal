@@ -194,7 +194,9 @@ table th {
                         <th scope="col">Patient Name</th>
                         <th scope="col">Symptoms</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Add Prescription</th>
+                      
+                        
                       </tr>
                     </thead>
                     <tbody>
@@ -217,7 +219,8 @@ table th {
                         <td><%= appointmentDetails.getPatientName() %></td>
                         <td><%= appointmentDetails.getSymptoms() %></td>
                         <td><%= appointmentDetails.getDate() %></td>
-                       <td> <a href="http://localhost:8080/UpdateAppointment?appointmentId=<%= appointmentDetails.getAppointmentId() %>" id="link-1">Action</a></td>
+                       <td> <a href="http://localhost:8080/UpdateAppointment?appointmentId=<%= appointmentDetails.getAppointmentId() %>" id="link-1">Prescription</a></td>
+                       
                         <td>
                           <button type="button" class="btn btn-danger btn-sm px-3">
                             <i class="fas fa-times"></i>

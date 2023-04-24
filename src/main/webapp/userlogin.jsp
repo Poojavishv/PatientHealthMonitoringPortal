@@ -131,6 +131,7 @@
 					<form action="/loginCheckPatient" method="post">
 						<div class="text-center" align="center">
 							<h3 class="text-center" style="color: green">${smsg }</h3>
+							<h3 class="text-center" style="color: green">${successMsg }</h3>
 							<h3 class="text-center" style="color: red">${emsg }</h3>
 							<h1 class="text-center">Patient Login Page</h1>
 

@@ -1,33 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <title>Patient Monitoring Portal </title>
+    <title>MEDICAL TOURISM WEBSITE </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
-    
- <!-- Favicon -->
+
+    <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
-    
- 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
-   
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -47,36 +31,20 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     <style>
-    .divider:after,
-.divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+font-size: 1rem;
+line-height: 2.15;
+padding-left: .75em;
+padding-right: .75em;
 }
-.h-custom {
-height: calc(100% - 73px);
-}
-@media (max-width: 450px) {
-.h-custom {
-height: 100%;
-}
+.card-registration .select-arrow {
+top: 13px;
 }
 </style>
-
-
 </head>
-<body> 
-<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	response.setHeader("Pragma", "no-cache");
-	
-	if(session.getAttribute("user")==null)
-	{
-		response.sendRedirect("/logoutPatient");
-	}
-%>
-<!-- Topbar Start -->
+
+<body>
+    <!-- Topbar Start -->
     <div class="container-fluid py-2 border-bottom d-none d-lg-block">
         <div class="container">
             <div class="row">
@@ -117,17 +85,16 @@ height: 100%;
         <div class="container">
             <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
                 <a href="index.html" class="navbar-brand">
-                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>PATIENT HEALTH MONITORING</h1>
+                    <h1 class="m-0 text-uppercase text-primary"><i class="fa fa-clinic-medical me-2"></i>MEDICAL TOURISM</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0">
-                       <a href="/pHome" class="nav-item nav-link active">Home</a>
+                        <a href="/" class="nav-item nav-link active">Home</a>
                         <a href="/about" class="nav-item nav-link">About</a>
                         <a href="/contact" class="nav-item nav-link">Contact</a>
-                        <a href="/logoutPatient" class="nav-item nav-link">Logout</a>
                     </div>
                 </div>
             </nav>
@@ -135,49 +102,43 @@ height: 100%;
     </div>
     <!-- Navbar End -->
 
-<section class="vh-100" style="background-color: #508bfc;">
-  <div class="container py-5 h-100">
+<section class="vh-100">
+  <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
-     
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-       <h4 style="color: green" align="center">${successMessage}</h4>
-      <form action=/cholestrolResult method="post">
-      <div class="card shadow-2-strong" style="border-radius: 1rem;">
-          <div class="card-body p-5 text-center">
-             <h3 class="mb-5">Add Cholestrol Levels</h3>
-      
-      <div class="form-outline mb-4">
-            <label class="form-label" for="height">Patient ID:</label>
-               <input  type="text" id="height" name="patientId" value="${patientId }" readonly><br>
-              
-            </div>
-    <div class="form-outline mb-4">
-    <label for="date">Date:</label>
-    <input path="date" type="date" id="date" name="date" />
-    </div>
-      <div class="form-outline mb-4">
-    <label for="cholestrolLevel">cholestrol Level:</label>
-    <<input type="number" step="0.01" id="cholestrolLevel" name="cholestrolLevel"  required/>
-    </div>
-      <div class="form-outline mb-4">
-    <label for="timeOfDayCholestrolMonitor">Time Of Day :</label>
-    <input path="timeOfDayCholestrolMonitor" type="time" id="timeOfDayCholestrolMonitor" name="timeOfDayCholestrolMonitor" />
-    </div>
-      
-             
-    <input type="submit" value="Save" />
-   
-    </div>
-        </div>
-</form>
-
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          class="img-fluid" alt="Sample image">
       </div>
      
-    </div>
-  </div>
-</section>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <form action="/sq">
+         <br>
+          <div class="text-center" align="center">
+            <h1 class="text-center" >Forgot Password Page</h1>
+            
+          </div>
 
-    <class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+         <br>
+          
+
+                <div class="form-outline mb-4">
+                 <label class="form-label" for="form3Example97">Email ID</label>
+                  <input type="text" id="form3Example97" class="form-control form-control-lg" placeholder="Email-ID" name="docEmail" value/>
+                 
+                </div>     
+ <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">Check</button>
+          
+          </div>
+          </form>
+ <br>
+              </div>
+            </div>
+          </div>
+        
+  <div
+    class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
     <!-- Copyright -->
     <div class="text-white mb-3 mb-md-0">
       Copyright © 2020. All rights reserved.
@@ -200,16 +161,12 @@ height: 100%;
       </a>
     </div>
     <!-- Right -->
- 
-
-   </class>
-
-
+  </div>
+</section>
    
 
-   
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
 </body>
 
-</html>
+</html

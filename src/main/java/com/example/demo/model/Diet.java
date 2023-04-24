@@ -17,7 +17,7 @@ public class Diet {
 
     
     private String patientId;
-
+    private String doctor;
     
     private String dietdate;
 
@@ -91,13 +91,24 @@ public class Diet {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Diet [id=" + id + ", patientId=" + patientId + ", dietdate=" + dietdate + ", dietFood=" + dietFood
-				+ ", timeOfIntake=" + timeOfIntake + ", updateDiet1=" + updateDiet1 + "]";
+	public String getDoctor() {
+		return doctor;
 	}
 
 
+	public void setDoctor(String doctor) {
+		this.doctor = doctor;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Diet [id=" + id + ", patientId=" + patientId + ", doctor=" + doctor + ", dietdate=" + dietdate
+				+ ", dietFood=" + dietFood + ", timeOfIntake=" + timeOfIntake + ", updateDiet1=" + updateDiet1 + "]";
+	}
+
+
+	
 	
 
 

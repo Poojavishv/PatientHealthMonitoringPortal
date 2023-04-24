@@ -152,21 +152,21 @@ height: 100%;
         <form action="/SaveUpdateDiet" method="post" role="form" class="php-email-form">
           <div class="row">
             <div class="col-md-4 form-group">
-              <input type="text" name="patientId"  class="form-control" id="patientId" placeholder="Patient ID" value="${DietDetails.getPatientId() }" readonly>
+              <input type="text" name="patientId"  class="form-control" id="patientId" placeholder="Patient ID" value="${dietDetails.getPatientId() }" readonly>
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-               <input type="text" name="dietdate" class="form-control" id="dietdate" placeholder="diet date" value="${DietDetails.getDietdate() }" readonly>
+               <input type="text" name="dietdate" class="form-control" id="dietdate" placeholder="diet date" value="${dietDetails.getDietdate() }" readonly>
               <div class="validate"></div>
             </div>
             <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="text" class="form-control" name="dietFood" id="dietFood" value="${DietDetails.getDietFood() }" placeholder="Diet Food" readonly >
+              <input type="text" class="form-control" name="dietFood" id="dietFood" value="${dietDetails.getDietFood() }" placeholder="Diet Food" readonly >
               <div class="validate"></div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4 form-group mt-3">
-              <input type="time" name="timeOfIntake" class="form-control datepicker" id="timeOfIntake" value="${DietDetails.getTimeOfIntake() }" placeholder="Appointment Date" readonly>
+              <input type="time" name="timeOfIntake" class="form-control datepicker" id="timeOfIntake" value="${dietDetails.getTimeOfIntake() }" placeholder="Appointment Date" readonly>
               <div class="validate"></div>
             </div>
             

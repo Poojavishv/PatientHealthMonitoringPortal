@@ -20,6 +20,7 @@ public class Activity {
     private String patientId;
 
     private LocalDate date;
+    private String doctor;
 
 
     private String activity1;
@@ -79,12 +80,22 @@ public class Activity {
 		this.timeOfWorkout = timeOfWorkout;
 	}
 
-	@Override
-	public String toString() {
-		return "Activity [id=" + id + ", patientId=" + patientId + ", date=" + date + ", activity1=" + activity1
-				+ ", timeOfWorkout=" + timeOfWorkout + ", activityPrescription=" + activityPrescription + "]";
+	public String getDoctor() {
+		return doctor;
 	}
 
+	public void setDoctor(String doctor) {
+		this.doctor = doctor;
+	}
+
+	@Override
+	public String toString() {
+		return "Activity [id=" + id + ", patientId=" + patientId + ", date=" + date + ", doctor=" + doctor
+				+ ", activity1=" + activity1 + ", timeOfWorkout=" + timeOfWorkout + ", activityPrescription="
+				+ activityPrescription + "]";
+	}
+
+	
 	
 
 	
